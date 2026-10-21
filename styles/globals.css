@@ -1,0 +1,131 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-bg: #000613;
+  --color-surface: #000F29;
+  --color-card: #001A3D;
+  --color-brand: #012046;
+  --color-primary: #06A1FF;
+  --color-primary-hover: #37C6FC;
+  --color-accent: #3FCBF8;
+  --color-wave: #0162D1;
+  --color-ink: #F5F8FF;
+  --color-ink-muted: #A7B7CC;
+  --color-line: #173450;
+  --color-gold: #FFC66D;
+  --color-whatsapp: #25D366;
+
+  --font-heading: var(--font-poppins), sans-serif;
+  --font-sans: var(--font-inter), sans-serif;
+}
+
+@layer base {
+  *, ::before, ::after {
+    border-color: var(--color-line);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  /* Clear focus styles with visible focus ring */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+}
+
+/* Universal Card Style matching the mockup */
+.asco-card {
+  border-radius: 1rem; /* rounded-2xl */
+  border: 1px solid rgba(63, 203, 248, 0.6);
+  background: linear-gradient(180deg, var(--color-card) 0%, var(--color-bg) 100%);
+  box-shadow: 0 8px 24px -6px rgba(63, 203, 248, 0.18);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s ease;
+}
+
+.asco-card-interactive:hover {
+  transform: translateY(-4px);
+  border-color: rgba(63, 203, 248, 0.85);
+  box-shadow: 0 14px 36px -6px rgba(63, 203, 248, 0.28);
+}
+
+/* Logo contrast boost & faint accent drop-shadow */
+.asco-logo-contrast {
+  filter: brightness(2.2) drop-shadow(0 0 10px rgba(63, 203, 248, 0.35));
+}
+
+/* Subtle Glowing Rope-Light Divider between sections */
+.rope-glow-divider {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(63, 203, 248, 0.25) 20%,
+    rgba(255, 198, 109, 0.55) 50%,
+    rgba(63, 203, 248, 0.25) 80%,
+    transparent 100%
+  );
+  box-shadow: 0 0 10px 1px rgba(255, 198, 109, 0.35);
+}
+
+/* Hero primary button glow */
+.btn-primary-glow {
+  background: linear-gradient(90deg, #06A1FF, #37C6FC);
+  box-shadow: 0 0 20px 2px rgba(6, 161, 255, 0.4);
+  transition: all 0.3s ease;
+}
+
+.btn-primary-glow:hover {
+  background: linear-gradient(90deg, #37C6FC, #06A1FF);
+  box-shadow: 0 0 28px 4px rgba(6, 161, 255, 0.6);
+}
+
+/* Subtle one-time fade-in / slide-in for hero text */
+@keyframes heroFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-animate-fade {
+  animation: heroFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .asco-card-interactive:hover {
+    transform: none !important;
+  }
+  .hero-animate-fade {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

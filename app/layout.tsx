@@ -1,0 +1,125 @@
+import type { Metadata } from 'next';
+import { Inter, Poppins } from 'next/font/google';
+import { Navbar } from '@/components/Navbar';
+import { Footer } from '@/components/Footer';
+import { WhatsAppFloatingButton } from '@/components/WhatsAppFloatingButton';
+import '../styles/globals.css';
+
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  variable: '--font-inter',
+  display: 'swap',
+});
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['600', '700'],
+  variable: '--font-poppins',
+  display: 'swap',
+});
+
+export const metadata: Metadata = {
+  metadataBase: new URL('https://www.ascotraders.com'),
+  title: 'ASCO Traders | Premium LED Rope, Strip & Profile Lights in Pakistan',
+  description:
+    'ASCO Traders delivers premium LED lighting solutions in Pakistan. Explore high-efficiency rope lights, RGB strip lights, aluminium profile channels, commercial batten lights, and tracklights.',
+  // TODO: REMOVE BEFORE LAUNCH - Temporary testing deployment directive
+  robots: {
+    index: false,
+    follow: false,
+  },
+  icons: {
+    icon: '/favicon.png',
+    shortcut: '/favicon.png',
+    apple: '/favicon.png',
+  },
+  openGraph: {
+    title: 'ASCO Traders | Premium LED Rope, Strip & Profile Lights in Pakistan',
+    description:
+      'Premium LED lighting solutions for modern homes, commercial spaces, and architectural applications across Pakistan.',
+    url: 'https://www.ascotraders.com',
+    siteName: 'ASCO Traders',
+    locale: 'en_US',
+    type: 'website',
+    images: [
+      {
+        url: '/asco_separate_images_webp/01_modern_house_hero.webp',
+        width: 1200,
+        height: 630,
+        alt: 'ASCO Traders Premium LED Architectural Lighting',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'ASCO Traders | Premium LED Rope, Strip & Profile Lights in Pakistan',
+    description:
+      'Premium LED lighting solutions for modern homes, commercial spaces, and architectural applications across Pakistan.',
+    images: ['/asco_separate_images_webp/01_modern_house_hero.webp'],
+  },
+};
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'ASCO Innovative Technologies',
+  alternateName: 'Asco Traders',
+  url: 'https://www.ascotraders.com',
+  logo: 'https://www.ascotraders.com/logo.png',
+  email: 'ascolightingcompany@gmail.com',
+  contactPoint: [
+    {
+      '@type': 'ContactPoint',
+      telephone: '+923004205422',
+      contactType: 'customer service',
+      areaServed: 'PK',
+    },
+    {
+      '@type': 'ContactPoint',
+      telephone: '+923004773337',
+      contactType: 'sales',
+      areaServed: 'PK',
+    },
+  ],
+  address: {
+    '@type': 'PostalAddress',
+    addressCountry: 'Pakistan',
+  },
+  sameAs: [
+    'https://www.facebook.com/profile.php?id=100087881238548',
+    'https://www.instagram.com/ascoledropelight',
+  ],
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html
+      lang="en"
+      className={`${inter.variable} ${poppins.variable} scroll-smooth`}
+      suppressHydrationWarning
+    >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
+      <body
+        className="min-h-screen flex flex-col bg-bg text-ink font-sans antialiased selection:bg-accent/30 selection:text-ink"
+        suppressHydrationWarning
+      >
+        <Navbar />
+        <main id="main-content" className="flex-1">
+          {children}
+        </main>
+        <Footer />
+        <WhatsAppFloatingButton />
+      </body>
+    </html>
+  );
+}
