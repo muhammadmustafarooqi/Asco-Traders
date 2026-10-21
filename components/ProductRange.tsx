@@ -7,7 +7,7 @@ export function ProductRange() {
     <section
       id="products"
       aria-labelledby="products-range-heading"
-      className="py-14 sm:py-20 lg:py-24 bg-bg relative overflow-hidden"
+      className="w-full w-screen max-w-[100vw] py-14 sm:py-20 lg:py-24 bg-bg relative overflow-hidden"
     >
       {/* Subtle radial glow in the background */}
       <div
@@ -24,9 +24,9 @@ export function ProductRange() {
         <GlowWaves className="w-full h-full object-cover" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 w-full px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 2xl:px-20">
         {/* Section Heading with decorative lines matching design */}
-        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
+        <div className="text-center max-w-4xl mx-auto mb-10 sm:mb-14">
           <div className="flex items-center justify-center gap-2.5 sm:gap-3 mb-3">
             <span
               className="h-0.5 w-6 sm:w-10 bg-accent rounded-full"
@@ -43,14 +43,14 @@ export function ProductRange() {
 
           <h2
             id="products-range-heading"
-            className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-ink text-center tracking-tight leading-snug"
+            className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl xl:text-5xl text-ink text-center tracking-tight leading-snug"
           >
             Complete Range of <span className="text-accent">LED</span> Lighting Solutions
           </h2>
         </div>
 
-        {/* 6 Product Cards Grid: 2 cols on mobile, 3 cols on tablet, 6 cols in a single row on desktop */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5 sm:gap-4 lg:gap-3.5 xl:gap-4.5 items-stretch">
+        {/* 6 Product Cards Grid: 2 cols on mobile, 3 cols on tablet, 6 cols in a single row on desktop taking 100vw */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5 sm:gap-4 lg:gap-4 xl:gap-5 2xl:gap-6 items-stretch w-full">
           {products.map((product) => (
             <div key={product.slug} className="h-full">
               <ProductCard product={product} />

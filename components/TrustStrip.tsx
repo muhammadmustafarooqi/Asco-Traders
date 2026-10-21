@@ -1,3 +1,5 @@
+'use client';
+
 import { ShieldCheck, Zap, Clock, Headphones } from 'lucide-react';
 import { siteConfig, type TrustItem } from '@/lib/site';
 

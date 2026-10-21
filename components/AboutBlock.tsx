@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
@@ -10,7 +12,7 @@ export function AboutBlock() {
     <section
       id="about"
       aria-labelledby="about-heading"
-      className="relative w-full py-16 sm:py-20 lg:py-24 bg-bg overflow-hidden"
+      className="relative w-full w-screen max-w-[100vw] py-16 sm:py-20 lg:py-24 bg-bg overflow-hidden"
     >
       {/* 1. Background Panoramic Banner (Desktop lg+) */}
       <div className="hidden lg:block absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
@@ -39,8 +41,8 @@ export function AboutBlock() {
         />
       </div>
 
-      {/* 2. Content Container */}
-      <div className="relative z-10 w-full max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-14">
+      {/* 2. Content Container (100vw) */}
+      <div className="relative z-10 w-full px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 2xl:px-20">
         {/* Mobile & Tablet Visual Banner (below lg) */}
         <div className="block lg:hidden relative w-full h-56 sm:h-72 mb-10 rounded-2xl overflow-hidden border border-line/40 shadow-[0_0_30px_rgba(6,161,255,0.18)]">
           <Image
@@ -54,11 +56,11 @@ export function AboutBlock() {
         </div>
 
         {/* Desktop 12-column grid:
-            Cols 1–5: Left content block (inside the dark navy area, left of the glowing cyan arch)
-            Cols 6–12: Spacer showcasing the building, illuminated logo, and patio
+            Cols 1–4/5: Left content block (inside the dark navy area, strictly left of the glowing cyan arch)
+            Cols 5/6–12: Spacer showcasing the building, illuminated logo, and patio
         */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          <div className="lg:col-span-5 xl:col-span-5 flex flex-col justify-center max-w-xl">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center w-full">
+          <div className="lg:col-span-5 xl:col-span-4 2xl:col-span-4 flex flex-col justify-center max-w-lg xl:max-w-xl">
             {/* Eyebrow with horizontal line dividers */}
             <div className="flex items-center gap-2.5 sm:gap-3 mb-3">
               <span className="h-[2px] w-6 sm:w-8 bg-primary rounded-full" aria-hidden="true" />
@@ -99,9 +101,9 @@ export function AboutBlock() {
             </div>
           </div>
 
-          {/* Spacer on Desktop for architectural photo & logo (Cols 6–12) */}
+          {/* Spacer on Desktop for architectural photo & logo (Cols 6/5–12) */}
           <div
-            className="hidden lg:block lg:col-span-7 xl:col-span-7 pointer-events-none"
+            className="hidden lg:block lg:col-span-7 xl:col-span-8 2xl:col-span-8 pointer-events-none"
             aria-hidden="true"
           />
         </div>

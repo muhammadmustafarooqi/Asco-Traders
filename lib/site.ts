@@ -179,6 +179,13 @@ export const siteConfig = {
       quote: 'Reliable products, great service, and on-time delivery.',
       avatar: '/asco_separate_images_webp/avatar_usman_tariq.webp',
     },
+    {
+      id: 'hamza-sheikh',
+      name: 'Hamza Sheikh',
+      role: 'Architect, Rawalpindi',
+      quote: 'Exceptional 220V rope lights with zero driver hassle. ASCO is our top recommendation for architectural facades.',
+      avatar: '/asco_separate_images_webp/avatar_ahmed_raza.webp',
+    },
   ] satisfies TestimonialItem[],
 };
 

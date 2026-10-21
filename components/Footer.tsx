@@ -1,3 +1,6 @@
+'use client';
+
+import { Fragment } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Phone, Mail, MapPin } from 'lucide-react';
@@ -22,32 +25,28 @@ function InstagramIcon(props: React.SVGProps<SVGSVGElement>) {
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
+  // Render the heart in red, wherever it appears in the credit line
+  const creditParts = siteConfig.creditLine.split('♥');
+
   return (
-    <footer className="relative w-full bg-surface border-t border-line text-ink-muted overflow-hidden">
+    <footer className="relative w-full max-w-[100vw] bg-surface border-t border-line text-ink-muted overflow-hidden">
       {/* Top glowing accent line */}
       <div className="rope-glow-divider" aria-hidden="true" />
 
-      {/* Faint masked landmark backdrop on the footer's right side */}
+      {/* Soft blue glow at the bottom right, as in the mockup */}
       <div
-        className="absolute inset-y-0 right-0 w-full sm:w-2/3 lg:w-1/2 pointer-events-none opacity-20 overflow-hidden"
+        className="absolute inset-0 pointer-events-none"
         aria-hidden="true"
-      >
-        <Image
-          src="/asco_separate_images_webp/18_city_landmark_background.webp"
-          alt=""
-          fill
-          sizes="(max-width: 768px) 100vw, 50vw"
-          className="object-cover object-right"
-        />
-        {/* Soft gradient mask blending from left edge */}
-        <div className="absolute inset-0 bg-gradient-to-r from-surface via-surface/80 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-surface" />
-      </div>
+        style={{
+          background:
+            'radial-gradient(ellipse 45% 70% at 92% 100%, rgba(6,161,255,0.16), transparent 70%)',
+        }}
+      />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
-          {/* Column 1: Brand Info */}
-          <div className="space-y-4">
+      <div className="relative z-10 w-full px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 2xl:px-20 pt-8 pb-6 lg:pt-9 lg:pb-7">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1.15fr_1.7fr_1.35fr] gap-x-8 gap-y-8 lg:gap-x-6 xl:gap-x-10 items-start">
+          {/* Column 1: Brand */}
+          <div className="space-y-3">
             <Link
               href="/"
               className="inline-block focus-visible:ring-2 focus-visible:ring-accent rounded-md"
@@ -56,21 +55,20 @@ export function Footer() {
               <Image
                 src="/logo.png"
                 alt="ASCO Innovative Technologies"
-                width={150}
-                height={50}
-                className="h-10 w-auto object-contain asco-logo-contrast"
+                width={180}
+                height={60}
+                className="h-12 sm:h-14 w-auto object-contain asco-logo-contrast"
               />
             </Link>
-            <p className="text-sm leading-relaxed text-ink-muted">
-              {siteConfig.tagline}
-            </p>
-            {/* Social Icons (Facebook & Instagram only) */}
-            <div className="flex items-center gap-4 pt-2">
+            <p className="text-[13px] leading-relaxed text-ink">{siteConfig.tagline}</p>
+
+            {/* Social icons: bare cyan outlines, no boxes */}
+            <div className="flex items-center gap-5 pt-1">
               <a
                 href="https://www.facebook.com/profile.php?id=100087881238548"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 rounded-lg bg-card border border-line text-ink-muted hover:text-accent hover:border-accent transition-colors"
+                className="text-accent hover:text-ink hover:scale-110 transition-all"
                 aria-label="Follow ASCO Traders on Facebook"
               >
                 <FacebookIcon className="h-5 w-5" />
@@ -79,7 +77,7 @@ export function Footer() {
                 href="https://www.instagram.com/ascoledropelight"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 rounded-lg bg-card border border-line text-ink-muted hover:text-accent hover:border-accent transition-colors"
+                className="text-accent hover:text-ink hover:scale-110 transition-all"
                 aria-label="Follow ASCO Traders on Instagram"
               >
                 <InstagramIcon className="h-5 w-5" />
@@ -89,16 +87,13 @@ export function Footer() {
 
           {/* Column 2: Quick Links */}
           <div>
-            <h3 className="font-heading font-semibold text-ink text-base mb-4 tracking-wide">
+            <h3 className="font-heading font-semibold text-ink text-sm mb-3 tracking-wide">
               Quick Links
             </h3>
-            <ul className="space-y-2.5 text-sm">
+            <ul className="space-y-1.5 text-[13px]">
               {siteConfig.footerLinks.quickLinks.map((link) => (
                 <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="hover:text-ink transition-colors inline-block py-0.5"
-                  >
+                  <Link href={link.href} className="text-ink hover:text-accent transition-colors inline-block">
                     {link.name}
                   </Link>
                 </li>
@@ -108,16 +103,13 @@ export function Footer() {
 
           {/* Column 3: Our Products */}
           <div>
-            <h3 className="font-heading font-semibold text-ink text-base mb-4 tracking-wide">
+            <h3 className="font-heading font-semibold text-ink text-sm mb-3 tracking-wide">
               Our Products
             </h3>
-            <ul className="space-y-2.5 text-sm">
+            <ul className="space-y-1.5 text-[13px]">
               {siteConfig.footerLinks.productLinks.map((product) => (
                 <li key={product.name}>
-                  <Link
-                    href={product.href}
-                    className="hover:text-ink transition-colors inline-block py-0.5"
-                  >
+                  <Link href={product.href} className="text-ink hover:text-accent transition-colors inline-block">
                     {product.name}
                   </Link>
                 </li>
@@ -127,44 +119,91 @@ export function Footer() {
 
           {/* Column 4: Contact Us */}
           <div>
-            <h3 className="font-heading font-semibold text-ink text-base mb-4 tracking-wide">
+            <h3 className="font-heading font-semibold text-ink text-sm mb-3 tracking-wide">
               Contact Us
             </h3>
-            <ul className="space-y-3 text-sm">
-              {siteConfig.phones.map((phone) => (
-                <li key={phone.display}>
-                  <a
-                    href={`tel:${phone.tel}`}
-                    className="flex items-center gap-2.5 hover:text-ink transition-colors"
-                  >
-                    <Phone className="h-4 w-4 text-accent shrink-0" aria-hidden="true" />
-                    <span>{phone.display}</span>
-                  </a>
-                </li>
-              ))}
+            <ul className="space-y-2.5 text-[13px]">
+              {/* One phone icon, numbers stacked */}
+              <li className="flex items-start gap-3">
+                <Phone className="h-5 w-5 text-accent shrink-0 mt-0.5" aria-hidden="true" />
+                <div className="flex flex-col gap-0.5">
+                  {siteConfig.phones.map((phone) => (
+                    <a
+                      key={phone.display}
+                      href={`tel:${phone.tel}`}
+                      className="text-ink hover:text-accent transition-colors"
+                    >
+                      {phone.display}
+                    </a>
+                  ))}
+                </div>
+              </li>
               <li>
                 <a
                   href={`mailto:${siteConfig.email}`}
-                  className="flex items-center gap-2.5 hover:text-ink transition-colors break-all"
+                  className="flex items-center gap-3 text-ink hover:text-accent transition-colors break-all"
                 >
-                  <Mail className="h-4 w-4 text-accent shrink-0" aria-hidden="true" />
+                  <Mail className="h-5 w-5 text-accent shrink-0" aria-hidden="true" />
                   <span>{siteConfig.email}</span>
                 </a>
               </li>
-              <li className="flex items-center gap-2.5">
-                <MapPin className="h-4 w-4 text-accent shrink-0" aria-hidden="true" />
+              <li className="flex items-center gap-3 text-ink">
+                <MapPin className="h-5 w-5 text-accent shrink-0" aria-hidden="true" />
                 <span>{siteConfig.location}</span>
               </li>
             </ul>
           </div>
-        </div>
 
-        {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-line flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-ink-muted">
+          {/* Column 5: Glowing divider + tagline */}
+          <div className="relative md:col-span-2 lg:col-span-1 lg:self-stretch flex items-center lg:pl-10 xl:pl-14 min-h-[72px]">
+            {/* Vertical glow line */}
+            <span
+              className="hidden lg:block absolute left-0 inset-y-0 w-px bg-gradient-to-b from-transparent via-accent to-transparent shadow-[0_0_10px_rgba(63,203,248,0.7)]"
+              aria-hidden="true"
+            />
+            <p className="font-heading font-bold text-ink text-lg xl:text-xl leading-snug">
+              Clean. Modern.
+              <br />
+              Premium.
+            </p>
+            {/* Curved glow under the tagline */}
+            <svg
+              className="hidden lg:block absolute left-6 xl:left-10 bottom-0 w-[85%] h-8 pointer-events-none"
+              viewBox="0 0 300 40"
+              fill="none"
+              aria-hidden="true"
+            >
+              <defs>
+                <linearGradient id="footer-swoosh" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stopColor="#06a1ff" stopOpacity="0" />
+                  <stop offset="0.5" stopColor="#3fcbf8" stopOpacity="0.8" />
+                  <stop offset="1" stopColor="#06a1ff" stopOpacity="0" />
+                </linearGradient>
+              </defs>
+              <path d="M0 34 Q 130 4 300 22" stroke="url(#footer-swoosh)" strokeWidth="1.5" />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom bar: full-width glowing divider */}
+      <div className="relative z-10">
+        <div
+          className="h-px w-full bg-gradient-to-r from-transparent via-accent/60 to-transparent shadow-[0_0_12px_rgba(63,203,248,0.45)]"
+          aria-hidden="true"
+        />
+        <div className="px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 2xl:px-20 py-3 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-ink-muted w-full">
           <p>
             © {currentYear} {siteConfig.businessName}. All rights reserved.
           </p>
-          <p>{siteConfig.creditLine}</p>
+          <p>
+            {creditParts.map((part, i) => (
+              <Fragment key={i}>
+                {i > 0 && <span className="text-red-500">♥</span>}
+                {part}
+              </Fragment>
+            ))}
+          </p>
         </div>
       </div>
     </footer>

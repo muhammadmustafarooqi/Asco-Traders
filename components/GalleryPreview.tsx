@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
@@ -8,7 +10,7 @@ export function GalleryPreview() {
     <section
       id="gallery"
       aria-labelledby="gallery-preview-heading"
-      className="relative w-full py-16 sm:py-20 lg:py-24 bg-bg overflow-hidden"
+      className="relative w-full w-screen max-w-[100vw] py-16 sm:py-20 lg:py-24 bg-bg overflow-hidden"
     >
       {/* Background ambient glowing curves */}
       <div
@@ -36,7 +38,7 @@ export function GalleryPreview() {
         </svg>
       </div>
 
-      <div className="relative z-10 w-full max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-14">
+      <div className="relative z-10 w-full px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 2xl:px-20">
         {/* Eyebrow with horizontal line dividers */}
         <div className="flex items-center justify-center gap-2.5 sm:gap-3 mb-3">
           <span className="h-[2px] w-6 sm:w-8 bg-primary rounded-full" aria-hidden="true" />
@@ -54,8 +56,8 @@ export function GalleryPreview() {
           Lighting Solutions in Real Spaces
         </h2>
 
-        {/* 4 Images in Rounded Bordered Frames matching mockup */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
+        {/* 4 Images in Rounded Bordered Frames spanning 100vw */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-5 xl:gap-6 2xl:gap-8 w-full">
           {siteConfig.gallery.map((item: GalleryItem) => (
             <div
               key={item.id}
