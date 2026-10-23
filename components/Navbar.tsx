@@ -124,28 +124,37 @@ export function Navbar() {
                 onMouseEnter={() => setIsProductsOpen(true)}
                 onMouseLeave={() => setIsProductsOpen(false)}
               >
-                <button
-                  type="button"
-                  id="products-menu-button"
-                  onClick={() => setIsProductsOpen((prev) => !prev)}
-                  onFocus={() => setIsProductsOpen(true)}
-                  aria-expanded={isProductsOpen}
-                  aria-haspopup="true"
-                  aria-controls="products-menu-dropdown"
-                  className={`flex items-center gap-1.5 text-[15px] font-medium transition-colors py-1 relative focus:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm ${
-                    pathname?.startsWith('/products')
-                      ? 'text-accent after:absolute after:bottom-[-2px] after:left-0 after:right-0 after:h-[2px] after:bg-accent'
-                      : 'text-ink-muted hover:text-ink'
-                  }`}
-                >
-                  <span>Products</span>
-                  <ChevronDown
-                    className={`h-4 w-4 transition-transform duration-200 ${
-                      isProductsOpen ? 'rotate-180 text-accent' : ''
+                <div className="flex items-center gap-1">
+                  <Link
+                    href="/products"
+                    className={`text-[15px] font-medium transition-colors py-1 relative ${
+                      pathname?.startsWith('/products')
+                        ? 'text-accent after:absolute after:bottom-[-2px] after:left-0 after:right-0 after:h-[2px] after:bg-accent'
+                        : 'text-ink-muted hover:text-ink'
                     }`}
-                    aria-hidden="true"
-                  />
-                </button>
+                    aria-current={pathname?.startsWith('/products') ? 'page' : undefined}
+                  >
+                    Products
+                  </Link>
+                  <button
+                    type="button"
+                    id="products-menu-button"
+                    onClick={() => setIsProductsOpen((prev) => !prev)}
+                    onFocus={() => setIsProductsOpen(true)}
+                    aria-expanded={isProductsOpen}
+                    aria-haspopup="true"
+                    aria-controls="products-menu-dropdown"
+                    aria-label="Toggle products dropdown menu"
+                    className="p-1 text-ink-muted hover:text-accent transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm"
+                  >
+                    <ChevronDown
+                      className={`h-4 w-4 transition-transform duration-200 ${
+                        isProductsOpen ? 'rotate-180 text-accent' : ''
+                      }`}
+                      aria-hidden="true"
+                    />
+                  </button>
+                </div>
 
                 {/* Dropdown Menu */}
                 {isProductsOpen && (
@@ -153,20 +162,52 @@ export function Navbar() {
                     id="products-menu-dropdown"
                     role="menu"
                     aria-labelledby="products-menu-button"
-                    className="absolute top-full left-0 mt-2 w-64 rounded-xl border border-line bg-surface/95 backdrop-blur-xl shadow-2xl p-2 z-50 animate-in fade-in slide-in-from-top-1 duration-150"
+                    className="absolute top-full left-0 mt-2 w-80 rounded-2xl border border-primary/50 bg-[#000d24]/95 backdrop-blur-2xl shadow-[0_12px_40px_rgba(0,6,19,0.95),0_0_24px_rgba(6,161,255,0.25)] p-2.5 z-50 animate-in fade-in slide-in-from-top-1 duration-150"
                   >
-                    <div className="py-1">
+                    {/* View All Products Header Link */}
+                    <Link
+                      href="/products"
+                      role="menuitem"
+                      onClick={() => setIsProductsOpen(false)}
+                      className="flex items-center justify-between px-3.5 py-2 rounded-xl text-xs font-bold uppercase tracking-wider text-accent bg-primary/15 hover:bg-accent hover:text-[#000613] border border-primary/40 hover:border-accent transition-all mb-1.5 group shadow-[0_0_12px_rgba(6,161,255,0.15)]"
+                    >
+                      <span>All Products &amp; Catalog</span>
+                      <span
+                        className="text-accent group-hover:text-[#000613] group-hover:translate-x-1 transition-all"
+                        aria-hidden="true"
+                      >
+                        &rarr;
+                      </span>
+                    </Link>
+
+                    <div className="py-0.5 space-y-1">
                       {products.map((item) => (
                         <Link
                           key={item.slug}
-                          href={`/products#${item.slug}`}
+                          href={`/products/${item.slug}`}
                           role="menuitem"
                           onClick={() => setIsProductsOpen(false)}
-                          className="flex items-center justify-between px-3.5 py-2.5 rounded-lg text-sm text-ink-muted hover:text-ink hover:bg-card/70 transition-colors group"
+                          className="flex items-center gap-3 px-2.5 py-2 rounded-xl text-sm text-ink-muted hover:text-ink hover:bg-primary/20 transition-all group"
                         >
-                          <span>{item.name}</span>
+                          <div className="relative w-9 h-9 rounded-lg overflow-hidden border border-primary/40 bg-[#000814] shrink-0">
+                            <Image
+                              src={item.image}
+                              alt=""
+                              fill
+                              sizes="36px"
+                              className="object-cover object-center group-hover:scale-110 transition-transform duration-300"
+                            />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <span className="font-semibold block text-[13px] text-ink group-hover:text-accent transition-colors truncate">
+                              {item.name}
+                            </span>
+                            <span className="text-[11px] text-ink-muted/70 block truncate leading-tight">
+                              {item.tagline || item.category}
+                            </span>
+                          </div>
                           <span
-                            className="text-xs text-accent opacity-0 group-hover:opacity-100 transition-opacity"
+                            className="text-xs text-accent opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all shrink-0"
                             aria-hidden="true"
                           >
                             &rarr;
@@ -269,32 +310,58 @@ export function Navbar() {
 
               {/* Products Accordion */}
               <div>
-                <button
-                  type="button"
-                  onClick={() => setIsMobileProductsOpen((prev) => !prev)}
-                  className="w-full flex items-center justify-between px-3.5 py-2.5 rounded-lg text-base text-ink-muted hover:text-ink hover:bg-card/50 transition-colors"
-                  aria-expanded={isMobileProductsOpen}
-                >
-                  <span className={pathname?.startsWith('/products') ? 'text-accent font-medium' : ''}>
-                    Products
-                  </span>
-                  <ChevronDown
-                    className={`h-4 w-4 transition-transform duration-200 ${
-                      isMobileProductsOpen ? 'rotate-180 text-accent' : ''
+                <div className="flex items-center justify-between px-3.5 py-2.5 rounded-lg text-base text-ink-muted hover:text-ink hover:bg-card/50 transition-colors">
+                  <Link
+                    href="/products"
+                    onClick={() => setIsOpen(false)}
+                    className={`flex-1 font-medium ${
+                      pathname?.startsWith('/products') ? 'text-accent' : ''
                     }`}
-                  />
-                </button>
+                  >
+                    Products
+                  </Link>
+                  <button
+                    type="button"
+                    onClick={() => setIsMobileProductsOpen((prev) => !prev)}
+                    className="p-1 text-ink-muted hover:text-accent"
+                    aria-expanded={isMobileProductsOpen}
+                    aria-label="Toggle mobile products sub-menu"
+                  >
+                    <ChevronDown
+                      className={`h-4 w-4 transition-transform duration-200 ${
+                        isMobileProductsOpen ? 'rotate-180 text-accent' : ''
+                      }`}
+                    />
+                  </button>
+                </div>
 
                 {isMobileProductsOpen && (
-                  <div className="pl-4 pr-2 py-1 space-y-1 bg-card/40 rounded-lg mt-1 border-l-2 border-accent/40">
+                  <div className="pl-3 pr-2 py-2 space-y-1.5 bg-[#000d24]/90 rounded-xl mt-1 border border-primary/40">
+                    <Link
+                      href="/products"
+                      onClick={() => setIsOpen(false)}
+                      className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-bold uppercase tracking-wider text-accent bg-primary/15 hover:bg-accent hover:text-[#000613] transition-all"
+                    >
+                      <span>All Products &amp; Catalog</span>
+                      <span>&rarr;</span>
+                    </Link>
                     {products.map((item) => (
                       <Link
                         key={item.slug}
-                        href={`/products#${item.slug}`}
+                        href={`/products/${item.slug}`}
                         onClick={() => setIsOpen(false)}
-                        className="block px-3 py-2 text-sm text-ink-muted hover:text-accent transition-colors"
+                        className="flex items-center gap-2.5 px-3 py-1.5 rounded-lg text-sm text-ink-muted hover:text-accent hover:bg-card/50 transition-colors"
                       >
-                        {item.name}
+                        <div className="relative w-6 h-6 rounded-md overflow-hidden bg-[#000814] border border-line/40 shrink-0">
+                          <Image
+                            src={item.image}
+                            alt=""
+                            fill
+                            sizes="24px"
+                            className="object-cover"
+                          />
+                        </div>
+                        <span className="truncate">{item.name}</span>
                       </Link>
                     ))}
                   </div>
