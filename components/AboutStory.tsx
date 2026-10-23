@@ -14,15 +14,44 @@ import {
   Heart,
 } from 'lucide-react';
 
-// Soft radial fade so the emblem floats with no rectangular edge
 const EMBLEM_MASK =
   'radial-gradient(ellipse 62% 66% at 50% 52%, #000 45%, transparent 100%)';
-// Fades the row 2 backdrop into the page at the top and bottom
+// Soft fade at the top and bottom edge so the banner blends into the page
 const BACKDROP_MASK =
-  'linear-gradient(180deg, transparent 0%, #000 24%, #000 76%, transparent 100%)';
+  'linear-gradient(180deg, transparent 0%, #000 12%, #000 88%, transparent 100%)';
 
-const cardClass =
-  'rounded-2xl border border-primary/60 bg-[#000d24]/80 backdrop-blur-md p-5 sm:p-6 lg:p-6 xl:p-7 shadow-[0_0_22px_rgba(6,161,255,0.18)] hover:border-accent hover:shadow-[0_0_30px_rgba(63,203,248,0.3)] transition-all flex flex-col justify-center';
+/*
+  Panel positions measured from the background image (2172 x 724):
+    top: 27.1%, height: 37.6%  (same for all three frames)
+    mission: left 3.78%,  width 23.2%
+    vision:  left 52.25%, width 21.8%
+    values:  left 76.1%,  width 20.1%
+  Below xl: normal stacked cards with their own borders.
+  From xl up: borderless text positioned exactly inside the frames of the image.
+*/
+const cardBase =
+  'flex flex-col justify-center rounded-2xl border border-primary/60 bg-[#000d24]/80 backdrop-blur-md p-5 sm:p-6 ' +
+  'shadow-[0_0_22px_rgba(6,161,255,0.18)] transition-all ' +
+  'max-xl:hover:border-accent max-xl:hover:shadow-[0_0_30px_rgba(63,203,248,0.3)] ' +
+  'xl:absolute xl:rounded-none xl:border-0 xl:bg-transparent xl:backdrop-blur-none xl:shadow-none ' +
+  'xl:top-[27.1%] xl:h-[37.6%] xl:px-[1.7cqw] xl:py-[1cqw]';
+
+const missionPos = 'xl:left-[3.78%] xl:w-[23.2%]';
+const visionPos = 'xl:left-[52.25%] xl:w-[21.8%]';
+const valuesPos = 'xl:left-[76.1%] xl:w-[20.1%]';
+
+const labelClass =
+  'text-accent text-[11px] xl:text-[length:max(9px,0.62cqw)] font-bold tracking-[0.2em] uppercase block';
+const headClass =
+  'font-heading font-bold text-lg xl:text-[length:max(14px,1.2cqw)] text-ink leading-tight mt-0.5';
+const bodyClass =
+  'text-ink text-xs sm:text-[13px] xl:text-[length:max(11px,0.8cqw)] leading-relaxed xl:leading-[1.55]';
+const headIcon =
+  'w-9 h-9 xl:w-[max(26px,2.4cqw)] xl:h-[max(26px,2.4cqw)] text-accent shrink-0 drop-shadow-[0_0_10px_rgba(63,203,248,0.7)]';
+const headRow =
+  'flex items-center gap-3.5 xl:gap-[1cqw] mb-3.5 xl:mb-[0.9cqw]';
+const listIcon =
+  'w-5 h-5 xl:w-[max(14px,1.1cqw)] xl:h-[max(14px,1.1cqw)] text-accent shrink-0 drop-shadow-[0_0_6px_rgba(63,203,248,0.6)]';
 
 const statClass =
   'rounded-2xl border border-primary/50 bg-[#00102a]/70 backdrop-blur-sm px-3 py-4 sm:py-5 flex flex-col items-center justify-center text-center shadow-[0_0_16px_rgba(6,161,255,0.12)] hover:border-accent hover:shadow-[0_0_22px_rgba(63,203,248,0.25)] hover:-translate-y-0.5 transition-all duration-300';
@@ -48,9 +77,8 @@ export function AboutStory() {
       />
 
       <div className="relative z-10 w-full px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 2xl:px-20 space-y-10 lg:space-y-12">
-        {/* ============ ROW 1: image | story text | divider | 2x2 stats ============ */}
+        {/* ============ ROW 1 (unchanged) ============ */}
         <div className="grid grid-cols-1 lg:grid-cols-[33fr_27fr_auto_28fr] gap-8 lg:gap-8 xl:gap-10 items-center">
-          {/* Col 1: coil image (stretches to the height of the text/stats) */}
           <div className="flex lg:self-stretch">
             <div className="relative w-full aspect-[16/9] lg:aspect-auto min-h-[220px] rounded-2xl border-[1.5px] border-primary/70 bg-[#00091d] overflow-hidden shadow-[0_0_30px_rgba(6,161,255,0.28)]">
               <Image
@@ -70,7 +98,6 @@ export function AboutStory() {
             </div>
           </div>
 
-          {/* Col 2: story text */}
           <div className="flex flex-col justify-center">
             <div className="flex items-center gap-2 mb-2">
               <span className="h-px w-3 bg-accent" aria-hidden="true" />
@@ -97,29 +124,24 @@ export function AboutStory() {
             </p>
           </div>
 
-          {/* Vertical glowing divider */}
           <div className={verticalLine} aria-hidden="true" />
 
-          {/* Col 3: 2x2 stats */}
           <div className="grid grid-cols-2 gap-3 sm:gap-4 w-full">
             <div className={statClass}>
               <Gem className="w-7 h-7 lg:w-8 lg:h-8 text-accent mb-1.5 drop-shadow-[0_0_8px_rgba(63,203,248,0.5)]" />
               <span className="font-heading font-bold text-xl lg:text-2xl text-ink leading-tight">2.9K+</span>
               <span className="text-xs lg:text-[13px] text-ink mt-1 leading-tight lg:whitespace-nowrap">Happy Customers</span>
             </div>
-
             <div className={statClass}>
               <Calendar className="w-7 h-7 lg:w-8 lg:h-8 text-accent mb-1.5 drop-shadow-[0_0_8px_rgba(63,203,248,0.5)]" />
               <span className="font-heading font-bold text-xl lg:text-2xl text-ink leading-tight">5+</span>
               <span className="text-xs lg:text-[13px] text-ink mt-1 leading-tight lg:whitespace-nowrap">Years of Excellence</span>
             </div>
-
             <div className={statClass}>
               <ShieldCheck className="w-7 h-7 lg:w-8 lg:h-8 text-accent mb-1.5 drop-shadow-[0_0_8px_rgba(63,203,248,0.5)]" />
               <span className="font-heading font-bold text-xl lg:text-2xl text-ink leading-tight">100%</span>
               <span className="text-xs lg:text-[13px] text-ink mt-1 leading-tight lg:whitespace-nowrap">Quality Assurance</span>
             </div>
-
             <div className={statClass}>
               <Handshake className="w-7 h-7 lg:w-8 lg:h-8 text-accent mb-1.5 drop-shadow-[0_0_8px_rgba(63,203,248,0.5)]" />
               <span className="font-heading font-semibold text-sm lg:text-[15px] text-ink leading-snug">
@@ -131,11 +153,12 @@ export function AboutStory() {
           </div>
         </div>
 
-        {/* ============ ROW 2: mission | emblem | vision | values (no outer box) ============ */}
-        {/* Counter the section padding so the wave backdrop bleeds edge to edge */}
-        <div className="relative -mx-4 sm:-mx-6 md:-mx-10 lg:-mx-12 xl:-mx-16 2xl:-mx-20">
+        {/* ============ ROW 2: text placed inside the frames of the background image ============ */}
+        {/* xl+: box ratio = image ratio (2172/724), so nothing is cropped and % positions match the frames. */}
+        <div className="relative -mx-4 sm:-mx-6 md:-mx-10 lg:-mx-12 xl:-mx-16 2xl:-mx-20 xl:aspect-[2172/724] xl:[container-type:inline-size]">
+          {/* Background image (has the 3 frames + emblem + pedestal baked in) */}
           <div
-            className="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-50"
+            className="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-30 xl:opacity-100"
             aria-hidden="true"
             style={{ WebkitMaskImage: BACKDROP_MASK, maskImage: BACKDROP_MASK }}
           >
@@ -148,94 +171,76 @@ export function AboutStory() {
             />
           </div>
 
-          <div className="relative z-10 px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 2xl:px-20 py-6 lg:py-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.15fr_auto_1fr_auto_1.15fr_auto_1.05fr] gap-6 lg:gap-5 xl:gap-7 items-stretch">
-              {/* Card 1: OUR MISSION */}
-              <div className={cardClass}>
-                <div className="flex items-center gap-3.5 mb-3.5">
-                  <Target className="w-9 h-9 lg:w-10 lg:h-10 text-accent shrink-0 drop-shadow-[0_0_10px_rgba(63,203,248,0.7)]" />
-                  <div>
-                    <span className="text-accent text-[11px] font-bold tracking-[0.2em] uppercase block">
-                      OUR MISSION
-                    </span>
-                    <h3 className="font-heading font-bold text-lg lg:text-xl text-ink leading-tight mt-0.5">
-                      Lighting Lives Better
-                    </h3>
-                  </div>
-                </div>
-                <p className="text-ink text-xs sm:text-[13px] xl:text-sm leading-relaxed">
-                  To deliver innovative, high-quality lighting solutions while building long-term trust with our customers.
-                </p>
-              </div>
-
-              <div className={verticalLine} aria-hidden="true" />
-
-              {/* Center: floating 3D emblem */}
-              <div className="relative w-full h-52 md:h-56 lg:h-full lg:min-h-[230px] md:col-span-2 lg:col-span-1">
-                <div
-                  className="absolute inset-0"
-                  style={{ WebkitMaskImage: EMBLEM_MASK, maskImage: EMBLEM_MASK }}
-                >
-                  <Image
-                    src="/asco_separate_images_webp/about/futuristic_neon_background_no_text.webp"
-                    alt="ASCO 3D Illuminated Emblem on Neon Pedestal"
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 22vw"
-                    className="object-cover object-[37.5%_center] scale-125"
-                  />
+          <div className="relative z-10 px-4 sm:px-6 md:px-10 py-6 grid grid-cols-1 md:grid-cols-2 gap-6 xl:block xl:absolute xl:inset-0 xl:p-0">
+            {/* OUR MISSION */}
+            <div className={`${cardBase} ${missionPos}`}>
+              <div className={headRow}>
+                <Target className={headIcon} />
+                <div>
+                  <span className={labelClass}>OUR MISSION</span>
+                  <h3 className={headClass}>Lighting Lives Better</h3>
                 </div>
               </div>
+              <p className={bodyClass}>
+                To deliver innovative, high-quality lighting solutions while building long-term trust with our customers.
+              </p>
+            </div>
 
-              <div className={verticalLine} aria-hidden="true" />
+            {/* Emblem: only on mobile/tablet. On xl+ it is already in the background image */}
+            <div className="relative w-full h-52 md:h-56 md:col-span-2 xl:hidden">
+              <div
+                className="absolute inset-0"
+                style={{ WebkitMaskImage: EMBLEM_MASK, maskImage: EMBLEM_MASK }}
+              >
+                <Image
+                  src="/asco_separate_images_webp/about/futuristic_neon_background_no_text.webp"
+                  alt="ASCO 3D Illuminated Emblem on Neon Pedestal"
+                  fill
+                  sizes="100vw"
+                  className="object-cover object-[24%_center] scale-110"
+                />
+              </div>
+            </div>
 
-              {/* Card 2: OUR VISION */}
-              <div className={cardClass}>
-                <div className="flex items-center gap-3.5 mb-3.5">
-                  <Eye className="w-9 h-9 lg:w-10 lg:h-10 text-accent shrink-0 drop-shadow-[0_0_10px_rgba(63,203,248,0.7)]" />
-                  <div>
-                    <span className="text-accent text-[11px] font-bold tracking-[0.2em] uppercase block">
-                      OUR VISION
-                    </span>
-                    <h3 className="font-heading font-bold text-lg lg:text-xl text-ink leading-tight mt-0.5">
-                      A Brighter, More Connected Tomorrow
-                    </h3>
-                  </div>
+            {/* OUR VISION */}
+            <div className={`${cardBase} ${visionPos}`}>
+              <div className={headRow}>
+                <Eye className={headIcon} />
+                <div>
+                  <span className={labelClass}>OUR VISION</span>
+                  <h3 className={headClass}>A Brighter, More Connected Tomorrow</h3>
                 </div>
-                <p className="text-ink text-xs sm:text-[13px] xl:text-sm leading-relaxed">
-                  To become Pakistan&apos;s most trusted LED lighting brand, known for quality, innovation and service.
-                </p>
+              </div>
+              <p className={bodyClass}>
+                To become Pakistan&apos;s most trusted LED lighting brand, known for quality, innovation and service.
+              </p>
+            </div>
+
+            {/* OUR VALUES */}
+            <div className={`${cardBase} ${valuesPos} md:col-span-2 xl:col-span-1`}>
+              <div className={headRow}>
+                <Handshake className={headIcon} />
+                <span className={labelClass}>OUR VALUES</span>
               </div>
 
-              <div className={verticalLine} aria-hidden="true" />
-
-              {/* Card 3: OUR VALUES */}
-              <div className={`${cardClass} md:col-span-2 lg:col-span-1`}>
-                <div className="flex items-center gap-3.5 mb-3.5">
-                  <Handshake className="w-9 h-9 lg:w-10 lg:h-10 text-accent shrink-0 drop-shadow-[0_0_10px_rgba(63,203,248,0.7)]" />
-                  <span className="text-accent text-[11px] font-bold tracking-[0.2em] uppercase">
-                    OUR VALUES
-                  </span>
-                </div>
-
-                <ul className="space-y-2.5 text-xs sm:text-[13px] xl:text-sm text-ink">
-                  <li className="flex items-center gap-3">
-                    <Shield className="w-5 h-5 text-accent shrink-0 drop-shadow-[0_0_6px_rgba(63,203,248,0.6)]" />
-                    <span>Quality Without Compromise</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <Zap className="w-5 h-5 text-accent shrink-0 drop-shadow-[0_0_6px_rgba(63,203,248,0.6)]" />
-                    <span>Innovation Always Forward</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <Smile className="w-5 h-5 text-accent shrink-0 drop-shadow-[0_0_6px_rgba(63,203,248,0.6)]" />
-                    <span>Customer Satisfaction Our Priority</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <Heart className="w-5 h-5 text-accent shrink-0 drop-shadow-[0_0_6px_rgba(63,203,248,0.6)]" />
-                    <span>Long-Term Partnership Building</span>
-                  </li>
-                </ul>
-              </div>
+              <ul className="space-y-2.5 xl:space-y-[0.7cqw] text-xs sm:text-[13px] xl:text-[length:max(11px,0.78cqw)] text-ink">
+                <li className="flex items-center gap-3 xl:gap-[0.8cqw]">
+                  <Shield className={listIcon} />
+                  <span>Quality Without Compromise</span>
+                </li>
+                <li className="flex items-center gap-3 xl:gap-[0.8cqw]">
+                  <Zap className={listIcon} />
+                  <span>Innovation Always Forward</span>
+                </li>
+                <li className="flex items-center gap-3 xl:gap-[0.8cqw]">
+                  <Smile className={listIcon} />
+                  <span>Customer Satisfaction Our Priority</span>
+                </li>
+                <li className="flex items-center gap-3 xl:gap-[0.8cqw]">
+                  <Heart className={listIcon} />
+                  <span>Long-Term Partnership Building</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>

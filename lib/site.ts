@@ -44,14 +44,12 @@ export const siteConfig = {
     'ASCO Traders provides premium LED lighting solutions including Rope Lights, Strip Lights, Profile Lights, Batten Lights, and Tracklights in Pakistan.',
   url: 'https://www.ascotraders.com',
   location: 'Pakistan',
-  email: 'ascolightingcompany@gmail.com',
+  email: 'info@ascotraders.com',
   phones: [
-    { display: '0300-4205422', tel: '+923004205422' },
-    { display: '0300-4773337', tel: '+923004773337' },
+    { display: '+92 300 4205422', tel: '+923004205422' },
   ],
   whatsapp: {
     primaryNumber: '923004205422',
-    secondaryNumber: '923004773337',
     prefilledText: 'Hello ASCO, I would like to enquire about your LED lights.',
   },
   creditLine: 'Designed with ♥ for a Brighter Tomorrow',

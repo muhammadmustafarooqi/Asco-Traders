@@ -25,9 +25,9 @@ export default function AboutPage() {
       {/* Decorative glowing rope-light divider */}
       <GlowDivider />
 
-      {/* 3. Stay Updated Newsletter Banner */}
+      {/* 3. Call to Action Banner */}
       <section
-        aria-label="Stay Updated Newsletter"
+        aria-label="Call to Action - Partner with ASCO"
         className="relative w-full w-screen max-w-[100vw] py-12 sm:py-16 lg:py-20 bg-[#000613] overflow-hidden"
       >
         {/* Ambient radial glow behind card */}
@@ -41,7 +41,7 @@ export default function AboutPage() {
         />
 
         <div className="relative z-10 w-full px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 2xl:px-20">
-          <StayUpdated />
+          <StayUpdated variant="cta" />
         </div>
       </section>
     </>

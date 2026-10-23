@@ -67,18 +67,12 @@ const jsonLd = {
   alternateName: 'Asco Traders',
   url: 'https://www.ascotraders.com',
   logo: 'https://www.ascotraders.com/logo.png',
-  email: 'ascolightingcompany@gmail.com',
+  email: 'info@ascotraders.com',
   contactPoint: [
     {
       '@type': 'ContactPoint',
       telephone: '+923004205422',
       contactType: 'customer service',
-      areaServed: 'PK',
-    },
-    {
-      '@type': 'ContactPoint',
-      telephone: '+923004773337',
-      contactType: 'sales',
       areaServed: 'PK',
     },
   ],

@@ -31,8 +31,10 @@ declare module 'lucide-react' {
   export const Mail: LucideIcon;
   export const MapPin: LucideIcon;
   export const Menu: LucideIcon;
+  export const MessageSquare: LucideIcon;
   export const Palette: LucideIcon;
   export const Phone: LucideIcon;
+  export const Send: LucideIcon;
   export const Shield: LucideIcon;
   export const ShieldCheck: LucideIcon;
   export const Smile: LucideIcon;
