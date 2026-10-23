@@ -61,7 +61,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
 
   return (
     <div className="bg-[#000613] min-h-screen text-ink pt-24 pb-16 sm:pt-28 lg:pt-32">
-      <div className="w-full px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 2xl:px-20 max-w-7xl mx-auto">
+      <div className="w-full max-w-[100vw] px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 2xl:px-20">
         {/* Back Link & Breadcrumb */}
         <div className="flex items-center gap-3 mb-8 text-xs sm:text-sm text-ink-muted">
           <Link
@@ -229,7 +229,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
 
       <div className="mt-16">
         <GlowDivider />
-        <section className="py-12 px-4 sm:px-6 md:px-10 max-w-7xl mx-auto">
+        <section className="py-12 w-full max-w-[100vw] px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 2xl:px-20">
           <StayUpdated variant="cta" />
         </section>
       </div>

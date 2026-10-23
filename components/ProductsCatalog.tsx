@@ -99,7 +99,7 @@ export function ProductsCatalog() {
         aria-hidden="true"
       />
 
-      <div className="relative z-10 w-full px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 2xl:px-24 max-w-7xl mx-auto">
+      <div className="relative z-10 w-full max-w-[100vw] px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 2xl:px-20">
         {/* ============ FILTER BAR ============ */}
         <div className="rounded-2xl border border-primary/40 bg-[#00102a]/60 backdrop-blur-md p-3 sm:p-4 shadow-[0_0_24px_rgba(6,161,255,0.15)] mb-10 sm:mb-14 flex flex-col md:flex-row md:items-center justify-between gap-3 md:gap-6">
           {/* Category pills: horizontal scroll on mobile, wrap on desktop */}
@@ -311,12 +311,12 @@ function ProductRow({ product, number, isImageOnRight, priority = false }: Produ
           {product.tagline}
         </p>
 
-        <p className="text-ink-muted text-sm sm:text-[15px] mt-3 sm:mt-4 leading-relaxed max-w-xl">
+        <p className="text-ink-muted text-sm sm:text-[15px] lg:text-base mt-3 sm:mt-4 leading-relaxed max-w-2xl xl:max-w-3xl">
           {product.description}
         </p>
 
         {/* Features */}
-        <ul className="mt-5 sm:mt-6 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 max-w-xl">
+        <ul className="mt-5 sm:mt-6 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 max-w-2xl xl:max-w-3xl">
           {product.bullets.map((bullet, i) => (
             <li key={i} className="flex items-start gap-3">
               <span
@@ -359,7 +359,7 @@ function ProductRow({ product, number, isImageOnRight, priority = false }: Produ
         className="absolute -inset-3 rounded-[2rem] bg-gradient-to-br from-primary/30 via-transparent to-accent/25 blur-2xl opacity-60 group-hover:opacity-100 transition-opacity duration-500"
       />
 
-      <div className="relative z-10 aspect-[4/3] sm:aspect-[16/10] rounded-3xl border border-primary/60 bg-[#000d24] overflow-hidden shadow-[0_0_30px_rgba(6,161,255,0.22)] group-hover:border-accent group-hover:shadow-[0_0_42px_rgba(63,203,248,0.4)] transition-all duration-500">
+      <div className="relative z-10 aspect-[4/3] sm:aspect-[16/10] lg:aspect-[16/10] xl:aspect-[16/9] max-h-[520px] rounded-3xl border border-primary/60 bg-[#000d24] overflow-hidden shadow-[0_0_30px_rgba(6,161,255,0.22)] group-hover:border-accent group-hover:shadow-[0_0_42px_rgba(63,203,248,0.4)] transition-all duration-500">
         <Image
           src={product.image}
           alt={product.alt}
