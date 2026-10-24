@@ -182,7 +182,7 @@ export const siteConfig = {
       name: 'Hamza Sheikh',
       role: 'Architect, Rawalpindi',
       quote: 'Exceptional 220V rope lights with zero driver hassle. ASCO is our top recommendation for architectural facades.',
-      avatar: '/asco_separate_images_webp/avatar_ahmed_raza.webp',
+      avatar: '',
     },
   ] satisfies TestimonialItem[],
 };

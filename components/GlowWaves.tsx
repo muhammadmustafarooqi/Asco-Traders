@@ -35,7 +35,7 @@ export function GlowWaves({ className = '' }: GlowWavesProps) {
         {/* --- Path 1 --- */}
         {/* Wider path (10px) at ~15% opacity as a soft glow */}
         <path
-          d="M-100 140 C 250 40, 500 240, 850 120 C 1150 20, 1350 200, 1550 110"
+          d="M0 140 C 280 40, 520 240, 850 120 C 1150 20, 1320 200, 1440 110"
           stroke="url(#waveToAccentGrad)"
           strokeWidth="10"
           strokeLinecap="round"
@@ -43,7 +43,7 @@ export function GlowWaves({ className = '' }: GlowWavesProps) {
         />
         {/* Core sharp line (2.5px) at ~60% opacity with electrical flowing current */}
         <path
-          d="M-100 140 C 250 40, 500 240, 850 120 C 1150 20, 1350 200, 1550 110"
+          d="M0 140 C 280 40, 520 240, 850 120 C 1150 20, 1320 200, 1440 110"
           stroke="url(#waveToAccentGrad)"
           strokeWidth="2.5"
           strokeLinecap="round"
@@ -53,7 +53,7 @@ export function GlowWaves({ className = '' }: GlowWavesProps) {
         {/* --- Path 2 --- */}
         {/* Wider path (10px) at ~15% opacity for secondary wave */}
         <path
-          d="M-50 180 C 300 240, 600 60, 950 180 C 1200 270, 1400 80, 1550 170"
+          d="M0 180 C 300 240, 600 60, 950 180 C 1200 270, 1350 80, 1440 170"
           stroke="url(#waveSecondaryGrad)"
           strokeWidth="10"
           strokeLinecap="round"
@@ -61,7 +61,7 @@ export function GlowWaves({ className = '' }: GlowWavesProps) {
         />
         {/* Core sharp line (2px) at ~55% opacity with counter-current flow */}
         <path
-          d="M-50 180 C 300 240, 600 60, 950 180 C 1200 270, 1400 80, 1550 170"
+          d="M0 180 C 300 240, 600 60, 950 180 C 1200 270, 1350 80, 1440 170"
           stroke="url(#waveSecondaryGrad)"
           strokeWidth="2"
           strokeLinecap="round"

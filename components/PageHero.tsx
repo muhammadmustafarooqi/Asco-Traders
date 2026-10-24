@@ -49,7 +49,7 @@ export function PageHero({
         cta.icon === 'arrow-down' ? 'group-hover:translate-y-1' : 'group-hover:translate-x-1';
 
     return (
-        <section aria-labelledby={id} className="relative w-full overflow-hidden bg-bg">
+        <section aria-labelledby={id} className="relative w-full overflow-x-clip bg-bg">
             {/*
         STAGE. Below xl its height comes from the content. From xl up it is a centred box locked to
         the image's own aspect ratio (max 1680px wide), so the picture is never over-scaled, and it
@@ -113,7 +113,7 @@ export function PageHero({
                 </div>
 
                 {/* Content. Same container width as the Navbar, so the text lines up with the logo. */}
-                <div className="relative z-10 mx-auto flex min-h-[580px] w-full max-w-7xl items-center px-4 pb-12 pt-28 sm:px-6 sm:pt-32 lg:px-8 xl:absolute xl:inset-0 xl:min-h-0 xl:max-w-[1536px] xl:pb-[2cqw] xl:pt-20">
+                <div className="relative z-10 mx-auto flex min-h-[580px] w-full max-w-7xl items-center px-5 pb-12 pt-28 sm:px-6 sm:pt-32 lg:px-8 xl:absolute xl:inset-0 xl:min-h-0 xl:max-w-[1536px] xl:pb-[2cqw] xl:pt-20">
                     <div className="hero-animate-fade w-full max-w-xl xl:max-w-[46cqw]">
                         {srBreadcrumb && (
                             <nav aria-label="Breadcrumb" className="sr-only">
@@ -157,11 +157,11 @@ export function PageHero({
                         </p>
 
                         {/* CTA */}
-                        <div>
+                        <div className="w-full sm:w-auto">
                             <Link
                                 href={cta.href}
                                 aria-label={cta.label}
-                                className="group inline-flex items-center gap-2.5 rounded-full border border-primary/90 bg-bg/70 px-6 py-2.5 text-xs font-semibold text-ink shadow-[0_0_18px_rgba(6,161,255,0.35)] transition-all duration-300 hover:border-accent hover:bg-primary/20 hover:text-accent hover:shadow-[0_0_26px_rgba(63,203,248,0.6)] sm:px-7 sm:py-3 sm:text-sm xl:gap-[0.6cqw] xl:px-[1.8cqw] xl:py-[0.8cqw] xl:text-[length:clamp(0.75rem,1cqw,1rem)]"
+                                className="group inline-flex w-full sm:w-auto justify-center items-center gap-2.5 rounded-full border border-primary/90 bg-bg/70 px-6 py-2.5 text-xs font-semibold text-ink shadow-[0_0_18px_rgba(6,161,255,0.35)] transition-all duration-300 hover:border-accent hover:bg-primary/20 hover:text-accent hover:shadow-[0_0_26px_rgba(63,203,248,0.6)] min-h-[44px] sm:px-7 sm:py-3 sm:text-sm xl:gap-[0.6cqw] xl:px-[1.8cqw] xl:py-[0.8cqw] xl:text-[length:clamp(0.75rem,1cqw,1rem)]"
                             >
                                 {LeadIcon && (
                                     <LeadIcon
@@ -178,18 +178,18 @@ export function PageHero({
                         </div>
 
                         {/* Feature row */}
-                        <ul className="mt-8 grid max-w-md grid-cols-2 gap-x-4 gap-y-6 sm:max-w-xl sm:grid-cols-4 xl:-ml-[1.5cqw] xl:mt-[3.5cqw] xl:flex xl:w-[38cqw] xl:max-w-none xl:gap-0">
+                        <ul className="mt-8 grid w-full grid-cols-2 gap-3 sm:gap-4 sm:max-w-xl sm:grid-cols-4 xl:-ml-[1.5cqw] xl:mt-[3.5cqw] xl:flex xl:w-[38cqw] xl:max-w-none xl:gap-0">
                             {features.map(({ icon: Icon, lines }) => (
                                 <li
                                     key={lines[0]}
-                                    className="flex flex-col items-center gap-2 text-center xl:flex-1 xl:gap-[0.55cqw] xl:border-l xl:border-accent/25 xl:first:border-l-0"
+                                    className="flex h-full flex-col items-center justify-center gap-2 rounded-xl border border-line/40 bg-[#00102a]/60 p-3 text-center sm:border-0 sm:bg-transparent sm:p-0 xl:flex-1 xl:gap-[0.55cqw] xl:border-l xl:border-accent/25 xl:first:border-l-0 xl:rounded-none"
                                 >
                                     <Icon
                                         strokeWidth={1.5}
                                         aria-hidden="true"
                                         className="h-7 w-7 shrink-0 text-accent drop-shadow-[0_0_6px_rgba(63,203,248,0.5)] xl:h-[clamp(1.75rem,2.45cqw,2.75rem)] xl:w-[clamp(1.75rem,2.45cqw,2.75rem)]"
                                     />
-                                    <span className="text-sm leading-snug text-ink/90 xl:text-[length:clamp(0.75rem,1.1cqw,1.1rem)]">
+                                    <span className="text-xs sm:text-sm leading-snug text-ink/90 xl:text-[length:clamp(0.75rem,1.1cqw,1.1rem)]">
                                         {lines[0]}
                                         <br />
                                         {lines[1]}

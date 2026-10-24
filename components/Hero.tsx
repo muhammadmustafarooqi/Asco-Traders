@@ -84,9 +84,9 @@ export function Hero() {
           aria-hidden="true"
         />
 
-        {/* Ambient breathing glow behind the modern villa light */}
+        {/* Ambient breathing glow behind the modern villa light (contained on mobile & tablet) */}
         <div
-          className="pointer-events-none absolute top-1/3 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] sm:w-[600px] sm:h-[600px] rounded-full bg-primary/20 blur-[130px] animate-ambient-pulse z-10"
+          className="pointer-events-none absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[260px] h-[260px] sm:w-[460px] sm:h-[460px] lg:left-1/3 lg:w-[600px] lg:h-[600px] rounded-full bg-primary/20 blur-[100px] lg:blur-[130px] animate-ambient-pulse z-10"
           aria-hidden="true"
         />
 

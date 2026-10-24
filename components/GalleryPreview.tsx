@@ -11,7 +11,7 @@ export function GalleryPreview() {
     <section
       id="gallery"
       aria-labelledby="gallery-preview-heading"
-      className="relative w-full w-screen max-w-[100vw] py-16 sm:py-20 lg:py-24 bg-bg overflow-hidden"
+      className="relative w-full max-w-full py-12 sm:py-20 lg:py-24 bg-bg overflow-hidden"
     >
       {/* Background ambient glowing curves */}
       <div
@@ -25,7 +25,7 @@ export function GalleryPreview() {
           preserveAspectRatio="none"
         >
           <path
-            d="M-50 170 C 350 210, 650 90, 1050 150 C 1250 180, 1450 130, 1550 140"
+            d="M0 170 C 350 210, 650 90, 1050 150 C 1250 180, 1380 130, 1440 140"
             stroke="url(#galleryGlow)"
             strokeWidth="3"
           />
@@ -39,7 +39,7 @@ export function GalleryPreview() {
         </svg>
       </div>
 
-      <div className="relative z-10 w-full max-w-7xl xl:max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 w-full max-w-7xl xl:max-w-[1536px] mx-auto px-5 sm:px-6 lg:px-8">
         <Reveal distance={20} duration={600} className="text-center">
           {/* Eyebrow with horizontal line dividers */}
           <div className="flex items-center justify-center gap-2.5 sm:gap-3 mb-3">
@@ -53,28 +53,28 @@ export function GalleryPreview() {
           {/* Heading */}
           <h2
             id="gallery-preview-heading"
-            className="text-center font-heading font-bold text-[clamp(1.625rem,1.15rem+2.1vw,2.5rem)] text-ink leading-[1.18] tracking-[-0.02em] mb-8 sm:mb-10 drop-shadow-md"
+            className="text-center font-heading font-bold text-[clamp(1.5rem,1.1rem+2vw,2.5rem)] text-ink leading-[1.18] tracking-[-0.02em] mb-6 sm:mb-10 drop-shadow-md text-balance"
           >
             Lighting Solutions in Real Spaces
           </h2>
         </Reveal>
 
-        {/* 4 Images in Rounded Bordered Frames spanning 100vw */}
+        {/* 4 Images: 2-column grid on mobile, 4-column on desktop with consistent aspect ratio */}
         <Reveal
           stagger={75}
           duration={650}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-5 xl:gap-6 2xl:gap-8 w-full"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 lg:gap-5 xl:gap-6 w-full"
         >
           {siteConfig.gallery.map((item: GalleryItem) => (
             <div
               key={item.id}
-              className="group relative aspect-[16/10] sm:aspect-[4/3] lg:aspect-[16/10] overflow-hidden rounded-2xl border border-cyan-500/20 hover:border-cyan-400/50 shadow-[0_4px_20px_rgba(0,0,0,0.4)] hover:shadow-[0_0_28px_rgba(63,203,248,0.25)] hover:-translate-y-1 transition-all duration-300"
+              className="group relative aspect-[4/3] sm:aspect-[4/3] lg:aspect-[16/10] overflow-hidden rounded-xl sm:rounded-2xl border border-cyan-500/20 hover:border-cyan-400/50 shadow-[0_4px_20px_rgba(0,0,0,0.4)] hover:shadow-[0_0_28px_rgba(63,203,248,0.25)] hover:-translate-y-1 transition-all duration-300"
             >
               <Image
                 src={item.image}
                 alt={item.alt}
                 fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 25vw"
                 className="object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
                 loading="lazy"
               />
@@ -82,12 +82,12 @@ export function GalleryPreview() {
           ))}
         </Reveal>
 
-        {/* Centered Outlined Pill Button matching mockup */}
-        <div className="text-center mt-8 sm:mt-10">
+        {/* Centered Outlined Pill Button */}
+        <div className="text-center mt-7 sm:mt-10">
           <Link
             href="/gallery"
             aria-label="View complete ASCO LED lighting gallery and projects"
-            className="btn-secondary-glow inline-flex items-center gap-2 px-6 sm:px-7 py-2.5 rounded-full text-ink font-semibold text-xs sm:text-sm shadow-[0_0_15px_rgba(6,161,255,0.25)] hover:shadow-[0_0_22px_rgba(63,203,248,0.5)] transition-all duration-300 group"
+            className="btn-secondary-glow inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-2.5 min-h-[44px] rounded-full text-ink font-semibold text-xs sm:text-sm shadow-[0_0_15px_rgba(6,161,255,0.25)] hover:shadow-[0_0_22px_rgba(63,203,248,0.5)] transition-all duration-300 group max-sm:w-full max-sm:max-w-xs"
           >
             <span>View More Projects</span>
             <ArrowRight

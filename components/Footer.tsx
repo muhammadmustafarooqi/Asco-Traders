@@ -27,9 +27,8 @@ export function Footer() {
 
   // Render the heart in red, wherever it appears in the credit line
   const creditParts = siteConfig.creditLine.split('♥');
-
   return (
-    <footer className="relative w-full max-w-[100vw] bg-surface border-t border-line text-ink-muted overflow-hidden">
+    <footer className="relative w-full max-w-full bg-surface border-t border-line text-ink-muted overflow-hidden">
       {/* Top glowing accent line */}
       <div className="rope-glow-divider" aria-hidden="true" />
 
@@ -43,8 +42,8 @@ export function Footer() {
         }}
       />
 
-      <div className="relative z-10 w-full max-w-7xl xl:max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-6 lg:pt-9 lg:pb-7">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1.15fr_1.7fr_1.35fr] gap-x-8 gap-y-8 lg:gap-x-6 xl:gap-x-10 items-start">
+      <div className="relative z-10 w-full max-w-7xl xl:max-w-[1536px] mx-auto px-5 sm:px-6 lg:px-8 pt-8 pb-6 lg:pt-9 lg:pb-7">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1.15fr_1.7fr_1.35fr] gap-6 md:gap-x-8 md:gap-y-8 lg:gap-x-6 xl:gap-x-10 items-start">
           {/* Column 1: Brand */}
           <div className="space-y-3">
             <Link
@@ -57,7 +56,9 @@ export function Footer() {
                 alt="ASCO Innovative Technologies"
                 width={180}
                 height={60}
-                className="h-12 sm:h-14 w-auto object-contain asco-logo-contrast"
+                priority
+                unoptimized
+                className="h-10 sm:h-12 w-auto object-contain asco-logo-contrast"
               />
             </Link>
             <p className="text-[13px] leading-relaxed text-ink">{siteConfig.tagline}</p>
@@ -70,7 +71,7 @@ export function Footer() {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-accent hover:text-ink hover:scale-110 transition-all"
+                  className="text-accent hover:text-ink hover:scale-110 transition-all p-1"
                   aria-label={`Follow ASCO Traders on ${social.name}`}
                 >
                   {social.name === 'Facebook' ? (
@@ -88,10 +89,10 @@ export function Footer() {
             <h3 className="font-heading font-semibold text-ink text-sm mb-3 tracking-wide">
               Quick Links
             </h3>
-            <ul className="space-y-1.5 text-[13px]">
+            <ul className="space-y-2 sm:space-y-1.5 text-[13px]">
               {siteConfig.footerLinks.quickLinks.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-ink hover:text-accent transition-colors inline-block">
+                  <Link href={link.href} className="text-ink hover:text-accent transition-colors inline-block py-0.5">
                     {link.name}
                   </Link>
                 </li>
@@ -104,10 +105,10 @@ export function Footer() {
             <h3 className="font-heading font-semibold text-ink text-sm mb-3 tracking-wide">
               Our Products
             </h3>
-            <ul className="space-y-1.5 text-[13px]">
+            <ul className="space-y-2 sm:space-y-1.5 text-[13px]">
               {siteConfig.footerLinks.productLinks.map((product) => (
                 <li key={product.name}>
-                  <Link href={product.href} className="text-ink hover:text-accent transition-colors inline-block">
+                  <Link href={product.href} className="text-ink hover:text-accent transition-colors inline-block py-0.5">
                     {product.name}
                   </Link>
                 </li>
@@ -129,7 +130,7 @@ export function Footer() {
                     <a
                       key={phone.display}
                       href={`tel:${phone.tel}`}
-                      className="text-ink hover:text-accent transition-colors"
+                      className="text-ink hover:text-accent transition-colors py-0.5"
                     >
                       {phone.display}
                     </a>
@@ -139,13 +140,13 @@ export function Footer() {
               <li>
                 <a
                   href={`mailto:${siteConfig.email}`}
-                  className="flex items-center gap-3 text-ink hover:text-accent transition-colors break-all"
+                  className="flex items-center gap-3 text-ink hover:text-accent transition-colors break-all py-0.5"
                 >
                   <Mail className="h-5 w-5 text-accent shrink-0" aria-hidden="true" />
                   <span>{siteConfig.email}</span>
                 </a>
               </li>
-              <li className="flex items-center gap-3 text-ink">
+              <li className="flex items-center gap-3 text-ink py-0.5">
                 <MapPin className="h-5 w-5 text-accent shrink-0" aria-hidden="true" />
                 <span>{siteConfig.location}</span>
               </li>
@@ -153,13 +154,13 @@ export function Footer() {
           </div>
 
           {/* Column 5: Glowing divider + tagline */}
-          <div className="relative md:col-span-2 lg:col-span-1 lg:self-stretch flex items-center lg:pl-10 xl:pl-14 min-h-[72px]">
+          <div className="relative md:col-span-2 lg:col-span-1 lg:self-stretch flex items-center lg:pl-10 xl:pl-14 min-h-[50px] lg:min-h-[72px]">
             {/* Vertical glow line */}
             <span
               className="hidden lg:block absolute left-0 inset-y-0 w-px bg-gradient-to-b from-transparent via-accent to-transparent shadow-[0_0_10px_rgba(63,203,248,0.7)]"
               aria-hidden="true"
             />
-            <p className="font-heading font-bold text-ink text-lg xl:text-xl leading-snug">
+            <p className="font-heading font-bold text-ink text-base sm:text-lg xl:text-xl leading-snug">
               Clean. Modern.
               <br />
               Premium.
@@ -172,8 +173,8 @@ export function Footer() {
               aria-hidden="true"
             >
               <defs>
-                <linearGradient id="footer-swoosh" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0" stopColor="#06a1ff" stopOpacity="0" />
+                <linearGradient id="footer-swoosh" x1="0%" y1="0%" x2="1" y2="0">
+                  <stop offset="0%" stopColor="#06a1ff" stopOpacity="0" />
                   <stop offset="0.5" stopColor="#3fcbf8" stopOpacity="0.8" />
                   <stop offset="1" stopColor="#06a1ff" stopOpacity="0" />
                 </linearGradient>
@@ -184,17 +185,17 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Bottom bar: full-width glowing divider */}
-      <div className="relative z-10">
+      {/* Bottom bar: full-width glowing divider + two centered wrapped lines + floating button clearance */}
+      <div className="relative z-10 pb-20 sm:pb-3">
         <div
           className="h-px w-full bg-gradient-to-r from-transparent via-accent/60 to-transparent shadow-[0_0_12px_rgba(63,203,248,0.45)]"
           aria-hidden="true"
         />
-        <div className="max-w-7xl xl:max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-ink-muted w-full">
-          <p>
+        <div className="max-w-7xl xl:max-w-[1536px] mx-auto px-5 sm:px-6 lg:px-8 py-3.5 sm:py-3 flex flex-col sm:flex-row items-center justify-between text-center sm:text-left gap-1.5 sm:gap-2 text-[11px] text-ink-muted w-full">
+          <p className="text-center sm:text-left leading-normal">
             © {currentYear} {siteConfig.businessName}. All rights reserved.
           </p>
-          <p>
+          <p className="text-center sm:text-right leading-normal">
             {creditParts.map((part, i) => (
               <Fragment key={i}>
                 {i > 0 && <span className="text-red-500">♥</span>}

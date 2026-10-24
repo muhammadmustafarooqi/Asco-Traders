@@ -16,14 +16,18 @@ export function WhatsAppFloatingButton() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat with ASCO on WhatsApp"
-        className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 rounded-full bg-whatsapp text-ink shadow-lg shadow-whatsapp/30 hover:scale-110 active:scale-95 transition-all duration-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-whatsapp/50"
+        className="fixed z-50 flex items-center justify-center w-[52px] h-[52px] sm:w-14 sm:h-14 rounded-full bg-whatsapp text-ink shadow-lg shadow-whatsapp/30 hover:scale-110 active:scale-95 transition-all duration-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-whatsapp/50"
+        style={{
+          bottom: 'calc(1rem + env(safe-area-inset-bottom, 0px))',
+          right: 'calc(1rem + env(safe-area-inset-right, 0px))',
+        }}
       >
         {/* Subtle pulsing beacon ring */}
         <span
           aria-hidden="true"
           className="absolute inset-0 rounded-full border-2 border-whatsapp/70 animate-whatsapp-ring pointer-events-none"
         />
-        <WhatsAppIcon className="w-8 h-8 relative z-10" />
+        <WhatsAppIcon className="w-7 h-7 sm:w-8 sm:h-8 relative z-10" />
       </a>
     </aside>
   );

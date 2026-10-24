@@ -31,7 +31,7 @@ export function WhyChoose() {
       ref={sectionRef}
       id="why-choose"
       aria-labelledby="why-choose-heading"
-      className="relative w-full max-w-[100vw] py-8 sm:py-12 lg:py-0 bg-[#000613] overflow-hidden"
+      className="relative w-full max-w-full py-8 sm:py-12 lg:py-0 bg-[#000613] overflow-hidden"
     >
       {/*
         Full-bleed banner. Capped at the image's native width (2113px) and centered,
@@ -45,8 +45,9 @@ export function WhyChoose() {
       >
         {/* 1. Background image (desktop only) with gentle neon flicker-on and steady pulse */}
         <div
-          className={`hidden lg:block absolute inset-0 z-0 pointer-events-none transition-opacity duration-300 ${inView ? 'animate-neon-strike' : 'opacity-20'
-            }`}
+          className={`hidden lg:block absolute inset-0 z-0 pointer-events-none transition-opacity duration-300 ${
+            inView ? 'animate-neon-strike' : 'opacity-20'
+          }`}
           aria-hidden="true"
           style={{
             WebkitMaskImage: EDGE_FADE_MASK,
@@ -83,11 +84,12 @@ export function WhyChoose() {
         </div>
 
         {/* 2. Content */}
-        <div className="relative z-10 w-full px-4 sm:px-6 lg:px-0 py-8 lg:py-0">
+        <div className="relative z-10 w-full px-5 sm:px-6 lg:px-0 py-8 lg:py-0">
           {/* Mobile & Tablet rope light banner (below lg) with neon flicker-on */}
           <div
-            className={`block lg:hidden relative w-full h-56 sm:h-72 mb-10 rounded-2xl overflow-hidden border border-cyan-500/20 shadow-[0_0_30px_rgba(6,161,255,0.18)] transition-opacity duration-300 ${inView ? 'animate-neon-strike' : 'opacity-30'
-              }`}
+            className={`block lg:hidden relative w-full h-52 sm:h-72 mb-8 sm:mb-10 rounded-2xl overflow-hidden border border-cyan-500/20 shadow-[0_0_30px_rgba(6,161,255,0.18)] transition-opacity duration-300 ${
+              inView ? 'animate-neon-strike' : 'opacity-30'
+            }`}
           >
             <Image
               src="/asco_separate_images_webp/led_rope_light_no_text.webp"
@@ -105,23 +107,23 @@ export function WhyChoose() {
 
             <div className="flex-1 flex flex-col lg:flex-row items-start lg:items-center justify-start gap-8 lg:gap-[5.5cqw]">
               {/* Left callout: 220V Direct Mains Rope Light */}
-              <div className="shrink-0 w-full max-w-xs lg:w-[22cqw] lg:max-w-none ">
-                <h3 className="font-heading font-bold text-2xl sm:text-3xl lg:text-[length:2.25cqw] text-ink leading-[1.18] tracking-[-0.02em] mb-2.5 sm:mb-3 lg:mb-[0.8cqw] drop-shadow-md ml-4">
+              <div className="shrink-0 w-full max-w-xs lg:w-[22cqw] lg:max-w-none">
+                <h3 className="font-heading font-bold text-2xl sm:text-3xl lg:text-[length:2.25cqw] text-ink leading-[1.18] tracking-[-0.02em] mb-2.5 sm:mb-3 lg:mb-[0.8cqw] drop-shadow-md ml-0 lg:ml-4">
                   220V Direct Rope
                   <br />
                   Light
                 </h3>
 
-                <p className="text-slate-300 text-xs sm:text-[13px] lg:text-[length:1.07cqw] leading-[1.65] mb-5 sm:mb-6 lg:mb-[1.6cqw] max-w-[260px] lg:max-w-[20cqw] drop-shadow-sm ml-4">
+                <p className="text-slate-300 text-xs sm:text-[13px] lg:text-[length:1.07cqw] leading-[1.65] mb-5 sm:mb-6 lg:mb-[1.6cqw] max-w-[260px] lg:max-w-[20cqw] drop-shadow-sm ml-0 lg:ml-4">
                   No driver. No hassle. Just reliable
                   <br className="hidden sm:inline" /> and long-lasting performance.
                 </p>
 
-                <div>
+                <div className="ml-0 lg:ml-4">
                   <Link
                     href="/products#rope-light"
                     aria-label="Learn more about 220V Direct Mains Rope Light"
-                    className="inline-flex items-center gap-2 lg:gap-[0.6cqw] px-5 sm:px-6 lg:px-[1.8cqw] py-2.5 lg:py-[0.8cqw] rounded-full text-bg font-semibold text-xs sm:text-sm lg:text-[length:1.06cqw] bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary shadow-[0_0_20px_rgba(6,161,255,0.45)] hover:shadow-[0_0_28px_rgba(63,203,248,0.7)] hover:scale-[1.03] active:scale-[0.98] transition-all duration-300 group"
+                    className="inline-flex items-center justify-center gap-2 lg:gap-[0.6cqw] px-5 sm:px-6 lg:px-[1.8cqw] py-2.5 lg:py-[0.8cqw] min-h-[44px] rounded-full text-bg font-semibold text-xs sm:text-sm lg:text-[length:1.06cqw] bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary shadow-[0_0_20px_rgba(6,161,255,0.45)] hover:shadow-[0_0_28px_rgba(63,203,248,0.7)] hover:scale-[1.03] active:scale-[0.98] transition-all duration-300 group max-sm:w-full"
                   >
                     <span>Learn More</span>
                     <ArrowRight
@@ -146,7 +148,7 @@ export function WhyChoose() {
                 {/* Heading */}
                 <h2
                   id="why-choose-heading"
-                  className="font-heading font-bold text-2xl sm:text-3xl lg:text-[length:3.1cqw] text-ink leading-[1.15] tracking-[-0.02em] mb-2.5 sm:mb-3.5 lg:mb-[1cqw] drop-shadow-md"
+                  className="font-heading font-bold text-2xl sm:text-3xl lg:text-[length:3.1cqw] text-ink leading-[1.15] tracking-[-0.02em] mb-2.5 sm:mb-3.5 lg:mb-[1cqw] drop-shadow-md text-balance"
                 >
                   Built for Performance,
                   <br />
@@ -169,7 +171,7 @@ export function WhyChoose() {
                         <span className="w-5 h-5 lg:w-[1.52cqw] lg:h-[1.52cqw] rounded-full bg-primary flex items-center justify-center shrink-0 shadow-[0_0_8px_rgba(6,161,255,0.4)]">
                           <Check className="w-3.5 h-3.5 lg:w-[1.06cqw] lg:h-[1.06cqw] text-bg stroke-[3]" aria-hidden="true" />
                         </span>
-                        <span className="text-ink text-xs sm:text-[13px] lg:text-[length:1.06cqw] font-medium tracking-wide whitespace-nowrap">
+                        <span className="text-ink text-xs sm:text-[13px] lg:text-[length:1.06cqw] font-medium tracking-wide whitespace-normal sm:whitespace-nowrap">
                           {text}
                         </span>
                       </div>
@@ -183,7 +185,7 @@ export function WhyChoose() {
                         <span className="w-5 h-5 lg:w-[1.52cqw] lg:h-[1.52cqw] rounded-full bg-primary flex items-center justify-center shrink-0 shadow-[0_0_8px_rgba(6,161,255,0.4)]">
                           <Check className="w-3.5 h-3.5 lg:w-[1.06cqw] lg:h-[1.06cqw] text-bg stroke-[3]" aria-hidden="true" />
                         </span>
-                        <span className="text-ink text-xs sm:text-[13px] lg:text-[length:1.06cqw] font-medium tracking-wide whitespace-nowrap">
+                        <span className="text-ink text-xs sm:text-[13px] lg:text-[length:1.06cqw] font-medium tracking-wide whitespace-normal sm:whitespace-nowrap">
                           {text}
                         </span>
                       </div>

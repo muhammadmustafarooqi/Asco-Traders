@@ -28,7 +28,7 @@ export default function AboutPage() {
       {/* 3. Call to Action Banner */}
       <section
         aria-label="Call to Action - Partner with ASCO"
-        className="relative w-full w-screen max-w-[100vw] py-12 sm:py-16 lg:py-20 bg-[#000613] overflow-hidden"
+        className="relative w-full max-w-full py-10 sm:py-16 lg:py-20 bg-[#000613] overflow-x-clip"
       >
         {/* Ambient radial glow behind card */}
         <div
@@ -40,7 +40,7 @@ export default function AboutPage() {
           aria-hidden="true"
         />
 
-        <div className="relative z-10 w-full max-w-7xl xl:max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 w-full max-w-7xl xl:max-w-[1536px] mx-auto px-5 sm:px-6 lg:px-8">
           <StayUpdated variant="cta" />
         </div>
       </section>
