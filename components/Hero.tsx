@@ -84,6 +84,12 @@ export function Hero() {
           aria-hidden="true"
         />
 
+        {/* Ambient breathing glow behind the modern villa light */}
+        <div
+          className="pointer-events-none absolute top-1/3 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] sm:w-[600px] sm:h-[600px] rounded-full bg-primary/20 blur-[130px] animate-ambient-pulse z-10"
+          aria-hidden="true"
+        />
+
         {/* Top gradient so the transparent navbar stays legible */}
         <div
           className="pointer-events-none absolute inset-x-0 top-0 z-10 h-28"
@@ -109,8 +115,8 @@ export function Hero() {
         Below xl it is in normal flow; from xl up it is laid over the stage and centred vertically.
       */}
       <div className="relative z-20 mx-auto flex min-h-[580px] w-full max-w-7xl flex-col justify-center px-4 pb-10 pt-28 sm:px-6 sm:pb-12 sm:pt-32 lg:px-8 xl:absolute xl:inset-0 xl:min-h-0 xl:max-w-[1536px] xl:pb-12 xl:pt-24">
-        <div className="hero-animate-fade max-w-xl lg:max-w-2xl">
-          <p className="mb-2 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-accent sm:mb-3 sm:text-sm lg:text-[13px]">
+        <div className="max-w-xl lg:max-w-2xl">
+          <p className="hero-fade-0 mb-2 inline-block text-xs font-semibold uppercase tracking-[0.12em] text-accent sm:mb-3 sm:text-sm lg:text-[13px]">
             INNOVATIVE LED SOLUTIONS
           </p>
 
@@ -120,7 +126,7 @@ export function Hero() {
               textShadow:
                 '0 2px 20px rgba(0, 6, 19, 0.95), 0 0 45px rgba(0, 6, 19, 0.9)',
             }}
-            className="mb-3 font-heading text-[clamp(2.4rem,4.6vw,4.75rem)] font-bold leading-[1.02] tracking-tight text-ink drop-shadow-md sm:mb-4"
+            className="hero-fade-1 mb-3 font-heading text-[clamp(2.125rem,1.4rem+3.2vw,4.25rem)] font-bold leading-[1.12] tracking-[-0.02em] text-ink drop-shadow-md sm:mb-4"
           >
             <span className="block">Lighting</span>
             <span className="block">
@@ -128,12 +134,12 @@ export function Hero() {
             </span>
           </h1>
 
-          <p className="mb-6 max-w-md text-base font-normal leading-relaxed text-ink drop-shadow-md sm:mb-8 sm:text-lg lg:text-xl">
+          <p className="hero-fade-2 mb-6 max-w-md text-base sm:text-lg font-normal leading-[1.65] text-slate-200 drop-shadow-md sm:mb-8 lg:text-xl">
             Premium LED lighting solutions for
             <br className="hidden md:block" /> a brighter tomorrow.
           </p>
 
-          <div className="flex flex-wrap items-center gap-4 sm:gap-5">
+          <div className="hero-fade-3 flex flex-wrap items-center gap-4 sm:gap-5">
             <Link
               href="/products"
               aria-label="Explore Our Products"
@@ -145,7 +151,7 @@ export function Hero() {
             <Link
               href="/about"
               aria-label="About ASCO"
-              className="inline-flex h-12 items-center justify-center rounded-full border border-accent bg-[#000613]/50 px-7 text-sm font-semibold text-ink transition-colors hover:bg-accent/10 sm:text-base"
+              className="btn-secondary-glow inline-flex h-12 items-center justify-center rounded-full px-7 text-sm font-semibold text-ink sm:text-base"
             >
               About ASCO
             </Link>
@@ -153,7 +159,7 @@ export function Hero() {
         </div>
 
         {/* Trust row, grouped under the buttons */}
-        <div className="mt-8 w-full max-w-xl border-t border-accent/20 pt-6 sm:mt-10 lg:max-w-2xl xl:mt-10">
+        <div className="hero-fade-4 mt-8 w-full max-w-xl border-t border-accent/20 pt-6 sm:mt-10 lg:max-w-2xl xl:mt-10">
           <div className="grid grid-cols-2 lg:grid-cols-4">
             {trustBadges.map((item, index) => {
               const IconComponent = item.icon;

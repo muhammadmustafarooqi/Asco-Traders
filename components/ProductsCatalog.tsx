@@ -173,7 +173,10 @@ export function ProductsCatalog() {
         {displayedProducts.length === 0 ? (
           <p className="text-center text-ink-muted py-16">No products found in this category.</p>
         ) : (
-          <div className="flex flex-col gap-12 sm:gap-16 lg:gap-20">
+          <div
+            key={`${selectedCategory}-${currentPage}`}
+            className="flex flex-col gap-12 sm:gap-16 lg:gap-20 animate-tab-switch"
+          >
             {displayedProducts.map((product, idx) => {
               const absoluteIndex = isPaginated ? startIndex + idx : idx;
               const isLast = idx === displayedProducts.length - 1;
@@ -298,20 +301,20 @@ function ProductRow({ product, number, isImageOnRight, priority = false }: Produ
         {/* Eyebrow */}
         <div className="flex items-center gap-3 mb-3">
           <span className="h-px w-8 bg-accent shadow-[0_0_8px_rgba(63,203,248,0.8)]" aria-hidden="true" />
-          <span className="text-accent text-[11px] sm:text-xs font-bold tracking-[0.2em] uppercase">
+          <span className="text-accent text-[11px] sm:text-xs font-semibold tracking-[0.12em] uppercase">
             {product.category}
           </span>
         </div>
 
-        <h2 className="font-heading font-bold text-3xl sm:text-4xl lg:text-[2.6rem] text-ink tracking-tight leading-[1.1]">
+        <h2 className="font-heading font-bold text-3xl sm:text-4xl lg:text-[2.6rem] text-ink tracking-[-0.02em] leading-[1.12]">
           {product.name}
         </h2>
 
-        <p className="font-semibold text-base sm:text-lg text-accent mt-2 tracking-wide">
+        <p className="font-semibold text-base sm:text-lg text-accent mt-2 tracking-[-0.01em]">
           {product.tagline}
         </p>
 
-        <p className="text-ink-muted text-sm sm:text-[15px] lg:text-base mt-3 sm:mt-4 leading-relaxed max-w-2xl xl:max-w-3xl">
+        <p className="text-slate-300 text-sm sm:text-[15px] lg:text-base mt-3 sm:mt-4 leading-[1.65] max-w-2xl xl:max-w-3xl">
           {product.description}
         </p>
 
@@ -342,7 +345,7 @@ function ProductRow({ product, number, isImageOnRight, priority = false }: Produ
 
           <Link
             href="/contact#inquiry-form"
-            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-primary/70 bg-[#00102a]/70 text-accent text-sm font-semibold hover:border-accent hover:bg-primary/20 shadow-[0_0_14px_rgba(6,161,255,0.2)] transition-all"
+            className="btn-secondary-glow inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-ink text-sm font-semibold shadow-[0_0_14px_rgba(6,161,255,0.2)] hover:shadow-[0_0_22px_rgba(63,203,248,0.4)] transition-all"
           >
             Get a Quote
           </Link>
@@ -359,7 +362,7 @@ function ProductRow({ product, number, isImageOnRight, priority = false }: Produ
         className="absolute -inset-3 rounded-[2rem] bg-gradient-to-br from-primary/30 via-transparent to-accent/25 blur-2xl opacity-60 group-hover:opacity-100 transition-opacity duration-500"
       />
 
-      <div className="relative z-10 aspect-[4/3] sm:aspect-[16/10] lg:aspect-[16/10] xl:aspect-[16/9] max-h-[520px] rounded-3xl border border-primary/60 bg-[#000d24] overflow-hidden shadow-[0_0_30px_rgba(6,161,255,0.22)] group-hover:border-accent group-hover:shadow-[0_0_42px_rgba(63,203,248,0.4)] transition-all duration-500">
+      <div className="relative z-10 aspect-[4/3] sm:aspect-[16/10] lg:aspect-[16/10] xl:aspect-[16/9] max-h-[520px] rounded-3xl border border-cyan-500/25 bg-[#000d24] overflow-hidden shadow-[0_4px_30px_rgba(0,0,0,0.4)] group-hover:border-cyan-400/50 group-hover:shadow-[0_0_42px_rgba(63,203,248,0.35)] transition-all duration-500">
         <Image
           src={product.image}
           alt={product.alt}

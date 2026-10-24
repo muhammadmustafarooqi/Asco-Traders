@@ -80,8 +80,8 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
         {/* ============ MAIN 2-COLUMN PRODUCT DETAIL ============ */}
         <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1.25fr] gap-8 lg:gap-12 xl:gap-14 items-start">
           {/* LEFT: Image Gallery Card */}
-          <div className="relative rounded-3xl border border-primary/60 bg-[#000d24]/90 backdrop-blur-md overflow-hidden p-4 sm:p-6 shadow-[0_0_30px_rgba(6,161,255,0.2)]">
-            <div className="relative w-full aspect-square rounded-2xl overflow-hidden bg-[#000814] border border-line/40">
+          <div className="relative rounded-3xl border border-cyan-500/25 bg-[#000d24]/90 backdrop-blur-md overflow-hidden p-4 sm:p-6 shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
+            <div className="relative w-full aspect-square rounded-2xl overflow-hidden bg-[#000814] border border-cyan-500/20">
               <Image
                 src={product.image}
                 alt={product.alt}
@@ -93,7 +93,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
               {/* Corner Badge */}
               {product.badge && (
                 <div className="absolute top-4 right-4 z-10">
-                  <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-accent text-[#000613] shadow-[0_0_15px_rgba(63,203,248,0.7)]">
+                  <span className="px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-[0.12em] bg-accent text-[#000613] shadow-[0_0_15px_rgba(63,203,248,0.7)]">
                     {product.badge}
                   </span>
                 </div>
@@ -102,13 +102,13 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
 
             {/* Trust Badges Bar under image */}
             <div className="mt-5 grid grid-cols-2 gap-3 text-xs text-ink-muted">
-              <div className="flex items-center gap-2.5 p-2.5 rounded-xl bg-[#000814]/80 border border-line/30">
+              <div className="flex items-center gap-2.5 p-2.5 rounded-xl bg-[#000814]/80 border border-cyan-500/20">
                 <Zap className="w-4 h-4 text-accent shrink-0" />
-                <span>Original ASCO Grade</span>
+                <span className="text-slate-300">Original ASCO Grade</span>
               </div>
-              <div className="flex items-center gap-2.5 p-2.5 rounded-xl bg-[#000814]/80 border border-line/30">
+              <div className="flex items-center gap-2.5 p-2.5 rounded-xl bg-[#000814]/80 border border-cyan-500/20">
                 <ShieldCheck className="w-4 h-4 text-accent shrink-0" />
-                <span>Replacement Warranty</span>
+                <span className="text-slate-300">Replacement Warranty</span>
               </div>
             </div>
           </div>
@@ -116,32 +116,32 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
           {/* RIGHT: Product Information & Specs */}
           <div className="flex flex-col">
             {/* Category badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/50 bg-primary/10 text-accent text-xs font-bold uppercase tracking-wider w-fit mb-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-500/40 bg-primary/10 text-accent text-xs font-semibold uppercase tracking-[0.12em] w-fit mb-3">
               <span>{product.category}</span>
             </div>
 
             {/* Title & Tagline */}
-            <h1 className="font-heading font-extrabold text-2xl sm:text-3xl md:text-4xl text-ink leading-tight">
+            <h1 className="font-heading font-extrabold text-2xl sm:text-3xl md:text-4xl text-ink leading-[1.12] tracking-[-0.02em]">
               {product.name}
             </h1>
-            <p className="text-accent text-sm sm:text-base font-medium mt-2 leading-relaxed">
+            <p className="text-accent text-sm sm:text-base font-semibold mt-2 tracking-[-0.01em]">
               {product.tagline}
             </p>
 
             {/* Full Description */}
-            <p className="text-ink-muted text-sm sm:text-base mt-4 leading-relaxed">
+            <p className="text-slate-300 text-sm sm:text-base mt-4 leading-[1.65]">
               {product.description}
             </p>
 
             {/* Specifications Table */}
-            <div className="mt-6 p-4 sm:p-5 rounded-2xl border border-primary/40 bg-[#000d24]/70">
-              <h3 className="font-heading font-bold text-sm text-ink uppercase tracking-wider mb-3">
+            <div className="mt-6 p-4 sm:p-5 rounded-2xl border border-cyan-500/20 bg-[#000d24]/70">
+              <h3 className="font-heading font-bold text-xs sm:text-sm text-ink uppercase tracking-[0.12em] mb-3">
                 Technical Specifications
               </h3>
-              <div className="divide-y divide-primary/20 text-xs sm:text-sm">
+              <div className="divide-y divide-cyan-500/15 text-xs sm:text-sm">
                 {Object.entries(product.specs).map(([key, val]) => (
                   <div key={key} className="py-2.5 flex items-center justify-between gap-4">
-                    <span className="text-ink-muted capitalize font-medium">
+                    <span className="text-slate-300 capitalize font-medium">
                       {key.replace(/([A-Z])/g, ' $1')}
                     </span>
                     <span className="text-ink font-semibold text-right">{val}</span>
@@ -152,21 +152,21 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
 
             {/* Key Features */}
             <div className="mt-6">
-              <h3 className="font-heading font-bold text-sm text-ink uppercase tracking-wider mb-3">
+              <h3 className="font-heading font-bold text-xs sm:text-sm text-ink uppercase tracking-[0.12em] mb-3">
                 Key Highlights
               </h3>
-              <ul className="space-y-2 text-xs sm:text-sm text-ink-muted">
+              <ul className="space-y-2 text-xs sm:text-sm text-slate-300">
                 {product.features.map((feat, idx) => (
                   <li key={idx} className="flex items-start gap-2.5">
                     <Check className="w-4 h-4 text-accent shrink-0 mt-0.5" />
-                    <span className="text-ink/90">{feat}</span>
+                    <span className="text-ink/95 leading-[1.6]">{feat}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
             {/* Action Buttons */}
-            <div className="mt-8 pt-6 border-t border-primary/25 flex flex-col sm:flex-row items-center gap-3.5">
+            <div className="mt-8 pt-6 border-t border-cyan-500/20 flex flex-col sm:flex-row items-center gap-3.5">
               <a
                 href={whatsappUrl}
                 target="_blank"
@@ -179,7 +179,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
 
               <Link
                 href="/contact#inquiry-form"
-                className="w-full sm:w-auto inline-flex items-center justify-center py-3 px-6 rounded-full border border-primary/70 bg-[#000d24] hover:bg-primary/20 hover:border-accent text-ink text-sm font-semibold transition-all duration-200"
+                className="btn-secondary-glow w-full sm:w-auto inline-flex items-center justify-center py-3 px-6 rounded-full text-ink text-sm font-semibold transition-all duration-200"
               >
                 <span>Request Quotation Form &rarr;</span>
               </Link>
@@ -188,9 +188,9 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
         </div>
 
         {/* ============ RELATED PRODUCTS ============ */}
-        <div className="mt-20 pt-12 border-t border-primary/25">
+        <div className="mt-20 pt-12 border-t border-cyan-500/20">
           <div className="flex items-center justify-between mb-8">
-            <h2 className="font-heading font-bold text-xl sm:text-2xl text-ink">
+            <h2 className="font-heading font-bold text-xl sm:text-2xl text-ink tracking-[-0.02em]">
               More Products from <span className="text-accent">ASCO</span>
             </h2>
             <Link
@@ -206,7 +206,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
               <Link
                 key={rel.slug}
                 href={`/products/${rel.slug}`}
-                className="group p-3.5 rounded-2xl border border-primary/40 bg-[#000d24]/60 hover:border-accent hover:bg-[#00102a] transition-all duration-300 flex flex-col"
+                className="group p-3.5 rounded-2xl border border-cyan-500/20 bg-[#000d24]/60 hover:border-cyan-400/50 hover:bg-[#00102a] hover:shadow-[0_4px_20px_rgba(63,203,248,0.18)] transition-all duration-300 flex flex-col"
               >
                 <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-[#000814] mb-3">
                   <Image

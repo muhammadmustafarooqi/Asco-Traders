@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, Check } from 'lucide-react';
+import { useInView } from '@/hooks/useInView';
 
 const col1Features = [
   '220V Direct Mains Technology',
@@ -23,8 +24,11 @@ const EDGE_FADE_MASK =
   'linear-gradient(90deg, transparent 0%, #000 4%, #000 96%, transparent 100%)';
 
 export function WhyChoose() {
+  const [sectionRef, inView] = useInView<HTMLElement>({ threshold: 0.15 });
+
   return (
     <section
+      ref={sectionRef}
       id="why-choose"
       aria-labelledby="why-choose-heading"
       className="relative w-full max-w-[100vw] py-8 sm:py-12 lg:py-0 bg-[#000613] overflow-hidden"
@@ -39,9 +43,11 @@ export function WhyChoose() {
         className="relative w-full max-w-7xl xl:max-w-[1536px] mx-auto lg:aspect-[2113/744] flex flex-col justify-center overflow-hidden"
         style={{ containerType: 'inline-size' }}
       >
-        {/* 1. Background image (desktop only) */}
+        {/* 1. Background image (desktop only) with gentle neon flicker-on and steady pulse */}
         <div
-          className="hidden lg:block absolute inset-0 z-0 pointer-events-none"
+          className={`hidden lg:block absolute inset-0 z-0 pointer-events-none transition-opacity duration-300 ${
+            inView ? 'animate-neon-strike' : 'opacity-20'
+          }`}
           aria-hidden="true"
           style={{
             WebkitMaskImage: EDGE_FADE_MASK,
@@ -79,8 +85,12 @@ export function WhyChoose() {
 
         {/* 2. Content */}
         <div className="relative z-10 w-full px-4 sm:px-6 lg:px-0 py-8 lg:py-0">
-          {/* Mobile & Tablet rope light banner (below lg) */}
-          <div className="block lg:hidden relative w-full h-56 sm:h-72 mb-10 rounded-2xl overflow-hidden border border-line/40 shadow-[0_0_30px_rgba(6,161,255,0.18)]">
+          {/* Mobile & Tablet rope light banner (below lg) with neon flicker-on */}
+          <div
+            className={`block lg:hidden relative w-full h-56 sm:h-72 mb-10 rounded-2xl overflow-hidden border border-cyan-500/20 shadow-[0_0_30px_rgba(6,161,255,0.18)] transition-opacity duration-300 ${
+              inView ? 'animate-neon-strike' : 'opacity-30'
+            }`}
+          >
             <Image
               src="/asco_separate_images_webp/led_rope_light_no_text.webp"
               alt="ASCO 220V Direct Mains LED Rope Light in glowing coil"
@@ -98,13 +108,13 @@ export function WhyChoose() {
             <div className="flex-1 flex flex-col lg:flex-row items-start lg:items-center justify-start gap-8 lg:gap-[5.5cqw]">
               {/* Left callout: 220V Direct Mains Rope Light */}
               <div className="shrink-0 w-full max-w-xs lg:w-[22cqw] lg:max-w-none ">
-                <h3 className="font-heading font-bold text-2xl sm:text-3xl lg:text-[length:2.25cqw] text-ink leading-[1.2] mb-2.5 sm:mb-3 lg:mb-[0.8cqw] drop-shadow-md ml-4">
+                <h3 className="font-heading font-bold text-2xl sm:text-3xl lg:text-[length:2.25cqw] text-ink leading-[1.18] tracking-[-0.02em] mb-2.5 sm:mb-3 lg:mb-[0.8cqw] drop-shadow-md ml-4">
                   220V Direct Mains
                   <br />
                   Rope Light
                 </h3>
 
-                <p className="text-ink-muted text-xs sm:text-[13px] lg:text-[length:1.07cqw] leading-relaxed mb-5 sm:mb-6 lg:mb-[1.6cqw] max-w-[260px] lg:max-w-[20cqw] drop-shadow-sm ml-4">
+                <p className="text-slate-300 text-xs sm:text-[13px] lg:text-[length:1.07cqw] leading-[1.65] mb-5 sm:mb-6 lg:mb-[1.6cqw] max-w-[260px] lg:max-w-[20cqw] drop-shadow-sm ml-4">
                   No driver. No hassle. Just reliable
                   <br className="hidden sm:inline" /> and long-lasting performance.
                 </p>
@@ -128,25 +138,25 @@ export function WhyChoose() {
               <div className="flex flex-col justify-center">
                 {/* Eyebrow */}
                 <div className="flex items-center gap-2.5 sm:gap-3 lg:gap-[0.9cqw] mb-2.5 sm:mb-3 lg:mb-[0.9cqw]">
-                  <span className="h-[2px] w-6 sm:w-8 lg:w-[2.4cqw] bg-primary rounded-full" aria-hidden="true" />
-                  <span className="text-primary text-xs sm:text-sm lg:text-[length:1.06cqw] font-bold tracking-[0.2em] uppercase">
+                  <span className="h-[2px] w-6 sm:w-8 lg:w-[2.4cqw] bg-accent rounded-full" aria-hidden="true" />
+                  <span className="text-accent text-xs sm:text-sm lg:text-[length:1.06cqw] font-semibold tracking-[0.12em] uppercase">
                     WHY CHOOSE ASCO
                   </span>
-                  <span className="h-[2px] w-6 sm:w-8 lg:w-[2.4cqw] bg-primary rounded-full" aria-hidden="true" />
+                  <span className="h-[2px] w-6 sm:w-8 lg:w-[2.4cqw] bg-accent rounded-full" aria-hidden="true" />
                 </div>
 
                 {/* Heading */}
                 <h2
                   id="why-choose-heading"
-                  className="font-heading font-bold text-2xl sm:text-3xl lg:text-[length:3.1cqw] text-ink leading-tight tracking-tight mb-2.5 sm:mb-3.5 lg:mb-[1cqw] drop-shadow-md"
+                  className="font-heading font-bold text-2xl sm:text-3xl lg:text-[length:3.1cqw] text-ink leading-[1.15] tracking-[-0.02em] mb-2.5 sm:mb-3.5 lg:mb-[1cqw] drop-shadow-md"
                 >
                   Built for Performance,
                   <br />
-                  Designed for <span className="text-primary">E</span>xcellence
+                  Designed for <span className="text-accent">E</span>xcellence
                 </h2>
 
                 {/* Paragraph */}
-                <p className="text-ink-muted text-xs sm:text-sm lg:text-[length:1.1cqw] leading-relaxed max-w-lg lg:max-w-[38.9cqw] mb-5 sm:mb-6 lg:mb-[1.6cqw]">
+                <p className="text-slate-300 text-xs sm:text-sm lg:text-[length:1.1cqw] leading-[1.65] max-w-lg lg:max-w-[38.9cqw] mb-5 sm:mb-6 lg:mb-[1.6cqw]">
                   At ASCO, we deliver high-quality, innovative LED lighting solutions with unmatched
                   durability, energy efficiency, and modern design — trusted by contractors, designers,
                   and homeowners across Pakistan.

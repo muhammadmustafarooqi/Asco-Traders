@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { siteConfig } from '@/lib/site';
 import { StayUpdated } from './StayUpdated';
+import Reveal from '@/components/Reveal';
 
 export function TestimonialsNewsletter() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -93,22 +94,24 @@ export function TestimonialsNewsletter() {
       </div>
 
       <div className="relative z-10 w-full max-w-7xl xl:max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Eyebrow with horizontal line dividers */}
-        <div className="flex items-center justify-center gap-2.5 sm:gap-3 mb-2.5">
-          <span className="h-[2px] w-6 sm:w-8 bg-primary rounded-full" aria-hidden="true" />
-          <span className="text-primary text-xs sm:text-sm font-bold tracking-[0.2em] uppercase">
-            WHAT OUR CLIENTS SAY
-          </span>
-          <span className="h-[2px] w-6 sm:w-8 bg-primary rounded-full" aria-hidden="true" />
-        </div>
+        <Reveal distance={20} duration={600} className="text-center">
+          {/* Eyebrow with horizontal line dividers */}
+          <div className="flex items-center justify-center gap-2.5 sm:gap-3 mb-2.5">
+            <span className="h-[2px] w-6 sm:w-8 bg-accent rounded-full" aria-hidden="true" />
+            <span className="text-accent text-xs sm:text-sm font-semibold tracking-[0.12em] uppercase">
+              WHAT OUR CLIENTS SAY
+            </span>
+            <span className="h-[2px] w-6 sm:w-8 bg-accent rounded-full" aria-hidden="true" />
+          </div>
 
-        {/* Heading */}
-        <h2
-          id="testimonials-heading"
-          className="text-center font-heading font-bold text-2xl sm:text-3xl lg:text-[2.25rem] text-ink leading-tight tracking-tight mb-6 sm:mb-8 drop-shadow-md"
-        >
-          Trusted by Thousands
-        </h2>
+          {/* Heading */}
+          <h2
+            id="testimonials-heading"
+            className="text-center font-heading font-bold text-[clamp(1.625rem,1.15rem+2.1vw,2.5rem)] text-ink leading-[1.18] tracking-[-0.02em] mb-6 sm:mb-8 drop-shadow-md"
+          >
+            Trusted by Thousands
+          </h2>
+        </Reveal>
 
         {/* Carousel Container */}
         <div
@@ -131,12 +134,12 @@ export function TestimonialsNewsletter() {
                 key={`${t.id}-${idx}`}
                 className="w-[var(--slide-w)] shrink-0 px-2 sm:px-3 pb-2"
               >
-                <div className="relative h-full rounded-2xl border border-primary/40 bg-[#00102a]/85 backdrop-blur-md p-5 sm:p-6 flex flex-col justify-between shadow-[0_0_20px_rgba(6,161,255,0.08)] hover:border-primary/80 hover:shadow-[0_0_25px_rgba(6,161,255,0.22)] transition-all duration-300 min-h-[220px]">
+                <div className="relative h-full rounded-2xl border border-cyan-500/20 bg-[#00102a]/85 backdrop-blur-md p-5 sm:p-6 flex flex-col justify-between shadow-[0_4px_20px_rgba(0,0,0,0.4)] hover:border-cyan-400/50 hover:shadow-[0_0_25px_rgba(63,203,248,0.2)] transition-all duration-300 min-h-[220px]">
                   <div>
                     {/* Header: Quotes Icon + 5-Star Rating */}
                     <div className="flex items-center justify-between mb-3.5">
                       <div className="text-primary" aria-hidden="true">
-                        <svg className="w-6 h-6 sm:w-7 sm:h-7 fill-primary" viewBox="0 0 24 24">
+                        <svg className="w-6 h-6 sm:w-7 sm:h-7 fill-accent" viewBox="0 0 24 24">
                           <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                         </svg>
                       </div>
@@ -156,14 +159,14 @@ export function TestimonialsNewsletter() {
                     </div>
 
                     {/* Review Text */}
-                    <p className="text-ink text-xs sm:text-sm font-normal leading-relaxed mb-5">
+                    <p className="text-slate-200 text-xs sm:text-sm font-normal leading-[1.65] mb-5">
                       &ldquo;{t.quote}&rdquo;
                     </p>
                   </div>
 
                   {/* Client Info: Avatar + Name + Title */}
-                  <div className="flex items-center gap-3 pt-3 border-t border-line/30">
-                    <div className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-full overflow-hidden border border-primary/50 shrink-0 shadow-[0_0_10px_rgba(6,161,255,0.25)]">
+                  <div className="flex items-center gap-3 pt-3 border-t border-cyan-500/15">
+                    <div className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-full overflow-hidden border border-accent/40 shrink-0 shadow-[0_0_10px_rgba(6,161,255,0.2)]">
                       <Image
                         src={t.avatar}
                         alt={t.name}
@@ -173,7 +176,7 @@ export function TestimonialsNewsletter() {
                       />
                     </div>
                     <div>
-                      <h3 className="font-heading font-semibold text-ink text-xs sm:text-sm leading-tight">
+                      <h3 className="font-heading font-semibold text-ink text-xs sm:text-sm leading-tight tracking-[-0.01em]">
                         {t.name}
                       </h3>
                       <p className="text-ink-muted text-[11px] sm:text-xs leading-tight mt-0.5">

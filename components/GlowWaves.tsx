@@ -33,21 +33,21 @@ export function GlowWaves({ className = '' }: GlowWavesProps) {
         </defs>
 
         {/* --- Path 1 --- */}
-        {/* Wider path (10px) at ~15% opacity as a cheap glow */}
+        {/* Wider path (10px) at ~15% opacity as a soft glow */}
         <path
           d="M-100 140 C 250 40, 500 240, 850 120 C 1150 20, 1350 200, 1550 110"
           stroke="url(#waveToAccentGrad)"
           strokeWidth="10"
           strokeLinecap="round"
-          className="opacity-15"
+          className="opacity-20 animate-wave-current"
         />
-        {/* Core sharp line (2.5px) at ~55% opacity */}
+        {/* Core sharp line (2.5px) at ~60% opacity with electrical flowing current */}
         <path
           d="M-100 140 C 250 40, 500 240, 850 120 C 1150 20, 1350 200, 1550 110"
           stroke="url(#waveToAccentGrad)"
           strokeWidth="2.5"
           strokeLinecap="round"
-          className="opacity-55"
+          className="opacity-60 animate-wave-current"
         />
 
         {/* --- Path 2 --- */}
@@ -57,15 +57,15 @@ export function GlowWaves({ className = '' }: GlowWavesProps) {
           stroke="url(#waveSecondaryGrad)"
           strokeWidth="10"
           strokeLinecap="round"
-          className="opacity-15"
+          className="opacity-20 animate-wave-current-reverse"
         />
-        {/* Core sharp line (2px) at ~50% opacity */}
+        {/* Core sharp line (2px) at ~55% opacity with counter-current flow */}
         <path
           d="M-50 180 C 300 240, 600 60, 950 180 C 1200 270, 1400 80, 1550 170"
           stroke="url(#waveSecondaryGrad)"
           strokeWidth="2"
           strokeLinecap="round"
-          className="opacity-50"
+          className="opacity-55 animate-wave-current-reverse"
         />
       </svg>
     </div>

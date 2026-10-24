@@ -13,6 +13,8 @@ import {
   Smile,
   Heart,
 } from 'lucide-react';
+import CountUp from '@/components/CountUp';
+import Reveal from '@/components/Reveal';
 
 const EMBLEM_MASK =
   'radial-gradient(ellipse 62% 66% at 50% 52%, #000 45%, transparent 100%)';
@@ -30,9 +32,9 @@ const BACKDROP_MASK =
   From xl up: borderless text positioned exactly inside the frames of the image.
 */
 const cardBase =
-  'flex flex-col justify-center rounded-2xl border border-primary/60 bg-[#000d24]/80 backdrop-blur-md p-5 sm:p-6 ' +
-  'shadow-[0_0_22px_rgba(6,161,255,0.18)] transition-all ' +
-  'max-xl:hover:border-accent max-xl:hover:shadow-[0_0_30px_rgba(63,203,248,0.3)] ' +
+  'flex flex-col justify-center rounded-2xl border border-cyan-500/25 bg-[#000d24]/80 backdrop-blur-md p-5 sm:p-6 ' +
+  'shadow-[0_4px_22px_rgba(0,0,0,0.4)] transition-all ' +
+  'max-xl:hover:border-cyan-400/50 max-xl:hover:shadow-[0_0_30px_rgba(63,203,248,0.25)] ' +
   'xl:absolute xl:rounded-none xl:border-0 xl:bg-transparent xl:backdrop-blur-none xl:shadow-none ' +
   'xl:top-[27.1%] xl:h-[37.6%] xl:px-[1.7cqw] xl:py-[1cqw]';
 
@@ -41,11 +43,11 @@ const visionPos = 'xl:left-[52.25%] xl:w-[21.8%]';
 const valuesPos = 'xl:left-[76.1%] xl:w-[20.1%]';
 
 const labelClass =
-  'text-accent text-[11px] xl:text-[length:max(9px,0.62cqw)] font-bold tracking-[0.2em] uppercase block';
+  'text-accent text-[11px] xl:text-[length:max(9px,0.62cqw)] font-semibold tracking-[0.12em] uppercase block';
 const headClass =
-  'font-heading font-bold text-lg xl:text-[length:max(14px,1.2cqw)] text-ink leading-tight mt-0.5';
+  'font-heading font-bold text-lg xl:text-[length:max(14px,1.2cqw)] text-ink leading-tight mt-0.5 tracking-[-0.02em]';
 const bodyClass =
-  'text-ink text-xs sm:text-[13px] xl:text-[length:max(11px,0.8cqw)] leading-relaxed xl:leading-[1.55]';
+  'text-slate-300 text-xs sm:text-[13px] xl:text-[length:max(11px,0.8cqw)] leading-[1.65] xl:leading-[1.6]';
 const headIcon =
   'w-9 h-9 xl:w-[max(26px,2.4cqw)] xl:h-[max(26px,2.4cqw)] text-accent shrink-0 drop-shadow-[0_0_10px_rgba(63,203,248,0.7)]';
 const headRow =
@@ -54,7 +56,7 @@ const listIcon =
   'w-5 h-5 xl:w-[max(14px,1.1cqw)] xl:h-[max(14px,1.1cqw)] text-accent shrink-0 drop-shadow-[0_0_6px_rgba(63,203,248,0.6)]';
 
 const statClass =
-  'rounded-2xl border border-primary/50 bg-[#00102a]/70 backdrop-blur-sm px-3 py-4 sm:py-5 flex flex-col items-center justify-center text-center shadow-[0_0_16px_rgba(6,161,255,0.12)] hover:border-accent hover:shadow-[0_0_22px_rgba(63,203,248,0.25)] hover:-translate-y-0.5 transition-all duration-300';
+  'rounded-2xl border border-cyan-500/20 bg-[#00102a]/70 backdrop-blur-sm px-3 py-4 sm:py-5 flex flex-col items-center justify-center text-center shadow-[0_4px_16px_rgba(0,0,0,0.4)] hover:border-cyan-400/50 hover:shadow-[0_0_22px_rgba(63,203,248,0.2)] hover:-translate-y-0.5 transition-all duration-300';
 
 const verticalLine =
   'hidden lg:block w-px h-3/5 self-center justify-self-center bg-gradient-to-b from-transparent via-accent/70 to-transparent shadow-[0_0_10px_rgba(63,203,248,0.6)]';
@@ -80,7 +82,7 @@ export function AboutStory() {
         {/* ============ ROW 1 (unchanged) ============ */}
         <div className="grid grid-cols-1 lg:grid-cols-[33fr_27fr_auto_28fr] gap-8 lg:gap-8 xl:gap-10 items-center">
           <div className="flex lg:self-stretch">
-            <div className="relative w-full aspect-[16/9] lg:aspect-auto min-h-[220px] rounded-2xl border-[1.5px] border-primary/70 bg-[#00091d] overflow-hidden shadow-[0_0_30px_rgba(6,161,255,0.28)]">
+            <div className="relative w-full aspect-[16/9] lg:aspect-auto min-h-[220px] rounded-2xl border border-cyan-500/25 bg-[#00091d] overflow-hidden shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
               <Image
                 src="/asco_separate_images_webp/about/led_strip_no_blue_border.webp"
                 alt="ASCO Premium LED Strip Light illuminated in golden amber glow coil on production bench"
@@ -101,7 +103,7 @@ export function AboutStory() {
           <div className="flex flex-col justify-center">
             <div className="flex items-center gap-2 mb-2">
               <span className="h-px w-3 bg-accent" aria-hidden="true" />
-              <span className="text-accent text-xs sm:text-sm font-bold tracking-[0.2em] uppercase whitespace-nowrap">
+              <span className="text-accent text-xs sm:text-sm font-semibold tracking-[0.12em] uppercase whitespace-nowrap">
                 OUR STORY
               </span>
               <span className="h-px flex-1 max-w-[14rem] bg-accent/30" aria-hidden="true" />
@@ -109,37 +111,37 @@ export function AboutStory() {
 
             <h2
               id="our-story-heading"
-              className="font-heading font-bold text-2xl sm:text-3xl lg:text-[2rem] xl:text-[2.2rem] text-ink leading-tight mb-4 tracking-tight"
+              className="font-heading font-bold text-2xl sm:text-3xl lg:text-[2rem] xl:text-[2.2rem] text-ink leading-[1.18] mb-4 tracking-[-0.02em]"
             >
               Building a Legacy
               <br className="hidden sm:inline" /> of <span className="text-accent">Innovation</span>
             </h2>
 
-            <p className="text-ink text-xs sm:text-sm lg:text-[13.5px] xl:text-sm leading-relaxed mb-3.5">
+            <p className="text-slate-300 text-xs sm:text-sm lg:text-[13.5px] xl:text-sm leading-[1.65] mb-3.5">
               ASCO Innovative Technologies was founded with a vision to illuminate a better, brighter future. What started as a passion for advanced lighting solutions has grown into a trusted brand in Pakistan, known for quality, reliability and customer satisfaction.
             </p>
 
-            <p className="text-ink text-xs sm:text-sm lg:text-[13.5px] xl:text-sm leading-relaxed">
+            <p className="text-slate-300 text-xs sm:text-sm lg:text-[13.5px] xl:text-sm leading-[1.65]">
               Through continuous innovation and a commitment to excellence, we are proud to light homes, businesses and industries across the country.
             </p>
           </div>
 
           <div className={verticalLine} aria-hidden="true" />
 
-          <div className="grid grid-cols-2 gap-3 sm:gap-4 w-full">
+          <Reveal stagger={70} duration={600} className="grid grid-cols-2 gap-3 sm:gap-4 w-full">
             <div className={statClass}>
               <Gem className="w-7 h-7 lg:w-8 lg:h-8 text-accent mb-1.5 drop-shadow-[0_0_8px_rgba(63,203,248,0.5)]" />
-              <span className="font-heading font-bold text-xl lg:text-2xl text-ink leading-tight">2.9K+</span>
+              <CountUp end={2.9} decimals={1} suffix="K+" className="font-heading font-bold text-xl lg:text-2xl text-ink leading-tight" />
               <span className="text-xs lg:text-[13px] text-ink mt-1 leading-tight lg:whitespace-nowrap">Happy Customers</span>
             </div>
             <div className={statClass}>
               <Calendar className="w-7 h-7 lg:w-8 lg:h-8 text-accent mb-1.5 drop-shadow-[0_0_8px_rgba(63,203,248,0.5)]" />
-              <span className="font-heading font-bold text-xl lg:text-2xl text-ink leading-tight">5+</span>
+              <CountUp end={5} suffix="+" className="font-heading font-bold text-xl lg:text-2xl text-ink leading-tight" />
               <span className="text-xs lg:text-[13px] text-ink mt-1 leading-tight lg:whitespace-nowrap">Years of Excellence</span>
             </div>
             <div className={statClass}>
               <ShieldCheck className="w-7 h-7 lg:w-8 lg:h-8 text-accent mb-1.5 drop-shadow-[0_0_8px_rgba(63,203,248,0.5)]" />
-              <span className="font-heading font-bold text-xl lg:text-2xl text-ink leading-tight">100%</span>
+              <CountUp end={100} suffix="%" className="font-heading font-bold text-xl lg:text-2xl text-ink leading-tight" />
               <span className="text-xs lg:text-[13px] text-ink mt-1 leading-tight lg:whitespace-nowrap">Quality Assurance</span>
             </div>
             <div className={statClass}>
@@ -150,7 +152,7 @@ export function AboutStory() {
                 Thousands
               </span>
             </div>
-          </div>
+          </Reveal>
         </div>
 
         {/* ============ ROW 2: text placed inside the frames of the background image ============ */}

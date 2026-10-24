@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { MapPin, X, ArrowRight, ChevronLeft, ChevronRight, Zap } from 'lucide-react';
 import { galleryProjects, galleryCategories, type GalleryProject } from '@/lib/gallery';
 import { siteConfig } from '@/lib/site';
+import Reveal from '@/components/Reveal';
 
 const noScrollbar = '[scrollbar-width:none] [&::-webkit-scrollbar]:hidden';
 
@@ -122,13 +123,18 @@ export function GalleryGrid() {
           </div>
         </div>
 
-        {/* ============ PROJECTS CARD GRID ============ */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
+        {/* ============ PROJECTS CARD GRID WITH STAGGER REVEAL ============ */}
+        <Reveal
+          key={selectedCategory}
+          stagger={70}
+          duration={600}
+          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 lg:gap-10"
+        >
           {filteredProjects.map((project, idx) => (
             <article
               key={project.id}
               onClick={() => setActiveProject(project)}
-              className="group relative rounded-2xl border border-primary/50 bg-[#000d24]/90 backdrop-blur-md overflow-hidden shadow-[0_0_24px_rgba(6,161,255,0.18)] hover:border-accent hover:shadow-[0_0_36px_rgba(63,203,248,0.35)] transition-all duration-500 cursor-pointer flex flex-col"
+              className="group relative rounded-2xl border border-cyan-500/20 bg-[#000d24]/90 backdrop-blur-md overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.4)] hover:border-cyan-400/50 hover:shadow-[0_0_36px_rgba(63,203,248,0.25)] transition-all duration-500 cursor-pointer flex flex-col"
             >
               {/* Image Frame */}
               <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#000814]">
@@ -149,13 +155,13 @@ export function GalleryGrid() {
 
                 {/* Top Category Badge */}
                 <div className="absolute top-3.5 left-3.5 z-10 flex items-center gap-2">
-                  <span className="px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-[#000613]/85 text-accent border border-primary/50 backdrop-blur-md shadow-[0_0_12px_rgba(6,161,255,0.4)]">
+                  <span className="px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-[0.12em] bg-[#000613]/85 text-accent border border-cyan-500/30 backdrop-blur-md shadow-[0_0_12px_rgba(6,161,255,0.4)]">
                     {project.category}
                   </span>
                 </div>
 
                 {/* Location indicator */}
-                <div className="absolute bottom-3 left-3.5 z-10 flex items-center gap-1.5 text-ink/90 text-xs font-medium bg-[#000613]/75 backdrop-blur-md px-2.5 py-1 rounded-full border border-line/40">
+                <div className="absolute bottom-3 left-3.5 z-10 flex items-center gap-1.5 text-ink/90 text-xs font-medium bg-[#000613]/75 backdrop-blur-md px-2.5 py-1 rounded-full border border-cyan-500/20">
                   <MapPin className="w-3.5 h-3.5 text-accent shrink-0" aria-hidden="true" />
                   <span>{project.location}</span>
                 </div>
@@ -164,15 +170,15 @@ export function GalleryGrid() {
               {/* Card Body */}
               <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between gap-4">
                 <div>
-                  <h3 className="font-heading font-bold text-lg sm:text-xl text-ink group-hover:text-accent transition-colors leading-snug">
+                  <h3 className="font-heading font-bold text-lg sm:text-xl text-ink group-hover:text-accent transition-colors leading-[1.18] tracking-[-0.02em]">
                     {project.title}
                   </h3>
-                  <p className="text-ink-muted text-xs sm:text-[13px] leading-relaxed mt-2 line-clamp-2">
+                  <p className="text-slate-300 text-xs sm:text-[13px] leading-[1.65] mt-2 line-clamp-2">
                     {project.description}
                   </p>
                 </div>
 
-                <div className="pt-3 border-t border-line/50 flex items-center justify-between gap-3 text-xs">
+                <div className="pt-3 border-t border-cyan-500/15 flex items-center justify-between gap-3 text-xs">
                   <span className="inline-flex items-center gap-1.5 text-accent font-medium truncate">
                     <Zap className="w-3.5 h-3.5 shrink-0" />
                     <span className="truncate">{project.productUsed}</span>
@@ -186,7 +192,7 @@ export function GalleryGrid() {
               </div>
             </article>
           ))}
-        </div>
+        </Reveal>
       </div>
 
       {/* ============ LIGHTBOX ZOOM MODAL ============ */}
@@ -195,12 +201,12 @@ export function GalleryGrid() {
           role="dialog"
           aria-modal="true"
           aria-labelledby="modal-project-title"
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10 bg-black/85 backdrop-blur-xl animate-in fade-in duration-200"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10 bg-black/85 backdrop-blur-xl animate-modal-backdrop"
           onClick={() => setActiveProject(null)}
         >
           {/* Modal Container */}
           <div
-            className="relative w-full max-w-5xl rounded-3xl border border-primary/60 bg-[#000d24] overflow-hidden shadow-[0_0_50px_rgba(6,161,255,0.4)] flex flex-col"
+            className="relative w-full max-w-5xl rounded-3xl border border-primary/60 bg-[#000d24] overflow-hidden shadow-[0_0_50px_rgba(6,161,255,0.4)] flex flex-col animate-modal-card"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}

@@ -18,7 +18,12 @@ export function WhatsAppFloatingButton() {
         aria-label="Chat with ASCO on WhatsApp"
         className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 rounded-full bg-whatsapp text-ink shadow-lg shadow-whatsapp/30 hover:scale-110 active:scale-95 transition-all duration-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-whatsapp/50"
       >
-        <WhatsAppIcon className="w-8 h-8" />
+        {/* Subtle pulsing beacon ring */}
+        <span
+          aria-hidden="true"
+          className="absolute inset-0 rounded-full border-2 border-whatsapp/70 animate-whatsapp-ring pointer-events-none"
+        />
+        <WhatsAppIcon className="w-8 h-8 relative z-10" />
       </a>
     </aside>
   );

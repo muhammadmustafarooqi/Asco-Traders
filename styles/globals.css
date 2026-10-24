@@ -15,8 +15,10 @@
   --color-gold: #FFC66D;
   --color-whatsapp: #25D366;
 
-  --font-heading: var(--font-poppins), sans-serif;
-  --font-sans: var(--font-inter), sans-serif;
+  --font-heading: var(--font-sora), sans-serif;
+  --font-sans: var(--font-manrope), sans-serif;
+  --font-sora: var(--font-sora), sans-serif;
+  --font-manrope: var(--font-manrope), sans-serif;
 }
 
 @layer base {
@@ -34,34 +36,79 @@
     background-color: var(--color-bg);
     color: var(--color-ink);
     font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.65;
     overflow-x: hidden;
     min-height: 100vh;
+  }
+
+  /* Headings: Tight letter-spacing (-0.02em), line-height 1.1-1.25, fluid clamp */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.02em;
+    color: var(--color-ink);
+    text-wrap: balance;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 1.35rem + 3.2vw, 3.75rem);
+    line-height: 1.12;
+    font-weight: 700;
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 1.15rem + 2vw, 2.5rem);
+    line-height: 1.18;
+    font-weight: 700;
+  }
+
+  h3 {
+    font-size: clamp(1.2rem, 1rem + 0.9vw, 1.75rem);
+    line-height: 1.25;
+    font-weight: 600;
+  }
+
+  p {
+    line-height: 1.65;
   }
 
   /* Clear focus styles with visible focus ring */
   a:focus-visible,
   button:focus-visible,
-  input:focus-visible {
+  input:focus-visible,
+  textarea:focus-visible {
     outline: 2px solid var(--color-accent);
     outline-offset: 3px;
   }
 }
 
-/* Universal Card Style matching the mockup */
+/* Fluid Typography & Label Utilities */
+.tracking-label {
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.body-reading {
+  font-size: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+  line-height: 1.65;
+}
+
+/* Universal Card Style matching refined subtle cyan borders */
 .asco-card {
   border-radius: 1rem; /* rounded-2xl */
-  border: 1px solid rgba(63, 203, 248, 0.6);
-  background: linear-gradient(180deg, var(--color-card) 0%, var(--color-bg) 100%);
-  box-shadow: 0 8px 24px -6px rgba(63, 203, 248, 0.18);
+  border: 1px solid rgba(63, 203, 248, 0.2);
+  background: linear-gradient(180deg, rgba(0, 26, 61, 0.82) 0%, rgba(0, 6, 19, 0.95) 100%);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 8px 30px -8px rgba(0, 0, 0, 0.5), 0 0 16px rgba(6, 161, 255, 0.08);
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
               box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
               border-color 0.3s ease;
 }
 
 .asco-card-interactive:hover {
-  transform: translateY(-4px);
-  border-color: rgba(63, 203, 248, 0.85);
-  box-shadow: 0 14px 36px -6px rgba(63, 203, 248, 0.28);
+  transform: translateY(-3px);
+  border-color: rgba(63, 203, 248, 0.45);
+  box-shadow: 0 14px 36px -6px rgba(6, 161, 255, 0.24), 0 0 24px rgba(63, 203, 248, 0.18);
 }
 
 /* Logo contrast boost & faint accent drop-shadow */
@@ -69,38 +116,184 @@
   filter: brightness(2.2) drop-shadow(0 0 10px rgba(63, 203, 248, 0.35));
 }
 
-/* Subtle Glowing Rope-Light Divider between sections */
+/* Flowing Current Animation for Rope-Light Divider */
+@keyframes ropeCurrentFlow {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
 .rope-glow-divider {
-  height: 1px;
+  height: 1.5px;
   width: 100%;
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(63, 203, 248, 0.25) 20%,
-    rgba(255, 198, 109, 0.55) 50%,
-    rgba(63, 203, 248, 0.25) 80%,
+    rgba(63, 203, 248, 0.15) 15%,
+    rgba(6, 161, 255, 0.7) 45%,
+    rgba(255, 198, 109, 0.95) 50%,
+    rgba(6, 161, 255, 0.7) 55%,
+    rgba(63, 203, 248, 0.15) 85%,
     transparent 100%
   );
-  box-shadow: 0 0 10px 1px rgba(255, 198, 109, 0.35);
+  background-size: 200% 100%;
+  animation: ropeCurrentFlow 7s linear infinite;
+  box-shadow: 0 0 10px 1px rgba(63, 203, 248, 0.4);
 }
 
-/* Hero primary button glow */
+/* Primary Button with Soft Cyan Glow */
 .btn-primary-glow {
   background: linear-gradient(90deg, #06A1FF, #37C6FC);
-  box-shadow: 0 0 20px 2px rgba(6, 161, 255, 0.4);
-  transition: all 0.3s ease;
+  color: #FFFFFF;
+  box-shadow: 0 0 18px 2px rgba(6, 161, 255, 0.35);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn-primary-glow:hover {
   background: linear-gradient(90deg, #37C6FC, #06A1FF);
-  box-shadow: 0 0 28px 4px rgba(6, 161, 255, 0.6);
+  box-shadow: 0 0 26px 4px rgba(63, 203, 248, 0.6);
+  transform: translateY(-1px);
 }
 
-/* Subtle one-time fade-in / slide-in for hero text */
+/* Secondary Button with Soft Cyan Glow */
+.btn-secondary-glow {
+  border: 1px solid rgba(63, 203, 248, 0.3);
+  background: rgba(0, 6, 19, 0.6);
+  color: var(--color-ink);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-secondary-glow:hover {
+  border-color: rgba(63, 203, 248, 0.65);
+  background: rgba(6, 161, 255, 0.12);
+  box-shadow: 0 0 22px rgba(63, 203, 248, 0.35);
+  transform: translateY(-1px);
+}
+
+/* Hero Ambient Glow Pulse */
+@keyframes ambientGlowPulse {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.03);
+  }
+}
+
+.animate-ambient-pulse {
+  animation: ambientGlowPulse 8s ease-in-out infinite;
+}
+
+/* 220V Rope Light Neon Strike-On and Steady Pulse */
+@keyframes neonFlickerOn {
+  0% {
+    opacity: 0.25;
+    filter: drop-shadow(0 0 2px rgba(6, 161, 255, 0.2));
+  }
+  10% {
+    opacity: 0.95;
+    filter: drop-shadow(0 0 20px rgba(63, 203, 248, 0.75));
+  }
+  16% {
+    opacity: 0.35;
+    filter: drop-shadow(0 0 4px rgba(6, 161, 255, 0.25));
+  }
+  28% {
+    opacity: 1;
+    filter: drop-shadow(0 0 25px rgba(63, 203, 248, 0.85));
+  }
+  36% {
+    opacity: 0.75;
+  }
+  48% {
+    opacity: 1;
+    filter: drop-shadow(0 0 22px rgba(63, 203, 248, 0.7));
+  }
+  100% {
+    opacity: 1;
+    filter: drop-shadow(0 0 16px rgba(63, 203, 248, 0.5));
+  }
+}
+
+@keyframes neonSteadyPulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 14px rgba(63, 203, 248, 0.45));
+  }
+  50% {
+    filter: drop-shadow(0 0 24px rgba(63, 203, 248, 0.75));
+  }
+}
+
+.animate-neon-strike {
+  animation: neonFlickerOn 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards,
+             neonSteadyPulse 4s ease-in-out 0.85s infinite;
+}
+
+/* WhatsApp Floating Button Ring Pulse */
+@keyframes whatsappRingPulse {
+  0% {
+    transform: scale(0.92);
+    opacity: 0.8;
+  }
+  45% {
+    transform: scale(1.42);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.42);
+    opacity: 0;
+  }
+}
+
+.animate-whatsapp-ring {
+  animation: whatsappRingPulse 3.5s cubic-bezier(0.2, 0.8, 0.4, 1) infinite;
+}
+
+/* Wave Flowing Light */
+@keyframes waveFlowDrift {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translateY(-3px);
+    opacity: 0.7;
+  }
+}
+
+.animate-wave-flow {
+  animation: waveFlowDrift 6s ease-in-out infinite;
+}
+
+@keyframes waveFlowCurrent {
+  from {
+    stroke-dashoffset: 1200;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-wave-current {
+  stroke-dasharray: 220 500;
+  animation: waveFlowCurrent 14s linear infinite;
+}
+
+.animate-wave-current-reverse {
+  stroke-dasharray: 180 450;
+  animation: waveFlowCurrent 18s linear infinite reverse;
+}
+
+/* Subtle staggered fade-in / slide-in for hero elements */
 @keyframes heroFadeIn {
   from {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(18px);
   }
   to {
     opacity: 1;
@@ -109,7 +302,84 @@
 }
 
 .hero-animate-fade {
-  animation: heroFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: heroFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero-fade-0 {
+  animation: heroFadeIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0ms both;
+}
+
+.hero-fade-1 {
+  animation: heroFadeIn 0.75s cubic-bezier(0.16, 1, 0.3, 1) 120ms both;
+}
+
+.hero-fade-2 {
+  animation: heroFadeIn 0.75s cubic-bezier(0.16, 1, 0.3, 1) 240ms both;
+}
+
+.hero-fade-3 {
+  animation: heroFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 360ms both;
+}
+
+.hero-fade-4 {
+  animation: heroFadeIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 480ms both;
+}
+
+/* Products tab switch transition */
+@keyframes catalogTabSwitch {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-tab-switch {
+  animation: catalogTabSwitch 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Modal lightbox animations */
+@keyframes modalBackdropFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalContentZoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.94) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-modal-backdrop {
+  animation: modalBackdropFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-modal-card {
+  animation: modalContentZoomIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Mobile drawer slide */
+@keyframes drawerSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-drawer-slide {
+  animation: drawerSlideIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* Reduced Motion Override */
@@ -123,9 +393,27 @@
   .asco-card-interactive:hover {
     transform: none !important;
   }
-  .hero-animate-fade {
+  .hero-animate-fade,
+  .hero-fade-0,
+  .hero-fade-1,
+  .hero-fade-2,
+  .hero-fade-3,
+  .hero-fade-4,
+  .animate-ambient-pulse,
+  .animate-neon-strike,
+  .animate-whatsapp-ring,
+  .animate-wave-flow,
+  .animate-wave-current,
+  .animate-wave-current-reverse,
+  .animate-tab-switch,
+  .animate-modal-backdrop,
+  .animate-modal-card,
+  .animate-drawer-slide,
+  .rope-glow-divider {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
+    filter: none !important;
+    stroke-dasharray: none !important;
   }
 }

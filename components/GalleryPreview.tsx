@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { siteConfig, type GalleryItem } from '@/lib/site';
+import Reveal from '@/components/Reveal';
 
 export function GalleryPreview() {
   return (
@@ -39,29 +40,35 @@ export function GalleryPreview() {
       </div>
 
       <div className="relative z-10 w-full max-w-7xl xl:max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Eyebrow with horizontal line dividers */}
-        <div className="flex items-center justify-center gap-2.5 sm:gap-3 mb-3">
-          <span className="h-[2px] w-6 sm:w-8 bg-primary rounded-full" aria-hidden="true" />
-          <span className="text-primary text-xs sm:text-sm font-bold tracking-[0.2em] uppercase">
-            OUR GALLERY
-          </span>
-          <span className="h-[2px] w-6 sm:w-8 bg-primary rounded-full" aria-hidden="true" />
-        </div>
+        <Reveal distance={20} duration={600} className="text-center">
+          {/* Eyebrow with horizontal line dividers */}
+          <div className="flex items-center justify-center gap-2.5 sm:gap-3 mb-3">
+            <span className="h-[2px] w-6 sm:w-8 bg-accent rounded-full" aria-hidden="true" />
+            <span className="text-accent text-xs sm:text-sm font-semibold tracking-[0.12em] uppercase">
+              OUR GALLERY
+            </span>
+            <span className="h-[2px] w-6 sm:w-8 bg-accent rounded-full" aria-hidden="true" />
+          </div>
 
-        {/* Heading */}
-        <h2
-          id="gallery-preview-heading"
-          className="text-center font-heading font-bold text-2xl sm:text-3xl lg:text-[2.25rem] text-ink leading-tight tracking-tight mb-8 sm:mb-10 drop-shadow-md"
-        >
-          Lighting Solutions in Real Spaces
-        </h2>
+          {/* Heading */}
+          <h2
+            id="gallery-preview-heading"
+            className="text-center font-heading font-bold text-[clamp(1.625rem,1.15rem+2.1vw,2.5rem)] text-ink leading-[1.18] tracking-[-0.02em] mb-8 sm:mb-10 drop-shadow-md"
+          >
+            Lighting Solutions in Real Spaces
+          </h2>
+        </Reveal>
 
         {/* 4 Images in Rounded Bordered Frames spanning 100vw */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-5 xl:gap-6 2xl:gap-8 w-full">
+        <Reveal
+          stagger={75}
+          duration={650}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-5 xl:gap-6 2xl:gap-8 w-full"
+        >
           {siteConfig.gallery.map((item: GalleryItem) => (
             <div
               key={item.id}
-              className="group relative aspect-[16/10] sm:aspect-[4/3] lg:aspect-[16/10] overflow-hidden rounded-2xl border border-primary/50 hover:border-accent shadow-[0_0_20px_rgba(6,161,255,0.18)] hover:shadow-[0_0_28px_rgba(63,203,248,0.4)] transition-all duration-300"
+              className="group relative aspect-[16/10] sm:aspect-[4/3] lg:aspect-[16/10] overflow-hidden rounded-2xl border border-cyan-500/20 hover:border-cyan-400/50 shadow-[0_4px_20px_rgba(0,0,0,0.4)] hover:shadow-[0_0_28px_rgba(63,203,248,0.25)] hover:-translate-y-1 transition-all duration-300"
             >
               <Image
                 src={item.image}
@@ -73,18 +80,18 @@ export function GalleryPreview() {
               />
             </div>
           ))}
-        </div>
+        </Reveal>
 
         {/* Centered Outlined Pill Button matching mockup */}
         <div className="text-center mt-8 sm:mt-10">
           <Link
             href="/gallery"
             aria-label="View complete ASCO LED lighting gallery and projects"
-            className="inline-flex items-center gap-2 px-6 sm:px-7 py-2.5 rounded-full text-ink font-semibold text-xs sm:text-sm border border-primary/90 bg-bg/70 hover:bg-primary/10 hover:border-accent hover:text-accent shadow-[0_0_15px_rgba(6,161,255,0.25)] hover:shadow-[0_0_22px_rgba(63,203,248,0.5)] transition-all duration-300 group"
+            className="btn-secondary-glow inline-flex items-center gap-2 px-6 sm:px-7 py-2.5 rounded-full text-ink font-semibold text-xs sm:text-sm shadow-[0_0_15px_rgba(6,161,255,0.25)] hover:shadow-[0_0_22px_rgba(63,203,248,0.5)] transition-all duration-300 group"
           >
             <span>View More Projects</span>
             <ArrowRight
-              className="w-4 h-4 text-primary group-hover:text-accent transition-transform group-hover:translate-x-1"
+              className="w-4 h-4 text-accent transition-transform group-hover:translate-x-1"
               aria-hidden="true"
             />
           </Link>

@@ -75,26 +75,26 @@ function LinkedInIcon(props: React.SVGProps<SVGSVGElement>) {
    shrinks on short screens and never grows past 100dvh. */
 
 const cardClass =
-  'flex-1 flex items-center rounded-2xl border-[1.5px] border-primary/80 bg-[#00102a]/70 backdrop-blur-md px-5 py-3.5 sm:px-6 lg:py-[1.2dvh] xl:px-8 ' +
-  'shadow-[0_0_16px_rgba(6,161,255,0.3),inset_0_0_14px_rgba(6,161,255,0.08)] ' +
-  'hover:border-accent hover:shadow-[0_0_26px_rgba(63,203,248,0.45)] transition-all duration-300';
+  'flex-1 flex items-center rounded-2xl border border-cyan-500/25 bg-[#00102a]/70 backdrop-blur-md px-5 py-3.5 sm:px-6 lg:py-[1.2dvh] xl:px-8 ' +
+  'shadow-[0_4px_16px_rgba(0,0,0,0.4),inset_0_0_14px_rgba(6,161,255,0.06)] ' +
+  'hover:border-cyan-400/50 hover:shadow-[0_0_26px_rgba(63,203,248,0.3)] transition-all duration-300';
 
 const rowClass = 'flex items-center gap-5 lg:gap-6 xl:gap-10 w-full';
 const iconBox = 'w-10 sm:w-11 lg:w-12 shrink-0 flex justify-center text-accent';
 const iconClass =
   'w-9 h-9 lg:w-[clamp(28px,4.4dvh,40px)] lg:h-[clamp(28px,4.4dvh,40px)] drop-shadow-[0_0_8px_rgba(63,203,248,0.55)]';
 const labelClass =
-  'block text-accent text-[13px] lg:text-[clamp(12px,1.7dvh,15px)] font-medium leading-tight';
+  'block text-accent text-[13px] lg:text-[clamp(12px,1.7dvh,15px)] font-semibold tracking-[0.12em] uppercase leading-tight';
 const valueClass =
-  'text-ink font-medium text-[15px] lg:text-[clamp(14px,2dvh,18px)] leading-snug mt-1';
+  'text-ink font-semibold text-[15px] lg:text-[clamp(14px,2dvh,18px)] leading-snug mt-1 tracking-[-0.01em]';
 const subClass =
-  'text-ink/80 text-xs lg:text-[clamp(11px,1.5dvh,14px)] mt-1 font-normal';
+  'text-slate-300 text-xs lg:text-[clamp(11px,1.5dvh,14px)] mt-1 font-normal leading-[1.65]';
 
 const fieldLabel =
   'block text-[13px] lg:text-[clamp(12px,1.55dvh,14px)] font-medium text-ink mb-1.5 lg:mb-[0.7dvh]';
 const fieldClass =
-  'w-full rounded-[10px] border border-primary/70 bg-[#000814]/80 px-3.5 py-2 lg:py-[clamp(6px,1dvh,10px)] text-[13px] lg:text-[clamp(12px,1.55dvh,14px)] text-ink placeholder:text-ink/50 ' +
-  'focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-all';
+  'w-full rounded-[10px] border border-cyan-500/30 bg-[#000814]/80 px-3.5 py-2 lg:py-[clamp(6px,1dvh,10px)] text-[13px] lg:text-[clamp(12px,1.55dvh,14px)] text-ink placeholder:text-slate-400 ' +
+  'focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400/50 transition-all';
 
 const socialLink = 'text-accent hover:text-ink hover:scale-110 transition-all';
 const socialIcon = 'w-5 h-5 lg:w-[clamp(18px,2.7dvh,24px)] lg:h-[clamp(18px,2.7dvh,24px)]';
@@ -258,7 +258,7 @@ export function ContactSection() {
           </div>
 
           {/* ============ RIGHT COLUMN: form card ============ */}
-          <div className="rounded-3xl border-[1.5px] border-primary/80 bg-[#000d24]/85 backdrop-blur-md p-5 sm:p-6 lg:px-7 lg:py-[2dvh] xl:px-8 shadow-[0_0_30px_rgba(6,161,255,0.28),inset_0_0_20px_rgba(6,161,255,0.06)] flex flex-col justify-between">
+          <div className="rounded-3xl border border-cyan-500/25 bg-[#000d24]/85 backdrop-blur-md p-5 sm:p-6 lg:px-7 lg:py-[2dvh] xl:px-8 shadow-[0_4px_30px_rgba(0,0,0,0.5),inset_0_0_20px_rgba(6,161,255,0.06)] flex flex-col justify-between">
             {/* Header */}
             <div className="flex items-center gap-4 sm:gap-5 mb-4 lg:mb-[2dvh]">
               <div
@@ -270,18 +270,18 @@ export function ContactSection() {
 
               <div className="min-w-0 flex-1">
                 <div className="flex items-center gap-3">
-                  <span className="text-accent text-[11px] sm:text-xs lg:text-[clamp(11px,1.45dvh,13px)] font-bold tracking-[0.2em] uppercase whitespace-nowrap">
+                  <span className="text-accent text-[11px] sm:text-xs lg:text-[clamp(11px,1.45dvh,13px)] font-semibold tracking-[0.12em] uppercase whitespace-nowrap">
                     SEND US A MESSAGE
                   </span>
                   <span aria-hidden="true" className="h-px flex-1 bg-gradient-to-r from-accent/60 to-transparent" />
                 </div>
                 <h2
                   id="contact-section-heading"
-                  className="font-heading font-semibold text-2xl sm:text-3xl lg:text-[clamp(1.4rem,3.4dvh,1.9rem)] text-ink leading-tight mt-1"
+                  className="font-heading font-bold text-2xl sm:text-3xl lg:text-[clamp(1.4rem,3.4dvh,1.9rem)] text-ink leading-[1.18] tracking-[-0.02em] mt-1"
                 >
                   How Can We Help You?
                 </h2>
-                <p className="text-ink/90 text-[13px] lg:text-[clamp(12px,1.55dvh,14px)] mt-1 leading-relaxed">
+                <p className="text-slate-300 text-[13px] lg:text-[clamp(12px,1.55dvh,14px)] mt-1 leading-[1.65]">
                   Fill out the form below and our team will get back to you as soon as possible.
                 </p>
               </div>

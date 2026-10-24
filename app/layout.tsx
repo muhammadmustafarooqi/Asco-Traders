@@ -1,21 +1,23 @@
 import type { Metadata } from 'next';
-import { Inter, Poppins } from 'next/font/google';
+import { Sora, Manrope } from 'next/font/google';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { WhatsAppFloatingButton } from '@/components/WhatsAppFloatingButton';
 import '../styles/globals.css';
 
-const inter = Inter({
+import { ScrollProgressBar } from '@/components/ScrollProgressBar';
+
+const sora = Sora({
   subsets: ['latin'],
-  weight: ['400', '500'],
-  variable: '--font-inter',
+  weight: ['600', '700', '800'],
+  variable: '--font-sora',
   display: 'swap',
 });
 
-const poppins = Poppins({
+const manrope = Manrope({
   subsets: ['latin'],
-  weight: ['600', '700'],
-  variable: '--font-poppins',
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-manrope',
   display: 'swap',
 });
 
@@ -94,7 +96,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${poppins.variable} scroll-smooth`}
+      className={`${sora.variable} ${manrope.variable} scroll-smooth`}
       suppressHydrationWarning
     >
       <head>
@@ -107,6 +109,7 @@ export default function RootLayout({
         className="min-h-screen flex flex-col bg-bg text-ink font-sans antialiased selection:bg-accent/30 selection:text-ink"
         suppressHydrationWarning
       >
+        <ScrollProgressBar />
         <Navbar />
         <main id="main-content" className="flex-1">
           {children}

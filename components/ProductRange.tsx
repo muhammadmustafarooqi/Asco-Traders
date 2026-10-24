@@ -1,6 +1,7 @@
 import { products } from '@/lib/products';
 import { ProductCard } from '@/components/ProductCard';
 import { GlowWaves } from '@/components/GlowWaves';
+import Reveal from '@/components/Reveal';
 
 export function ProductRange() {
   return (
@@ -26,13 +27,13 @@ export function ProductRange() {
 
       <div className="relative z-10 w-full max-w-7xl xl:max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading with decorative lines matching design */}
-        <div className="text-center max-w-4xl mx-auto mb-10 sm:mb-14">
+        <Reveal distance={20} duration={600} className="text-center max-w-4xl mx-auto mb-10 sm:mb-14">
           <div className="flex items-center justify-center gap-2.5 sm:gap-3 mb-3">
             <span
               className="h-0.5 w-6 sm:w-10 bg-accent rounded-full"
               aria-hidden="true"
             />
-            <span className="text-accent text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase">
+            <span className="text-accent text-xs sm:text-sm font-semibold tracking-[0.12em] uppercase">
               OUR PRODUCTS
             </span>
             <span
@@ -43,20 +44,24 @@ export function ProductRange() {
 
           <h2
             id="products-range-heading"
-            className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl xl:text-5xl text-ink text-center tracking-tight leading-snug"
+            className="font-heading font-bold text-[clamp(1.625rem,1.15rem+2.1vw,2.5rem)] text-ink text-center tracking-[-0.02em] leading-[1.18]"
           >
             Complete Range of <span className="text-accent">LED</span> Lighting Solutions
           </h2>
-        </div>
+        </Reveal>
 
-        {/* 6 Product Cards Grid: 2 cols on mobile, 3 cols on tablet, 6 cols in a single row on desktop taking 100vw */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5 sm:gap-4 lg:gap-4 xl:gap-5 2xl:gap-6 items-stretch w-full">
+        {/* 6 Product Cards Grid with 70ms stagger */}
+        <Reveal
+          stagger={70}
+          duration={650}
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5 sm:gap-4 lg:gap-4 xl:gap-5 2xl:gap-6 items-stretch w-full"
+        >
           {products.map((product) => (
             <div key={product.slug} className="h-full">
               <ProductCard product={product} />
             </div>
           ))}
-        </div>
+        </Reveal>
       </div>
     </section>
   );

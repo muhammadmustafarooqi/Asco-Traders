@@ -123,7 +123,7 @@ export function PageHero({
 
                         {/* Eyebrow */}
                         {eyebrowStyle === 'lines' ? (
-                            <p className="mb-3 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em] text-accent sm:text-sm xl:mb-[1.2cqw] xl:gap-[0.9cqw] xl:text-[length:clamp(0.7rem,1cqw,0.95rem)]">
+                            <p className="mb-3 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.12em] text-accent sm:text-sm xl:mb-[1.2cqw] xl:gap-[0.9cqw] xl:text-[length:clamp(0.7rem,1cqw,0.95rem)]">
                                 <span aria-hidden="true" className="block h-px w-6 bg-accent xl:w-[1.8cqw]" />
                                 <span>{eyebrow}</span>
                                 <span aria-hidden="true" className="block h-px w-6 bg-accent xl:w-[1.8cqw]" />
@@ -134,7 +134,7 @@ export function PageHero({
                                     className="mb-2 block h-[2px] w-7 rounded-full bg-accent shadow-[0_0_8px_rgba(63,203,248,0.7)] sm:w-8 xl:mb-[0.5cqw] xl:w-[1.5cqw]"
                                     aria-hidden="true"
                                 />
-                                <p className="text-xs font-bold uppercase tracking-[0.2em] text-accent sm:text-sm xl:text-[length:clamp(0.7rem,1cqw,0.95rem)]">
+                                <p className="text-xs font-semibold uppercase tracking-[0.12em] text-accent sm:text-sm xl:text-[length:clamp(0.7rem,1cqw,0.95rem)]">
                                     {eyebrow}
                                 </p>
                             </div>
@@ -146,13 +146,13 @@ export function PageHero({
                             style={{
                                 textShadow: '0 2px 20px rgba(0, 6, 19, 0.95), 0 0 45px rgba(0, 6, 19, 0.9)',
                             }}
-                            className="mb-3 font-heading text-3xl font-bold leading-[1.12] tracking-tight text-ink drop-shadow-md sm:mb-4 sm:text-4xl md:text-5xl xl:mb-[1.6cqw] xl:text-[length:clamp(2rem,3cqw,3.5rem)]"
+                            className="mb-3 font-heading text-[clamp(1.85rem,1.4rem+2.6vw,3.25rem)] font-bold leading-[1.12] tracking-[-0.02em] text-ink drop-shadow-md sm:mb-4 xl:mb-[1.6cqw] xl:text-[length:clamp(2rem,3cqw,3.5rem)]"
                         >
                             {heading}
                         </h1>
 
                         {/* Subtext */}
-                        <p className="mb-5 max-w-md text-sm leading-relaxed text-ink-muted drop-shadow-sm sm:mb-6 sm:text-base xl:mb-[1.9cqw] xl:max-w-[42cqw] xl:text-[length:clamp(0.8rem,1.15cqw,1.2rem)] xl:leading-[1.5]">
+                        <p className="mb-5 max-w-md text-sm leading-[1.65] text-slate-300 drop-shadow-sm sm:mb-6 sm:text-base xl:mb-[1.9cqw] xl:max-w-[42cqw] xl:text-[length:clamp(0.85rem,1.15cqw,1.15rem)] xl:leading-[1.65]">
                             {subtext}
                         </p>
 

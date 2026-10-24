@@ -36,7 +36,7 @@ export function StayUpdated({ className = '', id, variant = 'newsletter' }: Stay
     return (
       <div
         id={id}
-        className={`relative w-full rounded-2xl border border-primary/60 overflow-hidden backdrop-blur-md shadow-[0_0_30px_rgba(6,161,255,0.28),inset_0_0_35px_rgba(6,161,255,0.12)] min-h-[155px] sm:min-h-[165px] lg:min-h-[185px] xl:min-h-[200px] flex items-center ${className}`}
+        className={`relative w-full rounded-2xl border border-cyan-500/25 overflow-hidden backdrop-blur-md shadow-[0_4px_30px_rgba(0,0,0,0.5),inset_0_0_35px_rgba(6,161,255,0.08)] min-h-[155px] sm:min-h-[165px] lg:min-h-[185px] xl:min-h-[200px] flex items-center ${className}`}
         style={{
           background:
             'linear-gradient(100deg, rgba(8,38,88,0.72) 0%, rgba(4,22,56,0.82) 55%, rgba(2,12,34,0.9) 100%)',
@@ -72,10 +72,10 @@ export function StayUpdated({ className = '', id, variant = 'newsletter' }: Stay
         {/* Content: Constrained to left ~65% so the button sits in the center-left adjacent to text */}
         <div className="relative z-10 w-full px-5 py-6 sm:px-8 sm:py-7 lg:px-10 lg:py-8 xl:px-14 flex flex-col md:flex-row items-start md:items-center justify-between gap-5 lg:gap-8 xl:gap-12 md:max-w-[62%] lg:max-w-[68%]">
           <div className="flex-1 min-w-0">
-            <h2 className="font-heading font-bold text-xl sm:text-2xl lg:text-[1.75rem] text-ink leading-tight tracking-tight">
+            <h2 className="font-heading font-bold text-xl sm:text-2xl lg:text-[1.75rem] text-ink leading-[1.18] tracking-[-0.02em]">
               Let&apos;s Light Up a Better <span className="text-accent">Future Together</span>
             </h2>
-            <p className="text-ink-muted text-xs sm:text-sm lg:text-[14px] mt-1.5 font-normal leading-relaxed">
+            <p className="text-slate-300 text-xs sm:text-sm lg:text-[14px] mt-1.5 font-normal leading-[1.65]">
               Partner with ASCO for premium LED lighting solutions.
             </p>
           </div>
@@ -84,7 +84,7 @@ export function StayUpdated({ className = '', id, variant = 'newsletter' }: Stay
             <Link
               href="/contact"
               aria-label="Contact ASCO for LED lighting solutions"
-              className="inline-flex items-center gap-2.5 px-6 sm:px-7 py-2.5 sm:py-3 rounded-full border border-primary/90 bg-[#000613]/70 hover:bg-primary/15 hover:border-accent hover:text-accent shadow-[0_0_15px_rgba(6,161,255,0.25)] hover:shadow-[0_0_22px_rgba(63,203,248,0.5)] text-ink font-semibold text-xs sm:text-sm transition-all duration-300 group"
+              className="btn-secondary-glow inline-flex items-center gap-2.5 px-6 sm:px-7 py-2.5 sm:py-3 rounded-full text-ink font-semibold text-xs sm:text-sm transition-all duration-300 group"
             >
               <span>Contact Us</span>
               <span className="text-accent text-sm group-hover:translate-x-1 transition-transform" aria-hidden="true">
@@ -101,7 +101,7 @@ export function StayUpdated({ className = '', id, variant = 'newsletter' }: Stay
   return (
     <div
       id={id}
-      className={`relative w-full rounded-2xl border border-primary/60 overflow-hidden backdrop-blur-md shadow-[0_0_30px_rgba(6,161,255,0.28),inset_0_0_35px_rgba(6,161,255,0.12)] min-h-[155px] sm:min-h-[165px] lg:min-h-[185px] xl:min-h-[200px] flex items-center ${className}`}
+      className={`relative w-full rounded-2xl border border-cyan-500/25 overflow-hidden backdrop-blur-md shadow-[0_4px_30px_rgba(0,0,0,0.5),inset_0_0_35px_rgba(6,161,255,0.08)] min-h-[155px] sm:min-h-[165px] lg:min-h-[185px] xl:min-h-[200px] flex items-center ${className}`}
       style={{
         background:
           'linear-gradient(100deg, rgba(8,38,88,0.72) 0%, rgba(4,22,56,0.82) 55%, rgba(2,12,34,0.9) 100%)',
@@ -139,16 +139,16 @@ export function StayUpdated({ className = '', id, variant = 'newsletter' }: Stay
         {/* Left: round glowing mail icon + heading & subtext */}
         <div className="flex items-center gap-4 sm:gap-5 w-full lg:w-auto shrink-0">
           <div
-            className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#000613]/70 border border-primary/60 flex items-center justify-center shrink-0 shadow-[0_0_22px_rgba(6,161,255,0.4),inset_0_0_12px_rgba(6,161,255,0.15)]"
+            className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#000613]/70 border border-cyan-500/40 flex items-center justify-center shrink-0 shadow-[0_0_20px_rgba(6,161,255,0.35)]"
             aria-hidden="true"
           >
-            <Mail className="w-6 h-6 sm:w-7 sm:h-7 text-primary" />
+            <Mail className="w-6 h-6 sm:w-7 sm:h-7 text-accent" />
           </div>
           <div>
-            <h3 className="font-heading font-bold text-lg sm:text-xl lg:text-2xl xl:text-[1.7rem] text-ink leading-tight">
+            <h3 className="font-heading font-bold text-lg sm:text-xl lg:text-2xl xl:text-[1.7rem] text-ink leading-[1.18] tracking-[-0.02em]">
               Stay Updated
             </h3>
-            <p className="text-ink-muted text-xs sm:text-[13px] xl:text-sm mt-1">
+            <p className="text-slate-300 text-xs sm:text-[13px] xl:text-sm mt-1 leading-[1.65]">
               Get the latest updates, products and offers from ASCO.
             </p>
           </div>
@@ -164,7 +164,7 @@ export function StayUpdated({ className = '', id, variant = 'newsletter' }: Stay
           ) : (
             <form
               onSubmit={handleSubmit}
-              className="w-full flex items-center rounded-full border border-primary/60 bg-[#000613]/90 p-1 sm:p-1.5 shadow-[0_0_22px_rgba(6,161,255,0.22)] focus-within:border-accent focus-within:shadow-[0_0_28px_rgba(63,203,248,0.4)] transition-all duration-300"
+              className="w-full flex items-center rounded-full border border-cyan-500/30 bg-[#000613]/90 p-1 sm:p-1.5 shadow-[0_0_20px_rgba(0,0,0,0.5)] focus-within:border-accent focus-within:shadow-[0_0_24px_rgba(63,203,248,0.35)] transition-all duration-300"
             >
               <label htmlFor="newsletter-email" className="sr-only">
                 Email address
@@ -176,11 +176,11 @@ export function StayUpdated({ className = '', id, variant = 'newsletter' }: Stay
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Your Email Address"
-                className="w-full bg-transparent px-4 sm:px-5 py-2.5 text-ink text-xs sm:text-sm placeholder:text-ink-muted/70 focus:outline-none min-w-0"
+                className="w-full bg-transparent px-4 sm:px-5 py-2.5 text-ink text-xs sm:text-sm placeholder:text-slate-400 focus:outline-none min-w-0"
               />
               <button
                 type="submit"
-                className="shrink-0 px-5 sm:px-7 py-2.5 sm:py-3 rounded-full text-bg font-bold text-xs sm:text-sm bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary shadow-[0_0_15px_rgba(6,161,255,0.45)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 cursor-pointer"
+                className="shrink-0 px-5 sm:px-7 py-2.5 sm:py-3 rounded-full text-bg font-bold text-xs sm:text-sm bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary shadow-[0_0_15px_rgba(6,161,255,0.45)] hover:shadow-[0_0_24px_rgba(63,203,248,0.6)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 cursor-pointer"
               >
                 Subscribe
               </button>

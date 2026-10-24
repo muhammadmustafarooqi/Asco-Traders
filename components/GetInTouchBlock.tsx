@@ -34,11 +34,11 @@ export function GetInTouchBlock() {
               <div>
                 <h2
                   id="get-in-touch-heading"
-                  className="font-heading font-semibold text-2xl sm:text-3xl lg:text-4xl text-ink tracking-tight"
+                  className="font-heading font-bold text-[clamp(1.625rem,1.15rem+2.1vw,2.5rem)] text-ink leading-[1.18] tracking-[-0.02em]"
                 >
                   Get in Touch
                 </h2>
-                <p className="text-ink-muted text-base sm:text-lg mt-1 font-normal">
+                <p className="text-slate-300 text-base sm:text-lg mt-1 font-normal leading-[1.65]">
                   We&apos;d love to hear from you
                 </p>
               </div>
@@ -50,13 +50,13 @@ export function GetInTouchBlock() {
                 href={getWhatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-7 py-3.5 text-sm sm:text-base font-semibold rounded-lg text-ink bg-gradient-to-r from-primary to-accent hover:from-primary-hover hover:to-primary shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all duration-300"
+                className="btn-primary-glow inline-flex items-center justify-center px-7 py-3.5 text-sm sm:text-base font-semibold rounded-full text-ink"
               >
                 Chat on WhatsApp
               </a>
               <a
                 href={`tel:${primaryPhone.tel}`}
-                className="inline-flex items-center justify-center px-7 py-3.5 text-sm sm:text-base font-semibold rounded-lg border border-accent text-ink hover:bg-accent/15 hover:border-accent transition-all duration-300 shadow-sm"
+                className="btn-secondary-glow inline-flex items-center justify-center px-7 py-3.5 text-sm sm:text-base font-semibold rounded-full text-ink"
               >
                 Call Us
               </a>

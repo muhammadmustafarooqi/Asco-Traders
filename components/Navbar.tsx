@@ -16,6 +16,9 @@ function WhatsAppIcon(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
+const navLinkBase =
+  "text-[15px] font-medium transition-colors py-1 relative after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:right-0 after:h-[2px] after:bg-accent after:origin-left after:transition-transform after:duration-300";
+
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -78,10 +81,10 @@ export function Navbar() {
       </a>
 
       <header
-        className={`fixed top-0 inset-x-0 z-50 h-20 transition-all duration-300 ${
+        className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? 'bg-bg/80 backdrop-blur-md border-b border-line shadow-lg shadow-bg/40'
-            : 'bg-transparent border-b border-transparent'
+            ? 'h-16 bg-bg/85 backdrop-blur-md border-b border-line/80 shadow-lg shadow-bg/50'
+            : 'h-20 bg-transparent border-b border-transparent'
         }`}
       >
         <div className="max-w-7xl xl:max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 h-full">
@@ -107,10 +110,10 @@ export function Navbar() {
               {/* Home Link */}
               <Link
                 href="/"
-                className={`text-[15px] font-medium transition-colors py-1 relative ${
+                className={`${navLinkBase} ${
                   pathname === '/'
-                    ? 'text-accent after:absolute after:bottom-[-2px] after:left-0 after:right-0 after:h-[2px] after:bg-accent'
-                    : 'text-ink-muted hover:text-ink'
+                    ? 'text-accent after:scale-x-100'
+                    : 'text-ink-muted hover:text-ink after:scale-x-0 hover:after:scale-x-100'
                 }`}
                 aria-current={pathname === '/' ? 'page' : undefined}
               >
@@ -127,10 +130,10 @@ export function Navbar() {
                 <div className="flex items-center gap-1">
                   <Link
                     href="/products"
-                    className={`text-[15px] font-medium transition-colors py-1 relative ${
+                    className={`${navLinkBase} ${
                       pathname?.startsWith('/products')
-                        ? 'text-accent after:absolute after:bottom-[-2px] after:left-0 after:right-0 after:h-[2px] after:bg-accent'
-                        : 'text-ink-muted hover:text-ink'
+                        ? 'text-accent after:scale-x-100'
+                        : 'text-ink-muted hover:text-ink after:scale-x-0 hover:after:scale-x-100'
                     }`}
                     aria-current={pathname?.startsWith('/products') ? 'page' : undefined}
                   >
@@ -162,14 +165,14 @@ export function Navbar() {
                     id="products-menu-dropdown"
                     role="menu"
                     aria-labelledby="products-menu-button"
-                    className="absolute top-full left-0 mt-2 w-80 rounded-2xl border border-primary/50 bg-[#000d24]/95 backdrop-blur-2xl shadow-[0_12px_40px_rgba(0,6,19,0.95),0_0_24px_rgba(6,161,255,0.25)] p-2.5 z-50 animate-in fade-in slide-in-from-top-1 duration-150"
+                    className="absolute top-full left-0 mt-2 w-80 rounded-2xl border border-cyan-500/25 bg-[#000d24]/95 backdrop-blur-2xl shadow-[0_12px_40px_rgba(0,6,19,0.95),0_0_24px_rgba(6,161,255,0.15)] p-2.5 z-50 animate-in fade-in slide-in-from-top-1 duration-150"
                   >
                     {/* View All Products Header Link */}
                     <Link
                       href="/products"
                       role="menuitem"
                       onClick={() => setIsProductsOpen(false)}
-                      className="flex items-center justify-between px-3.5 py-2 rounded-xl text-xs font-bold uppercase tracking-wider text-accent bg-primary/15 hover:bg-accent hover:text-[#000613] border border-primary/40 hover:border-accent transition-all mb-1.5 group shadow-[0_0_12px_rgba(6,161,255,0.15)]"
+                      className="flex items-center justify-between px-3.5 py-2 rounded-xl text-xs font-semibold uppercase tracking-[0.12em] text-accent bg-primary/15 hover:bg-accent hover:text-[#000613] border border-cyan-500/30 hover:border-accent transition-all mb-1.5 group shadow-[0_0_12px_rgba(6,161,255,0.15)]"
                     >
                       <span>All Products &amp; Catalog</span>
                       <span
@@ -189,7 +192,7 @@ export function Navbar() {
                           onClick={() => setIsProductsOpen(false)}
                           className="flex items-center gap-3 px-2.5 py-2 rounded-xl text-sm text-ink-muted hover:text-ink hover:bg-primary/20 transition-all group"
                         >
-                          <div className="relative w-9 h-9 rounded-lg overflow-hidden border border-primary/40 bg-[#000814] shrink-0">
+                          <div className="relative w-9 h-9 rounded-lg overflow-hidden border border-cyan-500/20 bg-[#000814] shrink-0">
                             <Image
                               src={item.image}
                               alt=""
@@ -199,10 +202,10 @@ export function Navbar() {
                             />
                           </div>
                           <div className="flex-1 min-w-0">
-                            <span className="font-semibold block text-[13px] text-ink group-hover:text-accent transition-colors truncate">
+                            <span className="font-heading font-semibold block text-[13px] text-ink group-hover:text-accent transition-colors truncate">
                               {item.name}
                             </span>
-                            <span className="text-[11px] text-ink-muted/70 block truncate leading-tight">
+                            <span className="text-[11px] text-slate-300/80 block truncate leading-tight">
                               {item.tagline || item.category}
                             </span>
                           </div>
@@ -222,10 +225,10 @@ export function Navbar() {
               {/* About Link */}
               <Link
                 href="/about"
-                className={`text-[15px] font-medium transition-colors py-1 relative ${
+                className={`${navLinkBase} ${
                   pathname === '/about'
-                    ? 'text-accent after:absolute after:bottom-[-2px] after:left-0 after:right-0 after:h-[2px] after:bg-accent'
-                    : 'text-ink-muted hover:text-ink'
+                    ? 'text-accent after:scale-x-100'
+                    : 'text-ink-muted hover:text-ink after:scale-x-0 hover:after:scale-x-100'
                 }`}
                 aria-current={pathname === '/about' ? 'page' : undefined}
               >
@@ -235,10 +238,10 @@ export function Navbar() {
               {/* Gallery Link */}
               <Link
                 href="/gallery"
-                className={`text-[15px] font-medium transition-colors py-1 relative ${
+                className={`${navLinkBase} ${
                   pathname === '/gallery'
-                    ? 'text-accent after:absolute after:bottom-[-2px] after:left-0 after:right-0 after:h-[2px] after:bg-accent'
-                    : 'text-ink-muted hover:text-ink'
+                    ? 'text-accent after:scale-x-100'
+                    : 'text-ink-muted hover:text-ink after:scale-x-0 hover:after:scale-x-100'
                 }`}
                 aria-current={pathname === '/gallery' ? 'page' : undefined}
               >
@@ -248,10 +251,10 @@ export function Navbar() {
               {/* Contact Link */}
               <Link
                 href="/contact"
-                className={`text-[15px] font-medium transition-colors py-1 relative ${
+                className={`${navLinkBase} ${
                   pathname === '/contact'
-                    ? 'text-accent after:absolute after:bottom-[-2px] after:left-0 after:right-0 after:h-[2px] after:bg-accent'
-                    : 'text-ink-muted hover:text-ink'
+                    ? 'text-accent after:scale-x-100'
+                    : 'text-ink-muted hover:text-ink after:scale-x-0 hover:after:scale-x-100'
                 }`}
                 aria-current={pathname === '/contact' ? 'page' : undefined}
               >
@@ -265,7 +268,7 @@ export function Navbar() {
                 href={getWhatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2 text-sm font-medium rounded-full border border-accent text-ink hover:bg-accent/15 hover:border-accent transition-all duration-200 shadow-[0_0_15px_rgba(63,203,248,0.25)] hover:shadow-[0_0_20px_rgba(63,203,248,0.4)]"
+                className="btn-secondary-glow inline-flex items-center gap-2 px-5 py-2 text-sm font-semibold rounded-full text-ink transition-all duration-200"
               >
                 <WhatsAppIcon className="h-4 w-4 text-whatsapp" />
                 <span>WhatsApp Us</span>
@@ -292,7 +295,7 @@ export function Navbar() {
         {isOpen && (
           <div
             id="mobile-navigation-menu"
-            className="md:hidden border-b border-line bg-surface/98 backdrop-blur-xl px-4 pt-4 pb-6 space-y-3 max-h-[calc(100vh-80px)] overflow-y-auto animate-in fade-in slide-in-from-top-2 duration-200"
+            className="md:hidden border-b border-line bg-surface/98 backdrop-blur-xl px-4 pt-4 pb-6 space-y-3 max-h-[calc(100vh-80px)] overflow-y-auto animate-drawer-slide"
           >
             <nav className="flex flex-col space-y-1.5" aria-label="Mobile Navigation">
               {/* Home */}
