@@ -2,62 +2,69 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, Check, ShieldCheck, Zap } from 'lucide-react';
-import { products, getProductBySlug } from '@/lib/products';
+import { ArrowLeft, ArrowRight, Check, ShieldCheck, Zap } from 'lucide-react';
+import {
+  categories,
+  getCategoryBySlug,
+  getRequestPriceWhatsAppUrl,
+  type Category,
+  type Item,
+} from '@/lib/products';
 import { siteConfig } from '@/lib/site';
+import { ProductItemCard } from '@/components/ProductItemCard';
 import { GlowDivider } from '@/components/GlowDivider';
 import { StayUpdated } from '@/components/StayUpdated';
 
-interface ProductDetailPageProps {
+interface CategoryPageProps {
   params: Promise<{
     slug: string;
   }>;
 }
 
 export async function generateStaticParams() {
-  return products.map((product) => ({
-    slug: product.slug,
+  return categories.map((cat) => ({
+    slug: cat.slug,
   }));
 }
 
-export async function generateMetadata({ params }: ProductDetailPageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const product = getProductBySlug(slug);
+  const category = getCategoryBySlug(slug);
 
-  if (!product) {
+  if (!category) {
     return {
-      title: 'Product Not Found | ASCO Innovative Technologies',
+      title: 'Category Not Found | ASCO Innovative Technologies',
     };
   }
 
   return {
-    title: `${product.name} | ASCO Innovative Technologies`,
-    description: product.description,
+    title: `${category.name} | ASCO Innovative Technologies`,
+    description: `${category.description} Explore all ${category.items.length} items and specifications in ${category.name}.`,
+    openGraph: {
+      title: `${category.name} | ASCO Innovative Technologies`,
+      description: category.description,
+      images: [category.image],
+    },
   };
 }
 
 function WhatsAppIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
-      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
     </svg>
   );
 }
 
-export default async function ProductDetailPage({ params }: ProductDetailPageProps) {
+export default async function CategoryDetailPage({ params }: CategoryPageProps) {
   const { slug } = await params;
-  const product = getProductBySlug(slug);
+  const category = getCategoryBySlug(slug);
 
-  if (!product) {
+  if (!category) {
     notFound();
   }
 
-  const whatsappUrl = `https://wa.me/${siteConfig.whatsapp.primaryNumber}?text=${encodeURIComponent(
-    `Hello ASCO, I would like to enquire about ${product.name} (${product.category}). Please provide the technical datasheet and wholesale price.`
-  )}`;
-
-  // Related products from other categories
-  const relatedProducts = products.filter((p) => p.slug !== product.slug).slice(0, 3);
+  const otherCategories = categories.filter((c) => c.slug !== category.slug);
 
   return (
     <div className="bg-[#000613] min-h-screen text-ink pt-24 pb-16 sm:pt-28 lg:pt-32">
@@ -72,166 +79,150 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
             <span>All Products</span>
           </Link>
           <span className="text-line">/</span>
-          <span>{product.category}</span>
-          <span className="text-line">/</span>
-          <span className="text-ink truncate">{product.name}</span>
+          <span className="text-ink font-semibold">{category.name}</span>
         </div>
 
-        {/* ============ MAIN 2-COLUMN PRODUCT DETAIL ============ */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1.25fr] gap-8 lg:gap-12 xl:gap-14 items-start">
-          {/* LEFT: Image Gallery Card */}
-          <div className="relative rounded-3xl border border-cyan-500/25 bg-[#000d24]/90 backdrop-blur-md overflow-hidden p-4 sm:p-6 shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
-            <div className="relative w-full aspect-square rounded-2xl overflow-hidden bg-[#000814] border border-cyan-500/20">
-              <Image
-                src={product.image}
-                alt={product.alt}
-                fill
-                priority
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover object-center"
-              />
-              {/* Corner Badge */}
-              {product.badge && (
-                <div className="absolute top-4 right-4 z-10">
-                  <span className="px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-[0.12em] bg-accent text-[#000613] shadow-[0_0_15px_rgba(63,203,248,0.7)]">
-                    {product.badge}
-                  </span>
-                </div>
-              )}
-            </div>
-
-            {/* Trust Badges Bar under image */}
-            <div className="mt-5 grid grid-cols-2 gap-3 text-xs text-ink-muted">
-              <div className="flex items-center gap-2.5 p-2.5 rounded-xl bg-[#000814]/80 border border-cyan-500/20">
-                <Zap className="w-4 h-4 text-accent shrink-0" />
-                <span className="text-slate-300">Original ASCO Grade</span>
+        {/* ============ CATEGORY HERO HERO CARD ============ */}
+        <div className="relative rounded-3xl border border-cyan-500/25 bg-gradient-to-b from-card/80 via-surface/90 to-bg/95 p-6 sm:p-10 lg:p-12 shadow-[0_8px_40px_rgba(0,0,0,0.5)] overflow-hidden mb-14 lg:mb-18">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.25fr_1fr] gap-8 lg:gap-12 items-center">
+            <div>
+              <div className="flex items-center gap-2.5 mb-3">
+                <span className="h-px w-6 bg-accent" aria-hidden="true" />
+                <span className="text-accent text-xs font-semibold tracking-[0.12em] uppercase">
+                  CATEGORY SHOWCASE &bull; {category.items.length} MODELS
+                </span>
               </div>
-              <div className="flex items-center gap-2.5 p-2.5 rounded-xl bg-[#000814]/80 border border-cyan-500/20">
-                <ShieldCheck className="w-4 h-4 text-accent shrink-0" />
-                <span className="text-slate-300">Replacement Warranty</span>
-              </div>
-            </div>
-          </div>
 
-          {/* RIGHT: Product Information & Specs */}
-          <div className="flex flex-col">
-            {/* Category badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-500/40 bg-primary/10 text-accent text-xs font-semibold uppercase tracking-[0.12em] w-fit mb-3">
-              <span>{product.category}</span>
-            </div>
+              <h1 className="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-ink tracking-[-0.02em] leading-tight">
+                {category.name}
+              </h1>
 
-            {/* Title & Tagline */}
-            <h1 className="font-heading font-extrabold text-2xl sm:text-3xl md:text-4xl text-ink leading-[1.12] tracking-[-0.02em]">
-              {product.name}
-            </h1>
-            <p className="text-accent text-sm sm:text-base font-semibold mt-2 tracking-[-0.01em]">
-              {product.tagline}
-            </p>
+              <p className="text-accent font-semibold text-base sm:text-lg mt-2">
+                {category.tagline}
+              </p>
 
-            {/* Full Description */}
-            <p className="text-slate-300 text-sm sm:text-base mt-4 leading-[1.65]">
-              {product.description}
-            </p>
+              <p className="text-slate-300 text-sm sm:text-base mt-4 leading-[1.65] max-w-2xl">
+                {category.description}
+              </p>
 
-            {/* Specifications Table */}
-            <div className="mt-6 p-4 sm:p-5 rounded-2xl border border-cyan-500/20 bg-[#000d24]/70">
-              <h3 className="font-heading font-bold text-xs sm:text-sm text-ink uppercase tracking-[0.12em] mb-3">
-                Technical Specifications
-              </h3>
-              <div className="divide-y divide-cyan-500/15 text-xs sm:text-sm">
-                {Object.entries(product.specs).map(([key, val]) => (
-                  <div key={key} className="py-2.5 flex items-center justify-between gap-4">
-                    <span className="text-slate-300 capitalize font-medium">
-                      {key.replace(/([A-Z])/g, ' $1')}
+              {/* Bullets */}
+              <ul className="mt-6 space-y-2.5">
+                {category.bullets.map((bullet, idx) => (
+                  <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-ink/90">
+                    <span className="w-4 h-4 rounded-full bg-accent/20 border border-accent/60 flex items-center justify-center shrink-0 mt-0.5">
+                      <Check className="w-2.5 h-2.5 text-accent stroke-[3]" />
                     </span>
-                    <span className="text-ink font-semibold text-right">{val}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Key Features */}
-            <div className="mt-6">
-              <h3 className="font-heading font-bold text-xs sm:text-sm text-ink uppercase tracking-[0.12em] mb-3">
-                Key Highlights
-              </h3>
-              <ul className="space-y-2 text-xs sm:text-sm text-slate-300">
-                {product.features.map((feat, idx) => (
-                  <li key={idx} className="flex items-start gap-2.5">
-                    <Check className="w-4 h-4 text-accent shrink-0 mt-0.5" />
-                    <span className="text-ink/95 leading-[1.6]">{feat}</span>
+                    <span>{bullet}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            {/* Action Buttons */}
-            <div className="mt-8 pt-6 border-t border-cyan-500/20 flex flex-col sm:flex-row items-center gap-3.5">
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:flex-1 inline-flex items-center justify-center gap-2.5 py-3 px-6 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-[#000613] font-bold text-sm tracking-wide shadow-[0_0_22px_rgba(6,161,255,0.45)] hover:shadow-[0_0_30px_rgba(63,203,248,0.7)] transition-all duration-300"
+            {/* Category Cover Image with soft edge-fade */}
+            <div className="flex justify-center">
+              <div
+                className="relative w-full max-w-md aspect-square rounded-2xl overflow-hidden bg-[#00102a] border border-cyan-500/25 p-6 flex items-center justify-center shadow-[0_0_35px_rgba(6,161,255,0.18)]"
+                style={{
+                  WebkitMaskImage: 'radial-gradient(circle at center, #000 68%, transparent 100%)',
+                  maskImage: 'radial-gradient(circle at center, #000 68%, transparent 100%)',
+                }}
               >
-                <WhatsAppIcon className="w-5 h-5 text-[#000613]" />
-                <span>Inquire on WhatsApp</span>
-              </a>
-
-              <Link
-                href="/contact#inquiry-form"
-                className="btn-secondary-glow w-full sm:w-auto inline-flex items-center justify-center py-3 px-6 rounded-full text-ink text-sm font-semibold transition-all duration-200"
-              >
-                <span>Request Quotation Form &rarr;</span>
-              </Link>
+                <Image
+                  src={category.image}
+                  alt={category.alt}
+                  fill
+                  priority
+                  unoptimized
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  className="object-contain p-4"
+                />
+              </div>
             </div>
           </div>
         </div>
 
-        {/* ============ RELATED PRODUCTS ============ */}
-        <div className="mt-20 pt-12 border-t border-cyan-500/20">
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="font-heading font-bold text-xl sm:text-2xl text-ink tracking-[-0.02em]">
-              More Products from <span className="text-accent">ASCO</span>
-            </h2>
-            <Link
-              href="/products"
-              className="text-xs sm:text-sm text-accent hover:underline font-semibold"
-            >
-              View Full Catalog &rarr;
-            </Link>
+        {/* ============ ALL ITEMS IN THIS CATEGORY ============ */}
+        <section aria-label={`All items in ${category.name}`} className="mb-16 sm:mb-20">
+          <div className="flex items-center justify-between pb-4 mb-8 border-b border-cyan-500/20">
+            <div>
+              <h2 className="font-heading font-bold text-2xl sm:text-3xl text-ink">
+                All Models &amp; Specifications
+              </h2>
+              <p className="text-xs sm:text-sm text-ink-muted mt-1">
+                Browse every item available in the {category.name} collection. Click &ldquo;Request Price&rdquo; to connect instantly on WhatsApp.
+              </p>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-            {relatedProducts.map((rel) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+            {category.items.map((item, idx) => (
+              <ProductItemCard
+                key={item.id}
+                item={item}
+                categoryName={category.name}
+                categorySlug={category.slug}
+                index={idx}
+                priority={idx < 4}
+              />
+            ))}
+          </div>
+        </section>
+
+        {/* Glowing Divider */}
+        <GlowDivider />
+
+        {/* ============ EXPLORE OTHER CATEGORIES ============ */}
+        <section aria-label="Other Product Categories" className="my-14 sm:my-16">
+          <div className="text-center max-w-xl mx-auto mb-8">
+            <h2 className="font-heading font-bold text-xl sm:text-2xl text-ink">
+              Explore Other Categories
+            </h2>
+            <p className="text-xs sm:text-sm text-ink-muted mt-1">
+              Complete your architectural lighting setup with ASCO&apos;s modular lighting ecosystem.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+            {otherCategories.map((other) => (
               <Link
-                key={rel.slug}
-                href={`/products/${rel.slug}`}
-                className="group p-3.5 rounded-2xl border border-cyan-500/20 bg-[#000d24]/60 hover:border-cyan-400/50 hover:bg-[#00102a] hover:shadow-[0_4px_20px_rgba(63,203,248,0.18)] transition-all duration-300 flex flex-col"
+                key={other.slug}
+                href={`/products/${other.slug}`}
+                className="group rounded-2xl border border-cyan-500/20 bg-[#00102a]/70 p-3.5 flex flex-col justify-between hover:border-cyan-400/50 hover:shadow-[0_0_24px_rgba(63,203,248,0.2)] hover:-translate-y-1 transition-all"
               >
-                <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-[#000814] mb-3">
+                <div
+                  className="relative w-full aspect-square rounded-xl overflow-hidden bg-[#00102a] border border-cyan-500/15 p-2 flex items-center justify-center mb-2.5"
+                  style={{
+                    WebkitMaskImage: 'radial-gradient(circle at center, #000 68%, transparent 100%)',
+                    maskImage: 'radial-gradient(circle at center, #000 68%, transparent 100%)',
+                  }}
+                >
                   <Image
-                    src={rel.image}
-                    alt={rel.alt}
+                    src={other.image}
+                    alt={other.name}
                     fill
-                    sizes="(max-width: 640px) 100vw, 33vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    unoptimized
+                    sizes="200px"
+                    className="object-contain p-2 group-hover:scale-105 transition-transform duration-500 ease-out"
+                    loading="lazy"
                   />
                 </div>
-                <span className="text-accent text-[11px] font-semibold">{rel.category}</span>
-                <h4 className="font-heading font-bold text-ink text-sm mt-0.5 group-hover:text-accent transition-colors">
-                  {rel.name}
-                </h4>
+
+                <div className="text-center">
+                  <h3 className="font-heading font-bold text-ink text-sm group-hover:text-accent transition-colors">
+                    {other.name}
+                  </h3>
+                  <span className="text-[11px] text-accent font-semibold mt-1 inline-flex items-center gap-1 group-hover:gap-1.5 transition-all">
+                    <span>View Models</span>
+                    <ArrowRight className="w-3 h-3" />
+                  </span>
+                </div>
               </Link>
             ))}
           </div>
-        </div>
-      </div>
-
-      <div className="mt-16">
-        <GlowDivider />
-        <section className="py-12 w-full max-w-[100vw] px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 2xl:px-20">
-          <StayUpdated variant="cta" />
         </section>
+
+        {/* CTA section */}
+        <StayUpdated variant="cta" />
       </div>
     </div>
   );

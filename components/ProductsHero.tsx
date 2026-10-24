@@ -24,7 +24,7 @@ export function ProductsHero() {
           Lighting Solutions
         </>
       }
-      subtext="Engineered for durability, optical clarity, and energy efficiency. Explore our premium 220V continuous rope lights, flexible RGB strips, architectural profile channels, commercial battens, and precision spotlights."
+      subtext="Engineered for durability, optical clarity, and energy efficiency. Explore our premium 220V continuous rope lights, connectors and controllers, aluminium profiles, track lights, and accessories."
       cta={{ label: 'Explore Products', href: '#products-list-top', icon: 'arrow-down' }}
       features={FEATURES}
     />

@@ -8,7 +8,7 @@ import { StayUpdated } from '@/components/StayUpdated';
 export const metadata: Metadata = {
   title: 'Contact Us | ASCO Innovative Technologies',
   description:
-    'Get in touch with ASCO Innovative Technologies for premium 220V LED rope lights, RGB strips, profile channels, batten lights, and commercial lighting in Pakistan.',
+    'Get in touch with ASCO Innovative Technologies for premium 220V LED rope lights, connectors, profile channels, accessories, and track lights in Pakistan.',
 };
 
 export default function ContactPage() {

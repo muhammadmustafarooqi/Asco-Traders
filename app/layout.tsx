@@ -6,6 +6,7 @@ import { WhatsAppFloatingButton } from '@/components/WhatsAppFloatingButton';
 import '../styles/globals.css';
 
 import { ScrollProgressBar } from '@/components/ScrollProgressBar';
+import { siteConfig } from '@/lib/site';
 
 const sora = Sora({
   subsets: ['latin'],
@@ -22,10 +23,10 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.ascotraders.com'),
-  title: 'ASCO Traders | Premium LED Rope, Strip & Profile Lights in Pakistan',
+  metadataBase: new URL(siteConfig.siteUrl),
+  title: 'ASCO Traders | Premium LED Rope, Profile & Track Lights in Pakistan',
   description:
-    'ASCO Traders delivers premium LED lighting solutions in Pakistan. Explore high-efficiency rope lights, RGB strip lights, aluminium profile channels, commercial batten lights, and tracklights.',
+    'ASCO Traders delivers premium LED lighting solutions in Pakistan. Explore high-efficiency rope lights, connectors, aluminium profile channels, accessories, and track lights.',
   // TODO: REMOVE BEFORE LAUNCH - Temporary testing deployment directive
   robots: {
     index: false,
@@ -73,7 +74,7 @@ const jsonLd = {
   contactPoint: [
     {
       '@type': 'ContactPoint',
-      telephone: '+923004205422',
+      telephone: siteConfig.phones[0].tel,
       contactType: 'customer service',
       areaServed: 'PK',
     },
@@ -82,10 +83,7 @@ const jsonLd = {
     '@type': 'PostalAddress',
     addressCountry: 'Pakistan',
   },
-  sameAs: [
-    'https://www.facebook.com/profile.php?id=100087881238548',
-    'https://www.instagram.com/ascoledropelight',
-  ],
+  sameAs: siteConfig.socialLinks.map((s) => s.url),
 };
 
 export default function RootLayout({

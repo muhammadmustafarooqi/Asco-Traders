@@ -62,26 +62,24 @@ export function Footer() {
             </Link>
             <p className="text-[13px] leading-relaxed text-ink">{siteConfig.tagline}</p>
 
-            {/* Social icons: bare cyan outlines, no boxes */}
+            {/* Social icons from siteConfig.socialLinks */}
             <div className="flex items-center gap-5 pt-1">
-              <a
-                href="https://www.facebook.com/profile.php?id=100087881238548"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-accent hover:text-ink hover:scale-110 transition-all"
-                aria-label="Follow ASCO Traders on Facebook"
-              >
-                <FacebookIcon className="h-5 w-5" />
-              </a>
-              <a
-                href="https://www.instagram.com/ascoledropelight"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-accent hover:text-ink hover:scale-110 transition-all"
-                aria-label="Follow ASCO Traders on Instagram"
-              >
-                <InstagramIcon className="h-5 w-5" />
-              </a>
+              {siteConfig.socialLinks.map((social) => (
+                <a
+                  key={social.name}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-accent hover:text-ink hover:scale-110 transition-all"
+                  aria-label={`Follow ASCO Traders on ${social.name}`}
+                >
+                  {social.name === 'Facebook' ? (
+                    <FacebookIcon className="h-5 w-5" />
+                  ) : (
+                    <InstagramIcon className="h-5 w-5" />
+                  )}
+                </a>
+              ))}
             </div>
           </div>
 

@@ -45,9 +45,8 @@ export function WhyChoose() {
       >
         {/* 1. Background image (desktop only) with gentle neon flicker-on and steady pulse */}
         <div
-          className={`hidden lg:block absolute inset-0 z-0 pointer-events-none transition-opacity duration-300 ${
-            inView ? 'animate-neon-strike' : 'opacity-20'
-          }`}
+          className={`hidden lg:block absolute inset-0 z-0 pointer-events-none transition-opacity duration-300 ${inView ? 'animate-neon-strike' : 'opacity-20'
+            }`}
           aria-hidden="true"
           style={{
             WebkitMaskImage: EDGE_FADE_MASK,
@@ -87,9 +86,8 @@ export function WhyChoose() {
         <div className="relative z-10 w-full px-4 sm:px-6 lg:px-0 py-8 lg:py-0">
           {/* Mobile & Tablet rope light banner (below lg) with neon flicker-on */}
           <div
-            className={`block lg:hidden relative w-full h-56 sm:h-72 mb-10 rounded-2xl overflow-hidden border border-cyan-500/20 shadow-[0_0_30px_rgba(6,161,255,0.18)] transition-opacity duration-300 ${
-              inView ? 'animate-neon-strike' : 'opacity-30'
-            }`}
+            className={`block lg:hidden relative w-full h-56 sm:h-72 mb-10 rounded-2xl overflow-hidden border border-cyan-500/20 shadow-[0_0_30px_rgba(6,161,255,0.18)] transition-opacity duration-300 ${inView ? 'animate-neon-strike' : 'opacity-30'
+              }`}
           >
             <Image
               src="/asco_separate_images_webp/led_rope_light_no_text.webp"
@@ -109,9 +107,9 @@ export function WhyChoose() {
               {/* Left callout: 220V Direct Mains Rope Light */}
               <div className="shrink-0 w-full max-w-xs lg:w-[22cqw] lg:max-w-none ">
                 <h3 className="font-heading font-bold text-2xl sm:text-3xl lg:text-[length:2.25cqw] text-ink leading-[1.18] tracking-[-0.02em] mb-2.5 sm:mb-3 lg:mb-[0.8cqw] drop-shadow-md ml-4">
-                  220V Direct Mains
+                  220V Direct Rope
                   <br />
-                  Rope Light
+                  Light
                 </h3>
 
                 <p className="text-slate-300 text-xs sm:text-[13px] lg:text-[length:1.07cqw] leading-[1.65] mb-5 sm:mb-6 lg:mb-[1.6cqw] max-w-[260px] lg:max-w-[20cqw] drop-shadow-sm ml-4">

@@ -50,11 +50,11 @@ export function ProductRange() {
           </h2>
         </Reveal>
 
-        {/* 6 Product Cards Grid with 70ms stagger */}
+        {/* 5 Category Cards Grid with 70ms stagger */}
         <Reveal
           stagger={70}
           duration={650}
-          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5 sm:gap-4 lg:gap-4 xl:gap-5 2xl:gap-6 items-stretch w-full"
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5 sm:gap-4 lg:gap-4 xl:gap-5 items-stretch w-full"
         >
           {products.map((product) => (
             <div key={product.slug} className="h-full">

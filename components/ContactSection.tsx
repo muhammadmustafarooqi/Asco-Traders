@@ -110,12 +110,23 @@ export function ContactSection() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || !formData.message) return;
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) return;
     setSubmitted(true);
+
+    const whatsappMessage = `Hello ASCO, I would like to get in touch:\n\n*Name:* ${formData.name.trim()}\n*Email:* ${formData.email.trim()}${
+      formData.subject.trim() ? `\n*Subject:* ${formData.subject.trim()}` : ''
+    }\n*Message:* ${formData.message.trim()}`;
+
+    const whatsappUrl = `https://wa.me/${siteConfig.whatsapp.primaryNumber}?text=${encodeURIComponent(
+      whatsappMessage
+    )}`;
+
+    window.open(whatsappUrl, '_blank');
+
     setTimeout(() => {
       setFormData({ name: '', email: '', subject: '', message: '' });
       setSubmitted(false);
-    }, 5000);
+    }, 4000);
   };
 
   return (
@@ -210,42 +221,22 @@ export function ContactSection() {
                 <div className="min-w-0">
                   <span className={`${labelClass} mb-2 lg:mb-[0.8dvh]`}>Follow Us</span>
                   <div className="flex items-center gap-5 xl:gap-8">
-                    <a
-                      href={siteConfig.socialLinks[0].url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={socialLink}
-                      aria-label="ASCO Facebook"
-                    >
-                      <FacebookIcon className={socialIcon} />
-                    </a>
-                    <a
-                      href={siteConfig.socialLinks[1].url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={socialLink}
-                      aria-label="ASCO Instagram"
-                    >
-                      <InstagramIcon className={socialIcon} />
-                    </a>
-                    <a
-                      href="https://youtube.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={socialLink}
-                      aria-label="ASCO YouTube"
-                    >
-                      <YouTubeIcon className={socialIcon} />
-                    </a>
-                    <a
-                      href="https://linkedin.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={socialLink}
-                      aria-label="ASCO LinkedIn"
-                    >
-                      <LinkedInIcon className={socialIcon} />
-                    </a>
+                    {siteConfig.socialLinks.map((social) => (
+                      <a
+                        key={social.name}
+                        href={social.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={socialLink}
+                        aria-label={`ASCO ${social.name}`}
+                      >
+                        {social.name === 'Facebook' ? (
+                          <FacebookIcon className={socialIcon} />
+                        ) : (
+                          <InstagramIcon className={socialIcon} />
+                        )}
+                      </a>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -348,14 +339,20 @@ export function ContactSection() {
                       <option value="Wholesale & Bulk Orders" className="bg-[#000d24] text-ink">
                         Wholesale & Bulk Orders
                       </option>
-                      <option value="220V LED Rope Light Inquiry" className="bg-[#000d24] text-ink">
-                        220V LED Rope Light Inquiry
+                      <option value="Rope Light Inquiry" className="bg-[#000d24] text-ink">
+                        Rope Light Inquiry
                       </option>
-                      <option value="LED Strip & Profile Channels" className="bg-[#000d24] text-ink">
-                        LED Strip & Profile Channels
+                      <option value="Connectors Inquiry" className="bg-[#000d24] text-ink">
+                        Connectors Inquiry
                       </option>
-                      <option value="Commercial Batten & Tracklights" className="bg-[#000d24] text-ink">
-                        Commercial Batten & Tracklights
+                      <option value="Profile Lights Inquiry" className="bg-[#000d24] text-ink">
+                        Profile Lights Inquiry
+                      </option>
+                      <option value="Accessories Inquiry" className="bg-[#000d24] text-ink">
+                        Accessories Inquiry
+                      </option>
+                      <option value="Track Lights Inquiry" className="bg-[#000d24] text-ink">
+                        Track Lights Inquiry
                       </option>
                       <option value="Project Consultation" className="bg-[#000d24] text-ink">
                         Project / Architectural Consultation

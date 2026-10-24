@@ -192,11 +192,12 @@ export function Navbar() {
                           onClick={() => setIsProductsOpen(false)}
                           className="flex items-center gap-3 px-2.5 py-2 rounded-xl text-sm text-ink-muted hover:text-ink hover:bg-primary/20 transition-all group"
                         >
-                          <div className="relative w-9 h-9 rounded-lg overflow-hidden border border-cyan-500/20 bg-[#000814] shrink-0">
+                          <div className="relative w-9 h-9 rounded-lg overflow-hidden border border-cyan-500/20 bg-[#00102a] shrink-0">
                             <Image
                               src={item.image}
-                              alt=""
+                              alt={item.name}
                               fill
+                              unoptimized
                               sizes="36px"
                               className="object-cover object-center group-hover:scale-110 transition-transform duration-300"
                             />
@@ -206,7 +207,7 @@ export function Navbar() {
                               {item.name}
                             </span>
                             <span className="text-[11px] text-slate-300/80 block truncate leading-tight">
-                              {item.tagline || item.category}
+                              {item.tagline}
                             </span>
                           </div>
                           <span
@@ -355,11 +356,12 @@ export function Navbar() {
                         onClick={() => setIsOpen(false)}
                         className="flex items-center gap-2.5 px-3 py-1.5 rounded-lg text-sm text-ink-muted hover:text-accent hover:bg-card/50 transition-colors"
                       >
-                        <div className="relative w-6 h-6 rounded-md overflow-hidden bg-[#000814] border border-line/40 shrink-0">
+                        <div className="relative w-6 h-6 rounded-md overflow-hidden bg-[#00102a] border border-line/40 shrink-0">
                           <Image
                             src={item.image}
-                            alt=""
+                            alt={item.name}
                             fill
+                            unoptimized
                             sizes="24px"
                             className="object-cover"
                           />

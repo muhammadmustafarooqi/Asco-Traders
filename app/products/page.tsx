@@ -7,7 +7,7 @@ import { StayUpdated } from '@/components/StayUpdated';
 export const metadata: Metadata = {
   title: 'Products | ASCO Innovative Technologies',
   description:
-    'Browse ASCO’s comprehensive catalog of 220V continuous LED rope lights, RGB flex strips, architectural aluminium profile channels, commercial batten lights, and precision spotlights.',
+    'Browse ASCO’s comprehensive catalog of 220V continuous LED rope lights, connectors, architectural aluminium profile channels, accessories, and track lights in Pakistan.',
 };
 
 export default function ProductsPage() {
@@ -19,7 +19,7 @@ export default function ProductsPage() {
       {/* Glowing Neon Rope-Light Divider */}
       <GlowDivider />
 
-      {/* 2. Interactive Products Catalog (with 3-per-page Pagination & Category Filters) */}
+      {/* 2. Interactive Products Catalog (5 Category Filters & Request Price) */}
       <ProductsCatalog />
 
       {/* Glowing Neon Rope-Light Divider */}

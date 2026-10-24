@@ -34,8 +34,8 @@ export function AboutHero() {
       subtext={
         <>
           ASCO Innovative Technologies is a leading manufacturer and supplier of premium LED
-          lighting solutions in Pakistan. We specialize in high-quality 220V rope lights, LED
-          strip lights, profile lights, batten lights, and tracklights &mdash; designed to bring
+          lighting solutions in Pakistan. We specialize in high-quality 220V rope lights,
+          connectors, profile lights, accessories, and track lights &mdash; designed to bring
           innovation, durability and elegance to every space.
         </>
       }

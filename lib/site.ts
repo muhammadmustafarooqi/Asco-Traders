@@ -41,8 +41,9 @@ export const siteConfig = {
   brandName: 'Asco Traders',
   tagline: 'Lighting That Inspires',
   description:
-    'ASCO Traders provides premium LED lighting solutions including Rope Lights, Strip Lights, Profile Lights, Batten Lights, and Tracklights in Pakistan.',
-  url: 'https://www.ascotraders.com',
+    'ASCO Traders provides premium LED lighting solutions including Rope Lights, Connectors, Profile Lights, Accessories, and Track Lights in Pakistan.',
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://ascotraders.com',
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://ascotraders.com',
   location: 'Pakistan',
   email: 'info@ascotraders.com',
   phones: [
@@ -79,12 +80,11 @@ export const siteConfig = {
       { name: 'Contact', href: '/contact' },
     ],
     productLinks: [
-      { name: 'Rope Light', href: '/products' },
-      { name: 'Strip Light', href: '/products' },
-      { name: 'Profile Light', href: '/products' },
-      { name: 'Batten Light', href: '/products' },
-      { name: 'Tracklight / Spotlight', href: '/products' },
-      { name: 'Accessories', href: '/products' },
+      { name: 'Rope Light', href: '/products/rope-light' },
+      { name: 'Connectors', href: '/products/connectors' },
+      { name: 'Profile Lights', href: '/products/profile-lights' },
+      { name: 'Accessories', href: '/products/accessories' },
+      { name: 'Track Lights', href: '/products/track-lights' },
     ],
   },
   trustItems: [
@@ -97,7 +97,7 @@ export const siteConfig = {
     eyebrow: 'ABOUT ASCO',
     heading: 'Innovative Technologies for a Brighter Tomorrow',
     paragraph:
-      'ASCO Innovative Technologies is a leading manufacturer and supplier of premium LED lighting solutions in Pakistan. We specialize in high-quality 220V rope lights, LED strip lights, profile lights, batten lights, and tracklights — designed to bring innovation, durability and elegance to every space.',
+      'ASCO Innovative Technologies is a leading manufacturer and supplier of premium LED lighting solutions in Pakistan. We specialize in high-quality 220V rope lights, connectors, profile lights, accessories, and track lights — designed to bring innovation, durability and elegance to every space.',
     buttonText: 'Learn More About Us',
     buttonHref: '/about',
     image: '/asco_separate_images_webp/about-asco.webp',
