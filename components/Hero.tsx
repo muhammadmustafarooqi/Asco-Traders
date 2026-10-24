@@ -1,94 +1,101 @@
-'use client';
-
 import Image from 'next/image';
 import Link from 'next/link';
+import type { CSSProperties } from 'react';
 import { ArrowRight, BadgeCheck, Zap, ShieldCheck, Headset } from 'lucide-react';
+import heroImage from '@/public/asco_separate_images_webp/modern_house_blue_glow.webp';
 
 const trustBadges = [
-  {
-    id: 'quality',
-    line1: 'Premium',
-    line2: 'Quality',
-    icon: BadgeCheck,
-  },
-  {
-    id: 'efficiency',
-    line1: 'Energy',
-    line2: 'Efficient',
-    icon: Zap,
-  },
-  {
-    id: 'durability',
-    line1: 'Durable &',
-    line2: 'Reliable',
-    icon: ShieldCheck,
-  },
-  {
-    id: 'support',
-    line1: 'Expert',
-    line2: 'Support',
-    icon: Headset,
-  },
+  { id: 'quality', line1: 'Premium', line2: 'Quality', icon: BadgeCheck },
+  { id: 'efficiency', line1: 'Energy', line2: 'Efficient', icon: Zap },
+  { id: 'durability', line1: 'Durable &', line2: 'Reliable', icon: ShieldCheck },
+  { id: 'support', line1: 'Expert', line2: 'Support', icon: Headset },
 ];
 
-// Fades the image's own left edge into the dark background on desktop
-const IMAGE_MASK = 'linear-gradient(90deg,transparent_0%,#000_28%)';
+/**
+ * Tuning knob (xl screens and up): how far the villa is pushed to the right,
+ * as a % of the stage width. Raise it if the text touches the windows.
+ */
+const IMAGE_SHIFT = '7%';
 
 export function Hero() {
+  const stageVars = {
+    '--hero-ar': `${heroImage.width} / ${heroImage.height}`,
+    '--hero-shift': IMAGE_SHIFT,
+  } as CSSProperties;
+
   return (
     <section
       aria-labelledby="hero-title"
-      // Mobile/tablet: full-screen flex column (unchanged).
-      // Desktop (lg+): fixed 2:1 banner; 1cqw = 1% of the banner width.
-      className="relative w-full max-w-[100vw] h-[100dvh] min-h-[100dvh] lg:h-auto lg:min-h-0 lg:aspect-[2/1] flex flex-col justify-between lg:block pt-20 lg:pt-0 overflow-hidden bg-bg"
-      style={{ containerType: 'inline-size' }}
+      className="relative w-full overflow-hidden bg-bg"
     >
-      {/* 1. Background */}
+      {/*
+        STAGE: image + overlays.
+        Below xl it sits behind the content (the content decides the height).
+        From xl up it is a centred box locked to the image's aspect ratio (max 1680px wide),
+        so the picture is never over-scaled or cropped on large or zoomed-out screens.
+      */}
       <div
-        className="absolute inset-0 z-0 overflow-hidden pointer-events-none"
-        aria-hidden="true"
+        className="absolute inset-0 overflow-hidden xl:relative xl:inset-auto xl:mx-auto xl:w-full xl:max-w-[1680px] xl:min-h-[640px] xl:max-h-[100svh] xl:[aspect-ratio:var(--hero-ar)]"
+        style={stageVars}
       >
-        {/* Image box: full width on mobile, right 76% on desktop with a faded left edge */}
-        <div className="absolute inset-y-0 right-0 w-full lg:w-[76%] lg:[mask-image:linear-gradient(90deg,transparent_0%,rgba(0,0,0,0.5)_14%,#000_32%)] lg:[-webkit-mask-image:linear-gradient(90deg,transparent_0%,rgba(0,0,0,0.5)_14%,#000_32%)]">
+        {/* Villa image, shifted right on xl+ with a soft left fade */}
+        <div className="absolute inset-0 xl:left-[var(--hero-shift)] xl:[mask-image:linear-gradient(90deg,transparent_0%,rgba(0,0,0,0.6)_12%,#000_30%)] xl:[-webkit-mask-image:linear-gradient(90deg,transparent_0%,rgba(0,0,0,0.6)_12%,#000_30%)]">
           <Image
-            src="/asco_separate_images_webp/modern_house_blue_glow.webp"
+            src={heroImage}
             alt="Modern villa at night illuminated with ASCO LED lights and vibrant blue architectural glow"
             fill
             priority
-            sizes="(max-width: 1024px) 100vw, 76vw"
-            className="object-cover object-[75%_center] md:object-right"
+            sizes="(max-width: 1280px) 100vw, 1680px"
+            className="object-cover object-[75%_center] md:object-right xl:object-[left_60%]"
           />
         </div>
 
-        {/* Left-to-right gradient overlay for text readability */}
+        {/* Below xl: strong left-to-right overlay for text readability */}
         <div
-          className="absolute inset-0 pointer-events-none z-10"
+          className="pointer-events-none absolute inset-0 z-10 xl:hidden"
           style={{
             background:
-              'linear-gradient(90deg, rgba(0, 6, 19, 0.85) 0%, rgba(0, 6, 19, 0.6) 25%, rgba(0, 6, 19, 0.2) 45%, transparent 65%)',
+              'linear-gradient(90deg, rgba(0, 6, 19, 0.96) 0%, rgba(0, 6, 19, 0.88) 32%, rgba(0, 6, 19, 0.5) 48%, rgba(0, 6, 19, 0.15) 62%, transparent 75%)',
+          }}
+          aria-hidden="true"
+        />
+        {/* Below xl: vertical contrast overlay for phones and tablets */}
+        <div
+          className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-b from-bg/90 via-bg/65 to-bg/30 xl:hidden"
+          aria-hidden="true"
+        />
+        {/* xl and up: light left overlay (the image already has dark sky there) */}
+        <div
+          className="pointer-events-none absolute inset-0 z-10 hidden xl:block"
+          style={{
+            background:
+              'linear-gradient(90deg, rgba(0, 6, 19, 0.7) 0%, rgba(0, 6, 19, 0.4) 28%, transparent 52%)',
           }}
           aria-hidden="true"
         />
 
-        {/* Mobile & tablet contrast overlay (hidden on lg+) */}
+        {/* Side fades so the stage melts into the page on ultra-wide screens */}
         <div
-          className="lg:hidden absolute inset-0 bg-gradient-to-b from-bg/90 via-bg/60 to-bg/20 pointer-events-none z-10"
+          className="pointer-events-none absolute inset-y-0 left-0 z-10 hidden w-24 bg-gradient-to-r from-bg to-transparent xl:block"
+          aria-hidden="true"
+        />
+        <div
+          className="pointer-events-none absolute inset-y-0 right-0 z-10 hidden w-24 bg-gradient-to-l from-bg to-transparent xl:block"
           aria-hidden="true"
         />
 
         {/* Top gradient so the transparent navbar stays legible */}
         <div
-          className="absolute inset-x-0 top-0 h-24 pointer-events-none z-10"
+          className="pointer-events-none absolute inset-x-0 top-0 z-10 h-28"
           style={{
             background:
-              'linear-gradient(180deg, color-mix(in srgb, var(--color-bg) 75%, transparent) 0%, color-mix(in srgb, var(--color-bg) 20%, transparent) 60%, transparent 100%)',
+              'linear-gradient(180deg, color-mix(in srgb, var(--color-bg) 85%, transparent) 0%, color-mix(in srgb, var(--color-bg) 20%, transparent) 60%, transparent 100%)',
           }}
           aria-hidden="true"
         />
-
         {/* Bottom gradient blending into the next section */}
         <div
-          className="absolute inset-x-0 bottom-0 h-24 pointer-events-none z-10"
+          className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-24"
           style={{
             background:
               'linear-gradient(0deg, var(--color-bg) 0%, color-mix(in srgb, var(--color-bg) 80%, transparent) 50%, transparent 100%)',
@@ -97,10 +104,13 @@ export function Hero() {
         />
       </div>
 
-      {/* 2. Text block: in flow on mobile, placed at ~6.5% left / 22% top on desktop */}
-      <div className="relative z-20 w-full flex-1 flex flex-col justify-center px-4 sm:px-6 pt-2 sm:pt-4 pb-2 lg:absolute lg:flex-none lg:block lg:w-auto lg:p-0 lg:left-[6.5cqw] lg:top-[22%]">
-        <div className="max-w-2xl lg:max-w-none hero-animate-fade">
-          <p className="inline-block text-accent text-xs sm:text-sm lg:text-[length:1.1cqw] font-semibold tracking-[0.2em] uppercase mb-2 sm:mb-3 lg:mb-[1.2cqw]">
+      {/*
+        CONTENT: same container width as the Navbar, so the text always lines up with the logo.
+        Below xl it is in normal flow; from xl up it is laid over the stage and centred vertically.
+      */}
+      <div className="relative z-20 mx-auto flex min-h-[580px] w-full max-w-7xl flex-col justify-center px-4 pb-10 pt-28 sm:px-6 sm:pb-12 sm:pt-32 lg:px-8 xl:absolute xl:inset-0 xl:min-h-0 xl:max-w-[1536px] xl:pb-12 xl:pt-24">
+        <div className="hero-animate-fade max-w-xl lg:max-w-2xl">
+          <p className="mb-2 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-accent sm:mb-3 sm:text-sm lg:text-[13px]">
             INNOVATIVE LED SOLUTIONS
           </p>
 
@@ -110,7 +120,7 @@ export function Hero() {
               textShadow:
                 '0 2px 20px rgba(0, 6, 19, 0.95), 0 0 45px rgba(0, 6, 19, 0.9)',
             }}
-            className="font-heading font-bold text-ink tracking-tight text-[clamp(2.5rem,5vw,4.5rem)] leading-[1.05] lg:text-[length:5.3cqw] lg:leading-[0.98] mb-3 sm:mb-4 lg:mb-[1.2cqw]"
+            className="mb-3 font-heading text-[clamp(2.4rem,4.6vw,4.75rem)] font-bold leading-[1.02] tracking-tight text-ink drop-shadow-md sm:mb-4"
           >
             <span className="block">Lighting</span>
             <span className="block">
@@ -118,57 +128,52 @@ export function Hero() {
             </span>
           </h1>
 
-          <p className="text-ink text-base sm:text-lg lg:text-[length:1.75cqw] font-normal leading-relaxed lg:leading-[1.5] mb-5 sm:mb-7 lg:mb-[2.6cqw] max-w-[24rem] lg:max-w-[32cqw] drop-shadow-md">
+          <p className="mb-6 max-w-md text-base font-normal leading-relaxed text-ink drop-shadow-md sm:mb-8 sm:text-lg lg:text-xl">
             Premium LED lighting solutions for
             <br className="hidden md:block" /> a brighter tomorrow.
           </p>
 
-          <div className="flex flex-wrap items-center gap-4 sm:gap-5 lg:gap-[2cqw]">
+          <div className="flex flex-wrap items-center gap-4 sm:gap-5">
             <Link
               href="/products"
               aria-label="Explore Our Products"
-              className="inline-flex items-center justify-center h-12 px-7 lg:h-[3.7cqw] lg:px-[2.2cqw] rounded-full text-ink font-semibold text-sm sm:text-base lg:text-[length:1.1cqw] btn-primary-glow"
+              className="btn-primary-glow inline-flex h-12 items-center justify-center rounded-full px-7 text-sm font-semibold text-ink sm:text-base"
             >
               <span>Explore Our Products</span>
-              <ArrowRight
-                className="w-4 h-4 ml-2 lg:w-[1.3cqw] lg:h-[1.3cqw] lg:ml-[0.6cqw] shrink-0"
-                aria-hidden="true"
-              />
+              <ArrowRight className="ml-2 h-4 w-4 shrink-0" aria-hidden="true" />
             </Link>
             <Link
               href="/about"
               aria-label="About ASCO"
-              className="inline-flex items-center justify-center h-12 px-7 lg:h-[3.7cqw] lg:px-[2.2cqw] rounded-full text-ink font-semibold text-sm sm:text-base lg:text-[length:1.1cqw] border border-accent bg-[#000613]/50 hover:bg-accent/10 transition-colors"
+              className="inline-flex h-12 items-center justify-center rounded-full border border-accent bg-[#000613]/50 px-7 text-sm font-semibold text-ink transition-colors hover:bg-accent/10 sm:text-base"
             >
               About ASCO
             </Link>
           </div>
         </div>
-      </div>
 
-      {/* 3. Trust row: in flow on mobile, 4 equal columns spanning ~48% on desktop */}
-      <div className="relative z-20 w-full mt-auto lg:mt-0 lg:absolute lg:left-[4.5cqw] lg:top-[78.5%] lg:w-[48cqw]">
-        <div className="px-4 sm:px-6 lg:px-0 pb-3 sm:pb-4 lg:pb-0">
-          <div className="grid grid-cols-2 lg:grid-cols-4 max-w-xs sm:max-w-sm lg:max-w-none">
+        {/* Trust row, grouped under the buttons */}
+        <div className="mt-8 w-full max-w-xl border-t border-accent/20 pt-6 sm:mt-10 lg:max-w-2xl xl:mt-10">
+          <div className="grid grid-cols-2 lg:grid-cols-4">
             {trustBadges.map((item, index) => {
               const IconComponent = item.icon;
               return (
                 <div
                   key={item.id}
-                  className={`flex flex-col items-center justify-center text-center py-1 sm:py-1.5 px-2 sm:px-3 lg:py-[0.4cqw] lg:px-[1cqw] ${index === 0
-                    ? 'border-r border-b border-line/60 lg:border-b-0'
-                    : index === 1
-                      ? 'border-b border-line/60 lg:border-b-0'
-                      : index === 2
-                        ? 'border-r border-line/60'
-                        : ''
+                  className={`flex flex-col items-center justify-center px-2 py-2 text-center sm:px-3 ${index === 0
+                      ? 'border-b border-r border-line/60 lg:border-b-0'
+                      : index === 1
+                        ? 'border-b border-line/60 lg:border-b-0'
+                        : index === 2
+                          ? 'border-r border-line/60'
+                          : ''
                     } lg:border-r lg:border-accent/35 lg:last:border-r-0`}
                 >
                   <IconComponent
-                    className="w-8 h-8 sm:w-9 sm:h-9 lg:w-[3.2cqw] lg:h-[3.2cqw] text-accent stroke-[1.5] mb-2 lg:mb-[0.7cqw] drop-shadow-[0_0_8px_rgba(63,203,248,0.5)]"
+                    className="mb-2 h-8 w-8 stroke-[1.5] text-accent drop-shadow-[0_0_8px_rgba(63,203,248,0.5)] sm:h-9 sm:w-9"
                     aria-hidden="true"
                   />
-                  <div className="font-heading font-medium text-ink text-xs sm:text-sm lg:text-[length:1.1cqw] tracking-wide leading-tight drop-shadow-md">
+                  <div className="font-heading text-xs font-medium leading-tight tracking-wide text-ink drop-shadow-md sm:text-sm">
                     <span className="block">{item.line1}</span>
                     <span className="block">{item.line2}</span>
                   </div>
@@ -181,3 +186,5 @@ export function Hero() {
     </section>
   );
 }
+
+export default Hero;

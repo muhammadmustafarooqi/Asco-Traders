@@ -13,7 +13,7 @@ const iconMap = {
 export function TrustStrip() {
   return (
     <section aria-label="Key Advantages" className="w-full bg-surface/35 backdrop-blur-md border-y border-line/60">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl xl:max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 lg:grid-cols-4">
           {siteConfig.trustItems.map((item: TrustItem, index: number) => {
             const IconComponent = iconMap[item.icon];

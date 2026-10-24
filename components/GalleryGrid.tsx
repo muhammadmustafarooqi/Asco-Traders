@@ -75,7 +75,7 @@ export function GalleryGrid() {
         />
       </div>
 
-      <div className="relative z-10 w-full max-w-[100vw] px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 2xl:px-20">
+      <div className="relative z-10 w-full max-w-7xl xl:max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* ============ CATEGORY FILTER BAR ============ */}
         <div className="rounded-2xl border border-primary/40 bg-[#00102a]/70 backdrop-blur-md p-3 sm:p-4 shadow-[0_0_24px_rgba(6,161,255,0.15)] mb-10 sm:mb-14 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div

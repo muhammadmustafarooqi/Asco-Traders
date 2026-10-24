@@ -30,55 +30,30 @@ export function LocationHoursSection() {
         />
       </div>
 
-      <div className="relative z-10 w-full px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 2xl:px-20">
+      <div className="relative z-10 w-full max-w-7xl xl:max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1.35fr] gap-5 sm:gap-6 lg:gap-6 xl:gap-8 items-stretch w-full">
-          {/* ============ CARD 1 (LEFT): Dark Mode Map Card ============ */}
-          <div className="relative aspect-[16/9] sm:aspect-[21/9] lg:aspect-auto lg:h-[225px] xl:h-[245px] rounded-2xl border border-primary/60 overflow-hidden shadow-[0_0_24px_rgba(6,161,255,0.2)] group">
-            {/* Dark Styled Map Background */}
-            <Image
-              src="/asco_separate_images_webp/contact_map_dark.webp"
-              alt="ASCO location map view"
-              fill
-              sizes="(max-width: 1024px) 100vw, 45vw"
-              className="object-cover object-center brightness-90 group-hover:scale-105 transition-transform duration-700 ease-out"
+          {/* ============ CARD 1 (LEFT): Real Interactive Google Map Card ============ */}
+          <div className="relative aspect-[16/9] sm:aspect-[21/9] lg:aspect-auto lg:h-[225px] xl:h-[245px] rounded-2xl border border-primary/60 overflow-hidden shadow-[0_0_24px_rgba(6,161,255,0.2)] bg-[#000814] group">
+            {/* Interactive Real Google Maps Embed */}
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3620.320285811651!2d67.005014!3d24.852908300000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33fde20baeaef%3A0xdca57ce9ef126522!2sAsco%20Traders!5e0!3m2!1sen!2s!4v1792807774729!5m2!1sen!2s"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="Asco Traders Google Maps Location"
+              className="w-full h-full min-h-[200px] border-0 filter invert-[90%] hue-rotate-180 contrast-[95%] opacity-90 hover:opacity-100 transition-opacity"
             />
-
-            {/* Subtle dark vignette overlay */}
-            <div
-              className="absolute inset-0 pointer-events-none bg-gradient-to-t from-[#000814]/70 via-transparent to-[#000814]/40"
-              aria-hidden="true"
-            />
-
-            {/* Red Location Pin Badge with ASCO Label */}
-            <div className="absolute top-[35%] left-[48%] -translate-x-1/2 -translate-y-1/2 flex items-center gap-2.5 px-3 sm:px-3.5 py-1.5 rounded-full border border-primary/50 bg-[#000d24]/90 backdrop-blur-md shadow-[0_0_18px_rgba(6,161,255,0.4)] pointer-events-none z-10 animate-pulse">
-              <span className="w-3.5 h-3.5 rounded-full bg-red-500 flex items-center justify-center shrink-0 shadow-[0_0_8px_rgba(239,68,68,0.9)]">
-                <span className="w-1.5 h-1.5 rounded-full bg-white" />
-              </span>
-              <span className="text-ink font-bold text-xs tracking-wide whitespace-nowrap">
-                ASCO Innovative Technologies
-              </span>
-            </div>
-
-            {/* Secondary landmark badge on map */}
-            <div className="absolute top-[48%] left-[24%] -translate-x-1/2 -translate-y-1/2 hidden sm:flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-[#000814]/80 border border-line/40 text-[10px] text-ink-muted/80 pointer-events-none z-10">
-              <span className="w-1.5 h-1.5 rounded-full bg-line" />
-              <span>Pakistan Stock Exchange (PSX)</span>
-            </div>
-
-            {/* Google Maps Logo attribution at bottom left */}
-            <div className="absolute bottom-3.5 left-4 z-10 pointer-events-none select-none opacity-85">
-              <span className="text-xs font-bold text-ink-muted/90 tracking-tight">
-                Google Maps
-              </span>
-            </div>
 
             {/* View on Google Maps Button at bottom right */}
             <a
-              href="https://maps.google.com/?q=Pakistan+Stock+Exchange+Karachi"
+              href="https://www.google.com/maps?cid=15899222459424728354"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="View ASCO on Google Maps in a new tab"
-              className="absolute bottom-3.5 right-4 z-10 inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full border border-primary/70 bg-[#000d24]/90 hover:bg-primary/25 hover:border-accent text-ink text-xs font-semibold shadow-[0_0_15px_rgba(6,161,255,0.25)] hover:shadow-[0_0_22px_rgba(63,203,248,0.55)] transition-all group/btn"
+              aria-label="View Asco Traders on Google Maps in a new tab"
+              className="absolute bottom-3 right-3 z-10 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-primary/70 bg-[#000d24]/90 hover:bg-primary/25 hover:border-accent text-ink text-xs font-semibold shadow-[0_0_15px_rgba(6,161,255,0.35)] hover:shadow-[0_0_22px_rgba(63,203,248,0.55)] transition-all pointer-events-auto backdrop-blur-md group/btn"
             >
               <span>View on Google Maps</span>
               <span aria-hidden="true" className="text-accent group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform">

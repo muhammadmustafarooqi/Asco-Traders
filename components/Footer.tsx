@@ -43,7 +43,7 @@ export function Footer() {
         }}
       />
 
-      <div className="relative z-10 w-full px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 2xl:px-20 pt-8 pb-6 lg:pt-9 lg:pb-7">
+      <div className="relative z-10 w-full max-w-7xl xl:max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-6 lg:pt-9 lg:pb-7">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1.15fr_1.7fr_1.35fr] gap-x-8 gap-y-8 lg:gap-x-6 xl:gap-x-10 items-start">
           {/* Column 1: Brand */}
           <div className="space-y-3">
@@ -192,7 +192,7 @@ export function Footer() {
           className="h-px w-full bg-gradient-to-r from-transparent via-accent/60 to-transparent shadow-[0_0_12px_rgba(63,203,248,0.45)]"
           aria-hidden="true"
         />
-        <div className="px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 2xl:px-20 py-3 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-ink-muted w-full">
+        <div className="max-w-7xl xl:max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-ink-muted w-full">
           <p>
             © {currentYear} {siteConfig.businessName}. All rights reserved.
           </p>

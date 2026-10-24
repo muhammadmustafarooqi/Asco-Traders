@@ -24,7 +24,7 @@ export function ProductRange() {
         <GlowWaves className="w-full h-full object-cover" />
       </div>
 
-      <div className="relative z-10 w-full px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 2xl:px-20">
+      <div className="relative z-10 w-full max-w-7xl xl:max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading with decorative lines matching design */}
         <div className="text-center max-w-4xl mx-auto mb-10 sm:mb-14">
           <div className="flex items-center justify-center gap-2.5 sm:gap-3 mb-3">

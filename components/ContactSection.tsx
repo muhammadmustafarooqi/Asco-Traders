@@ -137,7 +137,7 @@ export function ContactSection() {
         aria-hidden="true"
       />
 
-      <div className="relative z-10 w-full px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 2xl:px-20">
+      <div className="relative z-10 w-full max-w-7xl xl:max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1.75fr] gap-8 lg:gap-5 xl:gap-7 items-stretch w-full">
           {/* ============ LEFT COLUMN: 4 contact cards ============ */}
           <div className="flex flex-col gap-3 lg:gap-[1.4dvh] w-full">

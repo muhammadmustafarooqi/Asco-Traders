@@ -92,7 +92,7 @@ export function TestimonialsNewsletter() {
         />
       </div>
 
-      <div className="relative z-10 w-full px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 2xl:px-20">
+      <div className="relative z-10 w-full max-w-7xl xl:max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Eyebrow with horizontal line dividers */}
         <div className="flex items-center justify-center gap-2.5 sm:gap-3 mb-2.5">
           <span className="h-[2px] w-6 sm:w-8 bg-primary rounded-full" aria-hidden="true" />

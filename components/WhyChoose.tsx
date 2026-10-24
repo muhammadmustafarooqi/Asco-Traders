@@ -36,7 +36,7 @@ export function WhyChoose() {
         so text, spacing and image all scale together as one unit.
       */}
       <div
-        className="relative w-full max-w-[2113px] mx-auto lg:aspect-[2113/744] flex flex-col justify-center overflow-hidden"
+        className="relative w-full max-w-7xl xl:max-w-[1536px] mx-auto lg:aspect-[2113/744] flex flex-col justify-center overflow-hidden"
         style={{ containerType: 'inline-size' }}
       >
         {/* 1. Background image (desktop only) */}

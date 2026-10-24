@@ -14,7 +14,7 @@ export function GetInTouchBlock() {
 
   return (
     <section aria-labelledby="get-in-touch-heading" className="py-12 sm:py-16 lg:py-20 bg-bg">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl xl:max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Bordered card with GlowWaves background */}
         <div className="asco-card relative p-8 sm:p-10 lg:p-12 overflow-hidden">
           {/* Decorative SVG GlowWaves behind content */}
