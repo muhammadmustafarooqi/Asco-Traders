@@ -100,7 +100,7 @@ export const categories: Category[] = [
         id: 'rope-04',
         name: 'RGB - 60D',
         // TODO confirm with client: "D" meaning in Rope Light
-        image: '/products/rope-light/rope-04.webp',
+        image: '/products/rope-light/rgb60d.jpg',
         specs: {
           voltage: '220V AC',
           color: 'RGB Multicolor',
@@ -111,7 +111,7 @@ export const categories: Category[] = [
         id: 'rope-05',
         name: 'COB - 288D',
         // TODO confirm with client: "D" meaning in Rope Light
-        image: '/products/rope-light/rope-05.webp',
+        image: '/products/rope-light/rope-06.webp',
         specs: {
           voltage: '220V AC',
           chip: 'COB Continuous',
@@ -122,7 +122,7 @@ export const categories: Category[] = [
         id: 'rope-06',
         name: 'FCOB',
         // TODO confirm with client: FCOB specifications and diode configuration
-        image: '/products/rope-light/rope-06.webp',
+        image: '/products/rope-light/rope-05.webp',
         specs: {
           voltage: '220V AC',
           chip: 'FCOB Flexible',
@@ -584,12 +584,12 @@ export function getRequestPriceWhatsAppUrl(
   itemNameOrOptions:
     | string
     | {
-        itemName: string;
-        categoryName: string;
-        categorySlug?: string;
-        itemId?: string;
-        variant?: string;
-      },
+      itemName: string;
+      categoryName: string;
+      categorySlug?: string;
+      itemId?: string;
+      variant?: string;
+    },
   categoryNameArg?: string,
   categorySlugArg?: string,
   itemIdArg?: string,
@@ -639,8 +639,8 @@ export function getRequestPriceWhatsAppUrl(
     categorySlug && itemId
       ? `${siteConfig.siteUrl}/products/${categorySlug}/${itemId}`
       : categorySlug
-      ? `${siteConfig.siteUrl}/products/${categorySlug}`
-      : `${siteConfig.siteUrl}/products`;
+        ? `${siteConfig.siteUrl}/products/${categorySlug}`
+        : `${siteConfig.siteUrl}/products`;
 
   const categoryWithVariant = variant
     ? `${categoryName}, ${variant}`

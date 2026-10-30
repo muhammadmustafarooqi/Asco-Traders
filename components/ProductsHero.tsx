@@ -1,3 +1,5 @@
+'use client';
+
 import { CheckCircle2, Gem, ShieldCheck, Zap } from 'lucide-react';
 import { PageHero, type HeroFeature } from '@/components/PageHero';
 import heroImage from '@/public/asco_separate_images_webp/futuristic_blue_ring_background.webp';

@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import { Gem, ShieldCheck, UserCog, Zap } from 'lucide-react';
 import { PageHero, type HeroFeature } from '@/components/PageHero';
