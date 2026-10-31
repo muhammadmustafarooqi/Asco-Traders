@@ -49,7 +49,7 @@ const CATEGORY_ROW_DATA: Record<
     eyebrow: 'CONNECTORS & CONTROLLERS',
     tagline: 'Reliable Power. Secure Connections.',
     bullets: [
-      '8 Models Available',
+      '9 Models Available',
       '2A & 4A Heavy Direct Mains',
       'RGB Remote & Heavy Controllers',
       'Weatherproof Inline Jointers',
@@ -71,7 +71,7 @@ const CATEGORY_ROW_DATA: Record<
     eyebrow: 'ACCESSORIES & HARDWARE',
     tagline: 'Precision Hardware. Modular Fit.',
     bullets: [
-      '8 Models Available',
+      '9 Models Available',
       'Magnetic Track Rails & Springs',
       'Corner & Conductive Connectors',
       'L-Jointers & Flexible Connector Wires',

@@ -157,7 +157,7 @@ export const categories: Category[] = [
       {
         id: 'conn-01',
         name: '2A Direct',
-        image: '/products/connectors/conn-01.webp',
+        image: '/products/connectors/2a-direct.webp',
         specs: {
           amperage: '2A',
           type: 'Direct Mains Plug',
@@ -166,7 +166,7 @@ export const categories: Category[] = [
       {
         id: 'conn-02',
         name: '2A',
-        image: '/products/connectors/conn-02.webp',
+        image: '/products/connectors/2A.webp',
         specs: {
           amperage: '2A',
           type: 'Power Connector',
@@ -175,7 +175,7 @@ export const categories: Category[] = [
       {
         id: 'conn-03',
         name: '2A Heavy',
-        image: '/products/connectors/conn-03.webp',
+        image: '/products/connectors/2A-heavy.webp',
         specs: {
           amperage: '2A Heavy Duty',
           type: 'Weatherproof Controller',
@@ -192,34 +192,43 @@ export const categories: Category[] = [
       },
       {
         id: 'conn-05',
-        name: 'RGB Connector',
-        image: '/products/connectors/conn-05.webp',
+        name: '8A',
+        image: '/products/connectors/8A.webp',
         specs: {
-          type: 'Basic RGB Connector',
+          amperage: '8A',
+          type: 'High-Capacity Power Controller',
         },
       },
       {
         id: 'conn-06',
+        name: 'Multi Fresher',
+        image: '/products/connectors/conn-05.webp',
+        specs: {
+          type: 'Basic Multi Fresher',
+        },
+      },
+      {
+        id: 'conn-07',
         name: 'RGB Remote',
-        image: '/products/connectors/conn-06.webp',
+        image: '/products/connectors/Rgb-remote.webp',
         specs: {
           control: 'Wireless RF Remote',
           type: 'RGB Controller with Handheld Remote',
         },
       },
       {
-        id: 'conn-07',
+        id: 'conn-08',
         name: 'RGB Remote Heavy',
-        image: '/products/connectors/conn-07.webp',
+        image: '/products/connectors/Rgb-remote-heavy.webp',
         specs: {
           control: 'Heavy RF Remote',
           type: 'High-Power RGB Controller & Amplifier',
         },
       },
       {
-        id: 'conn-08',
+        id: 'conn-09',
         name: 'Jointer',
-        image: '/products/connectors/conn-08.webp',
+        image: '/products/connectors/Jointer.webp',
         specs: {
           type: 'Inline Waterproof Jointer Connector',
         },
@@ -254,7 +263,7 @@ export const categories: Category[] = [
         id: 'prof-01',
         name: '10mm Collar',
         // TODO confirm with client: Collar / Non-Collar naming convention
-        image: '/products/profile-lights/prof-01.webp',
+        image: '/products/profile-lights/10mm-collar.webp',
         specs: {
           width: '10mm',
           style: 'Collar (Flanged)',
@@ -264,7 +273,7 @@ export const categories: Category[] = [
         id: 'prof-02',
         name: '10mm Non Collar',
         // TODO confirm with client: Collar / Non-Collar naming convention
-        image: '/products/profile-lights/prof-02.webp',
+        image: '/products/profile-lights/10mm-without-collar.webp',
         specs: {
           width: '10mm',
           style: 'Non-Collar (Trimless / Surface)',
@@ -283,7 +292,7 @@ export const categories: Category[] = [
         id: 'prof-04',
         name: '17mm Collar',
         // TODO confirm with client: Collar / Non-Collar naming convention
-        image: '/products/profile-lights/prof-04.webp',
+        image: '/products/profile-lights/17mm-collar.webp',
         specs: {
           width: '17mm',
           style: 'Collar (Flanged)',
@@ -293,7 +302,7 @@ export const categories: Category[] = [
         id: 'prof-05',
         name: '17mm Non Collar',
         // TODO confirm with client: Collar / Non-Collar naming convention
-        image: '/products/profile-lights/prof-05.webp',
+        image: '/products/profile-lights/17mm-without-collar.webp',
         specs: {
           width: '17mm',
           style: 'Non-Collar (Trimless / Surface)',
@@ -303,7 +312,7 @@ export const categories: Category[] = [
         id: 'prof-06',
         name: '23mm Collar',
         // TODO confirm with client: Collar / Non-Collar naming convention
-        image: '/products/profile-lights/prof-06.webp',
+        image: '/products/profile-lights/23mm-collar.webp',
         specs: {
           width: '23mm',
           style: 'Collar (Flanged)',
@@ -313,7 +322,7 @@ export const categories: Category[] = [
         id: 'prof-07',
         name: '23mm Non Collar',
         // TODO confirm with client: Collar / Non-Collar naming convention
-        image: '/products/profile-lights/prof-07.webp',
+        image: '/products/profile-lights/23mm-without-collar.webp',
         specs: {
           width: '23mm',
           style: 'Non-Collar (Trimless / Surface)',
@@ -323,7 +332,7 @@ export const categories: Category[] = [
         id: 'prof-08',
         name: '40mm Collar',
         // TODO confirm with client: Collar / Non-Collar naming convention
-        image: '/products/profile-lights/prof-08.webp',
+        image: '/products/profile-lights/40mm-collar.webp',
         specs: {
           width: '40mm',
           style: 'Collar (Flanged)',
@@ -333,7 +342,7 @@ export const categories: Category[] = [
         id: 'prof-09',
         name: '40mm Non Collar',
         // TODO confirm with client: Collar / Non-Collar naming convention
-        image: '/products/profile-lights/prof-09.webp',
+        image: '/products/profile-lights/40mm-without-collar.webp',
         specs: {
           width: '40mm',
           style: 'Non-Collar (Trimless / Surface)',
@@ -343,7 +352,7 @@ export const categories: Category[] = [
         id: 'prof-10',
         name: '50mm Collar',
         // TODO confirm with client: the 50mm size and Collar / Non-Collar naming convention
-        image: '/products/profile-lights/prof-10.webp',
+        image: '/products/profile-lights/50mm-collar.webp',
         specs: {
           width: '50mm',
           style: 'Collar (Flanged)',
@@ -353,7 +362,7 @@ export const categories: Category[] = [
         id: 'prof-11',
         name: '50mm Non Collar',
         // TODO confirm with client: the 50mm size and Collar / Non-Collar naming convention
-        image: '/products/profile-lights/prof-11.webp',
+        image: '/products/profile-lights/50mm-without-collar.webp',
         specs: {
           width: '50mm',
           style: 'Non-Collar (Trimless / Surface)',
