@@ -362,7 +362,7 @@ export const categories: Category[] = [
         id: 'prof-11',
         name: '50mm Non Collar',
         // TODO confirm with client: the 50mm size and Collar / Non-Collar naming convention
-        image: '/products/profile-lights/50mm-without-collar.webp',
+        image: '/products/profile-lights/50mm-without-collar.png',
         specs: {
           width: '50mm',
           style: 'Non-Collar (Trimless / Surface)',
