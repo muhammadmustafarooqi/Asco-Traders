@@ -100,7 +100,7 @@ export const categories: Category[] = [
         id: 'rope-04',
         name: 'RGB - 60D',
         // TODO confirm with client: "D" meaning in Rope Light
-        image: '/products/rope-light/rgb60d.jpg',
+        image: '/products/rope-light/rgb60d.webp',
         specs: {
           voltage: '220V AC',
           color: 'RGB Multicolor',
@@ -362,7 +362,7 @@ export const categories: Category[] = [
         id: 'prof-11',
         name: '50mm Non Collar',
         // TODO confirm with client: the 50mm size and Collar / Non-Collar naming convention
-        image: '/products/profile-lights/50mm-without-collar.png',
+        image: '/products/profile-lights/50mm-without-collar.webp',
         specs: {
           width: '50mm',
           style: 'Non-Collar (Trimless / Surface)',
